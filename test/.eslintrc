@@ -1,0 +1,15 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "assert": true,
+    "expect": true,
+    "should": true,
+    "__static": true
+  },
+  "rules": {
+    "func-names": 0,
+    "prefer-arrow-callback": 0
+  }
+}
