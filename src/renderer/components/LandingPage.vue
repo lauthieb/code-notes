@@ -6,6 +6,8 @@
         <span class="title">
           Welcome to your new project!
         </span>
+        <p>{{ JSON.stringify(docs) }}</p>
+        <h3>{{docs.length}}</h3>
         <system-information></system-information>
       </div>
 
@@ -35,9 +37,24 @@
   export default {
     name: 'landing-page',
     components: { SystemInformation },
+    data() {
+      return {
+        docs: this.getLines(),
+      };
+    },
+    mounted() {
+      this.$db.insert({
+        message: 'Hello db ! 1',
+      });
+    },
     methods: {
       open(link) {
         this.$electron.shell.openExternal(link);
+      },
+      getLines() {
+        return this.$db.find({}, (err, docs) => {
+          this.docs = docs;
+        });
       },
     },
   };
