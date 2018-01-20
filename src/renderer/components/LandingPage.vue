@@ -43,7 +43,7 @@
   };
 </script>
 
-<style>
+<style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
   * {
@@ -102,27 +102,29 @@
     margin-bottom: 10px;
   }
 
-  .doc p {
-    color: black;
-    margin-bottom: 10px;
-  }
+  .doc {
+    p {
+      color: black;
+      margin-bottom: 10px;
+    }
 
-  .doc button {
-    font-size: .8em;
-    cursor: pointer;
-    outline: none;
-    padding: 0.75em 2em;
-    border-radius: 2em;
-    display: inline-block;
-    color: #fff;
-    background-color: #4fc08d;
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    border: 1px solid #4fc08d;
-  }
+    button {
+      font-size: .8em;
+      cursor: pointer;
+      outline: none;
+      padding: 0.75em 2em;
+      border-radius: 2em;
+      display: inline-block;
+      color: #fff;
+      background-color: $green;
+      transition: all 0.15s ease;
+      box-sizing: border-box;
+      border: 1px solid $green;
 
-  .doc button.alt {
-    color: #42b983;
-    background-color: transparent;
+      &.alt {
+        color: #42b983;
+        background-color: transparent;
+      }
+    }
   }
 </style>

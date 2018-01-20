@@ -1,8 +1,8 @@
 # code-notes
 
-> An electron-vue project
+> A simple code snippet manager for developers built with Electron 🚀
 
-#### Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies
@@ -16,7 +16,6 @@ npm run build
 
 # run unit & end-to-end tests
 npm test
-
 
 # lint all JS/Vue component files in `src/`
 npm run lint
