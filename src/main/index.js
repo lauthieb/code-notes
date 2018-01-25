@@ -5,7 +5,6 @@ import { app, BrowserWindow } from 'electron'; // eslint-disable-line
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
  */
 if (process.env.NODE_ENV !== 'development') {
-  // eslint-disable-next-line
   global.__static = require('path')
     .join(__dirname, '/static')
     .replace(/\\/g, '\\\\'); // eslint-disable-line
@@ -22,9 +21,12 @@ function createWindow() {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 563,
     useContentSize: true,
-    width: 1000,
+    height: 700,
+  titleBarStyle: 'hiddenInset',
+    width: 1160,
+    minHeight: 500,
+    minWidth: 769
   });
 
   mainWindow.loadURL(winURL);

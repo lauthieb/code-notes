@@ -1,5 +1,5 @@
 {
-  "name": "code-notes",
+  "name": "code-book",
   "version": "0.0.0",
   "author": "Laurent THIEBAULT <thiebault.laurent@gmail.com>",
   "description": "A simple code snippet manager for developers built with Electron 🚀",
@@ -23,7 +23,7 @@
     "postinstall": "npm run eslint:fix && npm run prettier"
   },
   "build": {
-    "productName": "code-notes",
+    "productName": "code-book",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
@@ -58,12 +58,17 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "brace": "^0.11.0",
+    "buefy": "^0.6.2",
     "electron": "^1.7.5",
+    "emmet": "^1.6.3",
+    "font-awesome": "^4.7.0",
     "nedb": "^1.8.0",
-    "vue": "^2.3.3",
+    "source-sans-pro": "^2.0.10",
+    "vue": "^2.5.13",
     "vue-electron": "^1.0.6",
-    "vue-router": "^2.5.3",
-    "vuex": "^2.3.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -120,6 +125,7 @@
     "vue-loader": "^13.0.5",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.4.2",
+    "vue2-ace-editor": "0.0.3",
     "webpack": "^3.5.2",
     "webpack-dev-server": "^2.7.1",
     "webpack-hot-middleware": "^2.18.2",

@@ -1,4 +1,4 @@
-# code-notes
+# code-book
 
 > A simple code snippet manager for developers built with Electron 🚀
 

@@ -1,33 +1,40 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <cb-navbar></cb-navbar>
+    <div id="content">
+      <router-view></router-view>
+
+      <!--<div class="columns">
+        <div class="column is-3">
+          <cb-sidebar></cb-sidebar>
+        </div>
+        <div class="column is-9">
+          <router-view></router-view>
+        </div>
+      </div>-->
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'code-notes',
-};
+  import Navbar from './Navbar';
+  import Sidebar from './Sidebar';
+
+  export default {
+    name: 'cb-app',
+    components: {
+      'cb-navbar': Navbar,
+      'cb-sidebar': Sidebar
+    }
+  };
 </script>
 
 <style lang="scss">
-
   body {
     font-family: 'Source Sans Pro', sans-serif;
   }
 
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  #content {
+    padding: 0 24px;
   }
-
-  #wrapper {
-    height: 100vh;
-    padding: 60px 80px;
-    width: 100vw;
-  }
-
 </style>

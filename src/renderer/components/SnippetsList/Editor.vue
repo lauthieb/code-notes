@@ -1,0 +1,79 @@
+<template>
+  <div :style="{height: height ? px(height) : '100%', width: width ? px(width) : '100%'}"></div>
+</template>
+
+<script>
+  import ace from 'brace';
+  import emmet from 'emmet';
+
+  window.emmet = emmet;
+
+  export default {
+    name: 'editor',
+    props: {
+      code: String,
+      value: String,
+      lang: String,
+      theme: String,
+      height: true,
+      width: true,
+      readOnly: Boolean
+    },
+    data () {
+      return {
+        editor: null,
+        contentBackup: ''
+      }
+    },
+    methods: {
+      px (n) {
+        if (/^\d*$/.test(n)) {
+          return `${n}px`;
+        }
+        return n;
+      }
+    },
+    watch: {
+      value (val) {
+        if (this.contentBackup !== val)
+          this.editor.setValue(val, 1);
+      },
+      code (val) {
+        if (this.contentBackup !== val)
+          this.editor.setValue(val, 1);
+      }
+    },
+    mounted () {
+      const vm = this;
+      const lang = this.lang || 'text';
+      const theme = this.theme || 'chrome';
+
+      require('brace/ext/emmet');
+
+      const editor = vm.editor = ace.edit(this.$el);
+
+      this.$emit('init', editor);
+
+      editor.$blockScrolling = Infinity;
+      editor.setOption("enableEmmet", true);
+      editor.getSession().setMode(`ace/mode/${lang}`);
+      editor.setTheme(`ace/theme/${theme}`);
+      if (!this.readOnly) {
+        editor.setValue(this.value, 1);
+      } else {
+        editor.setValue(this.code, 1);
+      }
+      editor.setReadOnly(this.readOnly);
+
+      editor.on('change', () => {
+        const content = editor.getValue();
+        vm.$emit('input', content);
+        vm.contentBackup = content;
+      });
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
