@@ -12,11 +12,19 @@ import router from './router';
 import store from './store';
 import db from './datastore';
 
+require('brace/mode/text');
+require('brace/mode/javascript');
 require('brace/mode/html');
 require('brace/theme/monokai');
 
 Vue.use(Buefy, {
   defaultIconPack: 'fa'
+});
+
+Vue.filter('capitalize', value => {
+  if (!value) return '';
+  value = value.toString();
+  return value.charAt(0).toUpperCase() + value.slice(1);
 });
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'));

@@ -73,7 +73,7 @@
   }
 
   #snippets-list {
-    margin-top: 68px;
+    margin-top: 74px;
 
     #search-buttons {
       position: fixed;

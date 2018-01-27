@@ -25,18 +25,19 @@
           </b-input>
         </b-field>
 
-        <!--<b-field horizontal label="Language">
-          <b-input
-            type="text"
-            v-model="snippetUpdated.language"
-            placeholder="Your snippet language"
-            required>
-          </b-input>
-        </b-field>-->
+        <b-field horizontal label="Language">
+          <b-select placeholder="Select a language" v-model="snippetUpdated.language" required>
+            <option
+              v-for="language in languages"
+              :value="language">
+              {{ language | capitalize }}
+            </option>
+          </b-select>
+        </b-field>
 
         <b-field horizontal label="Content">
           <editor v-model="code"
-                  lang="html"
+                  :lang="snippetUpdated.language"
                   theme="monokai"
                   width="100%"
                   height="260"
@@ -82,12 +83,7 @@
           content: '',
           tags: []
         },
-        cmOptions: {
-          tabSize: 4,
-          mode: 'text/javascript',
-          lineNumbers: true,
-          line: true
-        }
+        languages: ['text', 'javascript', 'html']
       }
     },
     mounted() {

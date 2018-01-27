@@ -5,7 +5,7 @@
         <div class="content">
           <div id="card-header" class="columns">
             <div id="name-category" class="column is-10">
-              <h4>{{snippet.name}}</h4>
+              <h4>{{snippet.name}} ({{snippet.language | capitalize}})</h4>
             </div>
             <div id="action-buttons" class="column is-2">
               <div class="is-pulled-right">
@@ -20,7 +20,7 @@
           </div>
           <p>{{snippet.description}}</p>
           <editor :code="snippet.content"
-                  lang="html"
+                  :lang="snippet.language"
                   theme="monokai"
                   width="100%"
                   height="260"

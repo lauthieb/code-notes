@@ -20,23 +20,23 @@
           <b-input
             type="text"
             v-model="snippet.description"
-            placeholder="Your snippet description"
-            required>
+            placeholder="Your snippet description">
           </b-input>
         </b-field>
 
-        <!--<b-field horizontal label="Language">
-          <b-input
-            type="text"
-            v-model="snippet.language"
-            placeholder="Your snippet language"
-            required>
-          </b-input>
-        </b-field>-->
+        <b-field horizontal label="Language">
+          <b-select placeholder="Select a language" v-model="snippet.language" required>
+                <option
+                    v-for="language in languages"
+                    :value="language">
+                    {{ language | capitalize }}
+                </option>
+            </b-select>
+        </b-field>
 
         <b-field horizontal label="Content">
           <editor v-model="snippet.content"
-                  lang="html"
+                  :lang="snippet.language"
                   theme="monokai"
                   width="100%"
                   height="260"
@@ -74,10 +74,11 @@
         snippet: {
           name: '',
           description: '',
-          language: '',
+          language: 'text',
           content: '',
           tags: []
-        }
+        },
+        languages: ['text', 'javascript', 'html']
       }
     },
     mounted() {
@@ -94,8 +95,7 @@
     computed: {
       isDisabled() {
         return !/\S/.test(this.snippet.name) ||
-          !/\S/.test(this.snippet.description) ||
-          // !/\S/.test(this.snippet.language) ||
+          !/\S/.test(this.snippet.language) ||
           !/\S/.test(this.snippet.content);
       }
     }

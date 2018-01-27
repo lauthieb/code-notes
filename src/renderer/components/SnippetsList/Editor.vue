@@ -41,6 +41,9 @@
       code (val) {
         if (this.contentBackup !== val)
           this.editor.setValue(val, 1);
+      },
+      lang (val) {
+        this.editor.getSession().setMode(`ace/mode/${val}`);
       }
     },
     mounted () {
