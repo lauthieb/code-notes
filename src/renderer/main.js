@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import axios from 'axios';
 import Buefy from 'buefy';
+import VueClipboard from 'vue-clipboard2'
 
 import 'font-awesome/css/font-awesome.min.css';
 import 'source-sans-pro/source-sans-pro.css';
-
 
 import App from './App';
 
@@ -20,6 +20,8 @@ require('brace/theme/monokai');
 Vue.use(Buefy, {
   defaultIconPack: 'fa'
 });
+
+Vue.use(VueClipboard);
 
 Vue.filter('capitalize', value => {
   if (!value) return '';

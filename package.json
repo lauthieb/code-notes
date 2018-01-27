@@ -66,6 +66,7 @@
     "nedb": "^1.8.0",
     "source-sans-pro": "^2.0.10",
     "vue": "^2.5.13",
+    "vue-clipboard2": "0.0.8",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

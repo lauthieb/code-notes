@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-clipboard="http://www.w3.org/1999/xhtml">
   <div class="box">
     <article class="media">
       <div class="media-content">
@@ -9,10 +9,18 @@
             </div>
             <div id="action-buttons" class="column is-2">
               <div class="is-pulled-right">
-                <a id="update-snippet" @click="updateSnippetModalActive = true">
+                <b-tooltip :active="showCopiedToClipboard" label="Copied !" position="is-bottom" always>
+                  <a id="copy-snippet"
+                     v-clipboard:copy="snippet.content"
+                     v-clipboard:success="onCopyClipboardSuccess"
+                     title="Copy to clipboard">
+                    <b-icon icon="clipboard"></b-icon>
+                  </a>
+                </b-tooltip>
+                <a id="update-snippet" @click="updateSnippetModalActive = true" title="Edit snippet">
                   <b-icon icon="pencil"></b-icon>
                 </a>
-                <a id="delete-snippet" @click="deleteSnippet()">
+                <a id="delete-snippet" @click="deleteSnippet()" title="Delete snippet">
                   <b-icon icon="trash"></b-icon>
                 </a>
               </div>
@@ -39,10 +47,12 @@
 <script>
   import editor from './Editor';
   import UpdateSnippetModal from './UpdateSnippetModal';
+  import BTooltip from '../../../../node_modules/buefy/src/components/tooltip/Tooltip.vue';
 
   export default {
     name: 'cb-snippet-card',
     components: {
+      BTooltip,
       'cb-update-snippet-modal': UpdateSnippetModal,
       editor
     },
@@ -51,7 +61,8 @@
     },
     data() {
       return {
-        updateSnippetModalActive: false
+        updateSnippetModalActive: false,
+        showCopiedToClipboard: false
       }
     },
     methods: {
@@ -60,6 +71,12 @@
       },
       deleteSnippet() {
         this.$store.dispatch('deleteSnippet', this.snippet);
+      },
+      onCopyClipboardSuccess() {
+        this.showCopiedToClipboard = true;
+        setTimeout(() => {
+          this.showCopiedToClipboard = false;
+        }, 1000);
       }
     }
   };
@@ -85,6 +102,14 @@
 
         #delete-snippet {
           color: $danger;
+
+          &:hover {
+            color: lighten($black, 20%);
+          }
+        }
+
+        #copy-snippet {
+          color: $dark;
 
           &:hover {
             color: lighten($black, 20%);
