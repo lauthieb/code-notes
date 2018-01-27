@@ -27,6 +27,9 @@
             </div>
           </div>
           <p>{{snippet.description}}</p>
+          <b-taglist>
+            <b-tag v-for="tag in snippet.tags" type="is-light">{{tag}}</b-tag>
+          </b-taglist>
           <editor :code="snippet.content"
                   :lang="snippet.language"
                   theme="monokai"
