@@ -2,16 +2,14 @@
   <div id="app">
     <cb-navbar></cb-navbar>
     <div id="content">
-      <router-view></router-view>
-
-      <!--<div class="columns">
+      <div class="columns">
         <div class="column is-3">
           <cb-sidebar></cb-sidebar>
         </div>
         <div class="column is-9">
           <router-view></router-view>
         </div>
-      </div>-->
+      </div>
     </div>
   </div>
 </template>

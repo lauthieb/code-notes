@@ -4,28 +4,26 @@
       Languages
     </p>
     <ul class="menu-list">
-      <li><a class="is-active">All</a></li>
-      <li><a>Text</a></li>
-      <li><a>JavaScript</a></li>
+      <li>
+        <a class="is-active">All <b-tag class="is-pulled-right" type="is-dark">{{snippets.length}}</b-tag></a>
+      </li>
+      <li v-for="(list, value) in Array.from(languages)">
+        <a>{{list[0] | capitalize}} <b-tag class="is-pulled-right" type="is-dark">{{list[1]}}</b-tag></a>
+      </li>
     </ul>
-    <p class="menu-label">
-      Tags
-    </p>
-    <b-taglist>
-      <b-tag type="is-light">First</b-tag>
-      <b-tag type="is-light">Second</b-tag>
-      <b-tag type="is-light">Third</b-tag>
-      <b-tag type="is-light">Fourth</b-tag>
-      <b-tag type="is-light">Fifth</b-tag>
-    </b-taglist>
   </aside>
 </template>
 
 <script>
+  import Vuex from 'vuex';
+
   export default {
     name: 'cb-sidebar',
     data() {
       return {}
+    },
+    computed: {
+      ...Vuex.mapGetters(['languages', 'snippets']),
     }
   };
 </script>

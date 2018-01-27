@@ -49,7 +49,22 @@ const actions = {
 
 const getters = {
   snippets: (state) => state.snippets,
-  snippetById: (state) => (id) => state.snippets.find(snippet => snippet._id === id)
+  snippetById: (state) => (id) => state.snippets.find(snippet => snippet._id === id),
+  languages: (state) => {
+    const map = new Map();
+
+    if (state.snippets.length > 0) {
+      state.snippets.forEach(snippet => {
+        if (map.has(snippet.language)) {
+          map.set(snippet.language, map.get(snippet.language) + 1);
+        } else {
+          map.set(snippet.language, 1);
+        }
+      });
+    }
+
+    return map;
+  }
 };
 
 export default {

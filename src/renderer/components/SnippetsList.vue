@@ -16,6 +16,7 @@
         </button>
       </div>
     </div>
+
     <div id="snippets" v-for="snippet in snippetsFiltered">
       <cb-snippet-card :snippet="snippet"></cb-snippet-card>
     </div>
@@ -77,8 +78,7 @@
 
     #search-buttons {
       position: fixed;
-      //width: 73.5%; when there's the sidebar
-      width: 98%;
+      width: 73.5%;
       z-index: 800;
       background-color: white;
     }

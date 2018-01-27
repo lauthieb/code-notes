@@ -26,7 +26,7 @@ function createWindow() {
   titleBarStyle: 'hiddenInset',
     width: 1160,
     minHeight: 500,
-    minWidth: 769
+    minWidth: 900
   });
 
   mainWindow.loadURL(winURL);
