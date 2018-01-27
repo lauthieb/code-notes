@@ -1,5 +1,5 @@
 {
-  "name": "code-book",
+  "name": "bloc-codes",
   "version": "0.0.0",
   "author": "Laurent THIEBAULT <thiebault.laurent@gmail.com>",
   "description": "A simple code snippet manager for developers built with Electron 🚀",
@@ -23,7 +23,7 @@
     "postinstall": "npm run eslint:fix && npm run prettier"
   },
   "build": {
-    "productName": "code-book",
+    "productName": "bloc-codes",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"

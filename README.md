@@ -1,4 +1,4 @@
-# code-book
+# bloc-codes
 
 > A simple code snippet manager for developers built with Electron 🚀
 

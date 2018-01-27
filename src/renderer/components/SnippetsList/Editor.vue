@@ -1,5 +1,5 @@
 <template>
-  <div :style="{height: height ? px(height) : '100%', width: width ? px(width) : '100%'}"></div>
+  <div :style="{width: width ? px(width) : '100%'}"></div>
 </template>
 
 <script>
@@ -55,10 +55,13 @@
       this.$emit('init', editor);
 
       editor.$blockScrolling = Infinity;
-      editor.setOption("enableEmmet", true);
+      editor.setOption('enableEmmet', true);
+      editor.setOption('maxLines', 15);
       editor.getSession().setMode(`ace/mode/${lang}`);
       editor.setTheme(`ace/theme/${theme}`);
+      editor.setShowPrintMargin(false);
       if (!this.readOnly) {
+        editor.setOption('minLines', 15);
         editor.setValue(this.value, 1);
       } else {
         editor.setValue(this.code, 1);

@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <img src="~@/assets/logo.png" alt="Code book logo">
+    <img src="~@/assets/bloc-codes-logo-white-full.png" alt="Code book logo">
   </nav>
 </template>
 
