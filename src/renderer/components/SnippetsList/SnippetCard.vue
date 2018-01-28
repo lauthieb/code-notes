@@ -49,6 +49,7 @@
 </template>
 
 <script>
+  import Vuex from 'vuex';
   import editor from './Editor';
   import UpdateSnippetModal from './UpdateSnippetModal';
   import BTooltip from '../../../../node_modules/buefy/src/components/tooltip/Tooltip.vue';
@@ -69,6 +70,9 @@
         showCopiedToClipboard: false
       }
     },
+    computed: {
+      ...Vuex.mapGetters(['snippets']),
+    },
     methods: {
       updateSnippet() {
         this.$store.dispatch('updateSnippet', this.snippet);
@@ -81,7 +85,7 @@
           type: 'is-danger',
           hasIcon: true,
           onConfirm: () => {
-            this.$store.dispatch('deleteSnippet', this.snippet)
+            this.$store.dispatch('deleteSnippet', this.snippet);
           }
         });
       },

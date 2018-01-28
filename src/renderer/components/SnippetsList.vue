@@ -17,9 +17,24 @@
       </div>
     </div>
 
-    <div id="snippets" class="columns" v-for="snippet in snippetsFiltered">
+    <div v-if="snippetsFiltered.length > 0" class="columns snippets" v-for="snippet in snippetsFiltered">
       <div class="column is-12 is-6-fullhd snippet-card">
         <cb-snippet-card :snippet="snippet"></cb-snippet-card>
+      </div>
+    </div>
+    <div v-if="snippetsFiltered.length === 0 && searchField === ''" class="columns snippets">
+      <div class="column is-12 no-snippet">
+        <h1>Hey !</h1>
+        <h2>You don't have any snippet...</h2>
+        <button class="button is-primary" @click="createSnippetModalActive = true">
+          Create a new one :)
+        </button>
+      </div>
+    </div>
+    <div v-if="snippetsFiltered.length === 0 && searchField !== ''" class="columns snippets">
+      <div class="column is-12 no-snippet">
+        <h1>Oh :(</h1>
+        <h2>Sorry, no snippets found for your search</h2>
       </div>
     </div>
 
@@ -97,9 +112,21 @@
       background-color: white;
     }
 
-    #snippets {
+    .snippets {
       position: relative;
       top: 54px;
+    }
+  }
+
+  .no-snippet {
+    text-align: center;
+    h1 {
+      margin-top: 100px;
+      font-size: 24px;
+    }
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
     }
   }
 </style>

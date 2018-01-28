@@ -14,6 +14,10 @@ const mutations = {
   },
   DELETE_SNIPPET(state, snippet) {
     state.snippets = state.snippets.filter(s => s._id !== snippet._id);
+
+    if (!state.snippets.some(s=> s.language === snippet.language)) {
+      state.languageSelected = 'all';
+    }
   },
   SELECT_LANGUAGE(state, language) {
     state.languageSelected = language;
