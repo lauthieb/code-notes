@@ -20,8 +20,7 @@
           <b-input
             type="text"
             v-model="snippetUpdated.description"
-            placeholder="Your snippet description"
-            required>
+            placeholder="Your snippet description">
           </b-input>
         </b-field>
 
@@ -44,14 +43,14 @@
           ></editor>
         </b-field>
 
-        <b-field horizontal label="Tags">
+        <!--<b-field horizontal label="Tags">
           <b-taginput
             v-model="snippetUpdated.tags"
             icon="label"
             placeholder="Add a tag"
             maxtags="5">
           </b-taginput>
-        </b-field>
+        </b-field>-->
       </section>
 
       <footer class="modal-card-foot">
@@ -81,7 +80,7 @@
           description: '',
           language: '',
           content: '',
-          tags: []
+          // tags: []
         },
         languages: ['text', 'javascript', 'html']
       }
@@ -90,7 +89,7 @@
       this.$refs.snippetName.focus();
       this.code = Object.assign(this.snippet.content, {});
       this.snippetUpdated = {...this.snippet};
-      this.snippetUpdated.tags = [...this.snippet.tags];
+      // this.snippetUpdated.tags = [...this.snippet.tags];
     },
     methods: {
       updateSnippet() {
@@ -105,8 +104,7 @@
     computed: {
       isDisabled() {
         return !/\S/.test(this.snippetUpdated.name) ||
-          !/\S/.test(this.snippetUpdated.description) ||
-          // !/\S/.test(this.snippetUpdated.language) ||
+          !/\S/.test(this.snippetUpdated.language) ||
           !/\S/.test(this.code);
       }
     }

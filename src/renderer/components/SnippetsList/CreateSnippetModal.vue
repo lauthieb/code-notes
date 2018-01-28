@@ -43,14 +43,14 @@
           ></editor>
         </b-field>
 
-        <b-field horizontal label="Tags">
+        <!--<b-field horizontal label="Tags">
           <b-taginput
             v-model="snippet.tags"
             icon="label"
             placeholder="Add a tag"
             maxtags="5">
           </b-taginput>
-        </b-field>
+        </b-field>-->
       </section>
 
       <footer class="modal-card-foot">
@@ -76,7 +76,7 @@
           description: '',
           language: 'text',
           content: '',
-          tags: []
+          // tags: []
         },
         languages: ['text', 'javascript', 'html']
       }

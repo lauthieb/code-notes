@@ -4,10 +4,11 @@
       <div class="media-content">
         <div class="content">
           <div id="card-header" class="columns">
-            <div id="name-category" class="column is-10">
-              <h4>{{snippet.name}} ({{snippet.language | capitalize}})</h4>
+            <div id="name-category" class="column is-9">
+              <h4>{{snippet.name}}</h4>
+              <h5>({{snippet.language | capitalize}})</h5>
             </div>
-            <div id="action-buttons" class="column is-2">
+            <div id="action-buttons" class="column is-3">
               <div class="is-pulled-right">
                 <b-tooltip :active="showCopiedToClipboard" label="Copied !" position="is-bottom" always>
                   <a id="copy-snippet"
@@ -27,9 +28,9 @@
             </div>
           </div>
           <p>{{snippet.description}}</p>
-          <b-taglist>
+          <!--<b-taglist>
             <b-tag v-for="tag in snippet.tags" type="is-light">{{tag}}</b-tag>
-          </b-taglist>
+          </b-taglist>-->
           <editor :code="snippet.content"
                   :lang="snippet.language"
                   theme="monokai"
@@ -73,7 +74,16 @@
         this.$store.dispatch('updateSnippet', this.snippet);
       },
       deleteSnippet() {
-        this.$store.dispatch('deleteSnippet', this.snippet);
+        this.$dialog.confirm({
+          title: 'Delete snippet',
+          message: 'Are you sure you want to delete this snippet ?',
+          confirmText: 'Delete',
+          type: 'is-danger',
+          hasIcon: true,
+          onConfirm: () => {
+            this.$store.dispatch('deleteSnippet', this.snippet)
+          }
+        });
       },
       onCopyClipboardSuccess() {
         this.showCopiedToClipboard = true;
@@ -86,11 +96,21 @@
 </script>
 
 <style lang="scss" scoped>
+
   .box {
     margin: 16px 0;
 
     .media-content {
       overflow-x: hidden;
+    }
+
+    h5 {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 14px;
     }
 
     #card-header {

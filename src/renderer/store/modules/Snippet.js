@@ -2,6 +2,7 @@ import db from '../../datastore';
 
 const state = {
   snippets: [],
+  languageSelected: 'all'
 };
 
 const mutations = {
@@ -12,7 +13,10 @@ const mutations = {
     state.snippets.push(snippet);
   },
   DELETE_SNIPPET(state, snippet) {
-    state.snippets = state.snippets.filter(s => s._id !== snippet._id)
+    state.snippets = state.snippets.filter(s => s._id !== snippet._id);
+  },
+  SELECT_LANGUAGE(state, language) {
+    state.languageSelected = language;
   }
 };
 
@@ -44,6 +48,9 @@ const actions = {
         store.commit('DELETE_SNIPPET', snippet);
       }
     });
+  },
+  selectLanguage(store, language) {
+    store.commit('SELECT_LANGUAGE', language);
   }
 };
 
@@ -62,9 +69,9 @@ const getters = {
         }
       });
     }
-
     return map;
-  }
+  },
+  languageSelected: (state) => state.languageSelected
 };
 
 export default {

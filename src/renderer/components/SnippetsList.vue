@@ -17,8 +17,10 @@
       </div>
     </div>
 
-    <div id="snippets" v-for="snippet in snippetsFiltered">
-      <cb-snippet-card :snippet="snippet"></cb-snippet-card>
+    <div id="snippets" class="columns" v-for="snippet in snippetsFiltered">
+      <div class="column is-12 is-6-fullhd snippet-card">
+        <cb-snippet-card :snippet="snippet"></cb-snippet-card>
+      </div>
     </div>
 
     <b-modal :active.sync="createSnippetModalActive" has-modal-card>
@@ -46,16 +48,23 @@
     },
     mounted() {
     },
-    methods: {},
+    methods: { },
     computed: {
-      ...Vuex.mapGetters(['snippets', 'snippetById']),
+      ...Vuex.mapGetters(['snippets', 'snippetById', 'languageSelected']),
       snippetsFiltered() {
-        return this.snippets
+        const snippetsFiltered = this.snippets
           .filter(item => this.searchField
             .split(' ')
             .every(el => (item.name.indexOf(el) > -1) ||
               item.description.indexOf(el) > -1 ||
               item.language.indexOf(el) > -1));
+
+        if (this.languageSelected !== 'all') {
+          return snippetsFiltered
+            .filter(snippet => snippet.language === this.languageSelected);
+        }
+
+        return snippetsFiltered;
       }
     },
     beforeRouteEnter(route, redirect, next) {
@@ -68,16 +77,21 @@
 </script>
 
 <style lang="scss" scoped>
+  .snippet-card {
+    padding: 0 12px;
+  }
+
   .modal {
     z-index: 1100;
     text-align: center;
   }
 
   #snippets-list {
-    margin-top: 74px;
+    margin-top: 72px;
 
     #search-buttons {
       position: fixed;
+      top: 72px;
       width: 73.5%;
       z-index: 800;
       background-color: white;

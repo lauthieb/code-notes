@@ -5,10 +5,10 @@
     </p>
     <ul class="menu-list">
       <li>
-        <a class="is-active">All <b-tag class="is-pulled-right" type="is-dark">{{snippets.length}}</b-tag></a>
+        <a :class="{'is-active': languageSelected === 'all'}" @click="selectLanguage('all')">All <b-tag class="is-pulled-right" type="is-dark">{{snippets.length}}</b-tag></a>
       </li>
       <li v-for="(list, value) in Array.from(languages)">
-        <a>{{list[0] | capitalize}} <b-tag class="is-pulled-right" type="is-dark">{{list[1]}}</b-tag></a>
+        <a :class="{'is-active': languageSelected === list[0]}" @click="selectLanguage(list[0])">{{list[0] | capitalize}} <b-tag class="is-pulled-right" type="is-dark">{{list[1]}}</b-tag></a>
       </li>
     </ul>
   </aside>
@@ -22,8 +22,13 @@
     data() {
       return {}
     },
+    methods: {
+      selectLanguage(language) {
+        this.$store.dispatch('selectLanguage', language);
+      }
+    },
     computed: {
-      ...Vuex.mapGetters(['languages', 'snippets']),
+      ...Vuex.mapGetters(['languages', 'snippets', 'languageSelected']),
     }
   };
 </script>
@@ -31,12 +36,16 @@
 <style lang="scss" scoped>
   aside {
     position: fixed;
-    top: 50px;
+    top: 48px;
     width: 22%;
-    margin-top: 18px;
+    margin-top: 24px;
 
     li {
       margin: 5px 0;
+
+      a {
+        padding-bottom: 11px!important;
+      }
     }
   }
 </style>

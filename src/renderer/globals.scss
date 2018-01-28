@@ -24,3 +24,7 @@ $link-focus-border: $primary;
 
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+.modal {
+  z-index: 1100!important;
+}
