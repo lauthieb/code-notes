@@ -1,5 +1,3 @@
-# bloc-codes
-
 <div align="center">
 <br>
 <img width="400" src="/src/renderer/assets/bloc-codes-logo-black-full.png" alt="electron-vue">
@@ -8,7 +6,7 @@
 </div>
 
 <p align="center" color="#6a737d">
-A simple code snippet manager for developers built with Electron 🚀
+A simple code snippet manager for developers built with Electron & Vue.js 🚀
 </p>
 
 <div align="center">
@@ -42,7 +40,7 @@ npm run lint
 
 ## Contributing
 
-For the moment, the project is pretty young. But if we work together to build the "bloc-notes" we dream, we can build pretty things for sure !
+For the moment, the project is pretty young. But if we work together to build the "bloc-notes" we dream, we can build pretty things for sure !  
 So, feel free to contribute. Follow this [guide](CONTRIBUTING.md) 🤓
 
 ---
