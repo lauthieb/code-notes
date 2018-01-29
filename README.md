@@ -1,10 +1,26 @@
 # bloc-codes
 
-<img width="500" src="/src/renderer/assets/bloc-codes-logo-black-full.png" alt="electron-vue">
+<div align="center">
+<br>
+<img width="400" src="/src/renderer/assets/bloc-codes-logo-black-full.png" alt="electron-vue">
+<br>
+<br>
+</div>
 
-> A simple code snippet manager for developers built with Electron 🚀
+<p align="center" color="#6a737d">
+A simple code snippet manager for developers built with Electron 🚀
+</p>
 
-### Build Setup
+<div align="center">
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/makes-people-smile.svg)](http://forthebadge.com)
+</div>
+
+## Overview
+
+The aim of this project is to be more efficient by providing a pretty cool : a "bloc-notes" for developers 😃
+
+## Build Setup
 
 ``` bash
 # install dependencies
@@ -23,6 +39,11 @@ npm test
 npm run lint
 
 ```
+
+## Contributing
+
+For the moment, the project is pretty young. But if we work together to build the "bloc-notes" we dream, we can build pretty things for sure !
+So, feel free to contribute. Follow this [guide](CONTRIBUTING.md) 🤓
 
 ---
 
