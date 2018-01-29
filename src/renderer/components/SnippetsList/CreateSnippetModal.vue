@@ -12,7 +12,7 @@
             ref="snippetName"
             v-model="snippet.name"
             placeholder="Your snippet name"
-            required>
+            d>
           </b-input>
         </b-field>
 
@@ -25,13 +25,13 @@
         </b-field>
 
         <b-field horizontal label="Language">
-          <b-select placeholder="Select a language" v-model="snippet.language" required>
-                <option
-                    v-for="language in languages"
-                    :value="language">
-                    {{ language | capitalize }}
-                </option>
-            </b-select>
+          <b-select placeholder="Select a language" v-model="snippet.language" d>
+            <option
+              v-for="language in languages"
+              :value="language">
+              {{ language | capitalize }}
+            </option>
+          </b-select>
         </b-field>
 
         <b-field horizontal label="Content">
@@ -78,7 +78,31 @@
           content: '',
           // tags: []
         },
-        languages: ['text', 'javascript', 'html']
+        languages: [
+          'text',
+          'elixir',
+          'elm',
+          'golang',
+          'haskell',
+          'html',
+          'java',
+          'javascript',
+          'json',
+          'jsx',
+          'jade',
+          'makefile',
+          'markdown',
+          'ocaml',
+          'perl',
+          'pgsql',
+          'php',
+          'python',
+          'ruby',
+          'scss',
+          'swift',
+          'typescript',
+          'xml'
+        ]
       }
     },
     mounted() {

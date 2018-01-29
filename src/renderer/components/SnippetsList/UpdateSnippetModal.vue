@@ -82,7 +82,31 @@
           content: '',
           // tags: []
         },
-        languages: ['text', 'javascript', 'html']
+        languages: [
+          'text',
+          'elixir',
+          'elm',
+          'golang',
+          'haskell',
+          'html',
+          'java',
+          'javascript',
+          'json',
+          'jsx',
+          'jade',
+          'makefile',
+          'markdown',
+          'ocaml',
+          'perl',
+          'pgsql',
+          'php',
+          'python',
+          'ruby',
+          'scss',
+          'swift',
+          'typescript',
+          'xml'
+        ]
       }
     },
     mounted() {

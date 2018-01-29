@@ -13,8 +13,28 @@ import store from './store';
 import db from './datastore';
 
 require('brace/mode/text');
-require('brace/mode/javascript');
+require('brace/mode/elixir');
+require('brace/mode/elm');
+require('brace/mode/golang');
+require('brace/mode/haskell');
 require('brace/mode/html');
+require('brace/mode/java');
+require('brace/mode/javascript');
+require('brace/mode/json');
+require('brace/mode/jsx');
+require('brace/mode/jade');
+require('brace/mode/makefile');
+require('brace/mode/markdown');
+require('brace/mode/ocaml');
+require('brace/mode/perl');
+require('brace/mode/pgsql');
+require('brace/mode/php');
+require('brace/mode/python');
+require('brace/mode/ruby');
+require('brace/mode/scss');
+require('brace/mode/swift');
+require('brace/mode/typescript');
+require('brace/mode/xml');
 require('brace/theme/monokai');
 
 Vue.use(Buefy, {
