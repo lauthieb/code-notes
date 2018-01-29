@@ -1,11 +1,11 @@
 <template>
   <nav>
-    <img src="~@/assets/bloc-codes-logo-white-full.png" alt="Bloc-codes logo">
+    <img class="logo" src="~@/assets/code-notes-logo-white-full.png" alt="Code Notes logo">
     <div class="is-pulled-right">
-      <a id="about-bloc-codes" @click="aboutBlocCodesModal = true" title="About Bloc Codes...">
+      <a id="about-code-notes" @click="aboutBlocCodesModal = true" title="About Code Notes...">
         <b-icon icon="info-circle"></b-icon>
       </a>
-      <a id="github" @click="open('https://github.com/lauthieb/bloc-codes')" title="Show on Github...">
+      <a id="github" @click="open('https://github.com/lauthieb/code-notes')" title="Show on Github...">
         <b-icon icon="github"></b-icon>
       </a>
     </div>
@@ -15,7 +15,7 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <img src="~@/assets/bloc-codes-logo-black-full.png" alt="Image">
+              <img src="~@/assets/code-notes-logo-black-full.png" alt="Image">
             </div>
           </div>
           <div class="content">
@@ -23,7 +23,7 @@
 
             <p>A simple code snippet manager for developers built with Electron & Vue.js 🚀</p>
 
-            <p>Feel free to contribute on <a @click="open('https://github.com/lauthieb/bloc-codes')">Github</a> 🍻</p>
+            <p>Feel free to contribute on <a @click="open('https://github.com/lauthieb/code-notes')">Github</a> 🍻</p>
 
             <img class="badge" src="http://forthebadge.com/images/badges/built-with-love.svg" alt="Built with love">
           </div>
@@ -63,12 +63,14 @@
     width: 100%;
     z-index: 1000;
 
-    img {
+    .logo {
       padding: 10px 10px 4px 10px;
       width: 110px;
+      position: relative;
+      left: 4%;
     }
 
-    #about-bloc-codes, #github {
+    #about-code-notes, #github {
       color: $light;
       position: relative;
       top: 20px;

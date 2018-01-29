@@ -1,6 +1,6 @@
 <div align="center">
 <br>
-<img width="400" src="/src/renderer/assets/bloc-codes-logo-black-full.png" alt="electron-vue">
+<img width="400" src="/src/renderer/assets/code-notes-logo-black-full.png" alt="electron-vue">
 <br>
 <br>
 </div>
@@ -11,6 +11,7 @@ A simple code snippet manager for developers built with Electron & Vue.js 🚀
 
 <div align="center">
 
+[![Build Status](https://travis-ci.org/lauthieb/code-notes.svg?branch=master)](https://travis-ci.org/lauthieb/code-notes)  
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/makes-people-smile.svg)](http://forthebadge.com)
 </div>
 

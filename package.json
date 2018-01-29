@@ -1,6 +1,6 @@
 {
-  "name": "bloc-codes",
-  "version": "0.0.0",
+  "name": "code-notes",
+  "version": "1.0.0",
   "author": "Laurent THIEBAULT <thiebault.laurent@gmail.com>",
   "description": "A simple code snippet manager for developers built with Electron 🚀",
   "license": "MIT",
@@ -23,8 +23,8 @@
     "postinstall": "npm run eslint:fix && npm run prettier"
   },
   "build": {
-    "productName": "Bloc Codes",
-    "appId": "fr.lauthieb.bloc-codes",
+    "productName": "Code Notes",
+    "appId": "fr.lauthieb.code-notes",
     "directories": {
       "output": "build"
     },
