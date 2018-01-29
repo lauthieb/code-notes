@@ -23,8 +23,8 @@
     "postinstall": "npm run eslint:fix && npm run prettier"
   },
   "build": {
-    "productName": "bloc-codes",
-    "appId": "org.simulatedgreg.electron-vue",
+    "productName": "Bloc Codes",
+    "appId": "fr.lauthieb.bloc-codes",
     "directories": {
       "output": "build"
     },

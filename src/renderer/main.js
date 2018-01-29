@@ -32,6 +32,7 @@ require('brace/mode/php');
 require('brace/mode/python');
 require('brace/mode/ruby');
 require('brace/mode/scss');
+require('brace/mode/sh');
 require('brace/mode/swift');
 require('brace/mode/typescript');
 require('brace/mode/xml');

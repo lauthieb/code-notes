@@ -99,6 +99,7 @@
           'python',
           'ruby',
           'scss',
+          'sh',
           'swift',
           'typescript',
           'xml'
