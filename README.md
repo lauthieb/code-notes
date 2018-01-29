@@ -55,6 +55,15 @@ npm run lint
 
 ```
 
+### Roadmap
+
+This version 1 is totally local, but I have a lot of ideas to make this app better !
+
+* Connect with Github gists
+* Add the notion of tags on each snippet
+* Redesign the snippet card (with language logo for example)
+* Add some shortcuts to improve the productivity
+
 ---
 
 This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[1c165f7](https://github.com/SimulatedGREG/electron-vue/tree/1c165f7c5e56edaf48be0fbb70838a1af26bb015) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
