@@ -1,0 +1,30 @@
+{
+  "name": "food-limit",
+  "title": "Food Limit",
+  "version": "3.3.7",
+  "homepage": "https://food-limit.github.io",
+  "author": "Food Limit",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/food-limit"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "browser-sync": "^2.13.0",
+    "font-awesome": "^4.6.3",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-header": "^1.8.7",
+    "gulp-less": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.4",
+    "jquery": "^1.11.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/food-limit/food-limit.github.io"
+  },
+  "dependencies": {
+    "simple-line-icons": "^2.3.2"
+  }
+}

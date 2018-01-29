@@ -5,8 +5,14 @@ dist/web/*
 build/*
 !build/icons
 coverage
-node_modules/
+**/node_modules/
 npm-debug.log
 npm-debug.log.*
 thumbs.db
 !.gitkeep
+docs/.sass-cache
+docs/_site
+node_modules
+**/*.DS_Store
+**/.idea
+**/*.iml

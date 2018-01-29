@@ -18,7 +18,7 @@
     </div>
 
     <div v-if="snippetsFiltered.length > 0" class="columns snippets" v-for="snippet in snippetsFiltered">
-      <div class="column is-12 is-6-fullhd snippet-card">
+      <div class="column is-12 snippet-card">
         <cb-snippet-card :snippet="snippet"></cb-snippet-card>
       </div>
     </div>

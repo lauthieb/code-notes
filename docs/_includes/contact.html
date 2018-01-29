@@ -1,0 +1,17 @@
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Feel free to contribute <i class="fa fa-heart"></i></h2>
+        <ul class="list-inline list-social">
+            {% for network in site.social %}
+            <li class="social-{{ network.title }}">
+                <a href="{{ network.url }}" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-{{ network.title }}"></i></a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <p>&copy; 2018 Code Notes. Built with <i class="fa fa-heart"></i>  by Laurent Thiebault on <a target="_blank" rel="nofollow" href="https://github.com/lauthieb/code-notes">Github</a>. Thanks to <a target="_blank" rel="nofollow" href="https://it.linkedin.com/in/antoniotrento">Antonio Trento</a> for this theme. MIT License.</p>
+    </div>
+</footer>

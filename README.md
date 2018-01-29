@@ -19,7 +19,12 @@ A simple code snippet manager for developers built with Electron & Vue.js 🚀
 
 The aim of this project is to be more efficient by providing a pretty cool : a "bloc-notes" for developers 😃
 
-## Build Setup
+## Contributing
+
+For the moment, the project is pretty young. But if we work together to build the "bloc-notes" we dream, we can build pretty things for sure !  
+So, feel free to contribute. Follow this [guide](CONTRIBUTING.md) 🤓
+
+### Build Setup
 
 ``` bash
 # install dependencies
@@ -38,11 +43,6 @@ npm test
 npm run lint
 
 ```
-
-## Contributing
-
-For the moment, the project is pretty young. But if we work together to build the "bloc-notes" we dream, we can build pretty things for sure !  
-So, feel free to contribute. Follow this [guide](CONTRIBUTING.md) 🤓
 
 ---
 
