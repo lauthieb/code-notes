@@ -36,10 +36,10 @@ a {
 }
 
 a.download-link {
-  color: white;
+  color: #333333;
   font-size: 60px;
   &:hover, &:focus {
-    color: #333333;
+    color: grey;
   }
 }
 
@@ -385,9 +385,9 @@ section {
           }
         }
         &.social-github a {
-          color: #1c97db;
+          color: white;
           &:hover {
-            background-color: #1c97db;
+            background-color: #3b3b3b;
             color: white;
           }
         }

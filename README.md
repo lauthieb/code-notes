@@ -8,6 +8,9 @@
 <p align="center" color="#6a737d">
 A simple code snippet manager for developers built with Electron & Vue.js 🚀
 </p>
+<p align="center">
+ <a href="https://lauthieb.github.io/code-notes/" target="_blank">https://lauthieb.github.io/code-notes</a>
+</p>
 
 <div align="center">
 
@@ -18,6 +21,14 @@ A simple code snippet manager for developers built with Electron & Vue.js 🚀
 ## Overview
 
 The aim of this project is to be more efficient by providing a pretty cool : a "bloc-notes" for developers 😃
+
+## Demo
+
+<div align="center">
+
+[![Code Notes - V1.0.0](https://img.youtube.com/vi/WiTLEyDYex4/0.jpg)](https://www.youtube.com/watch?v=WiTLEyDYex4 "Code Notes - V1.0.0")
+
+</div>
 
 ## Contributing
 
