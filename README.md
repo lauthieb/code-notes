@@ -1,5 +1,7 @@
 # bloc-codes
 
+<img width="500" src="/src/renderer/assets/bloc-codes-logo-black-full.png" alt="electron-vue">
+
 > A simple code snippet manager for developers built with Electron 🚀
 
 ### Build Setup
