@@ -62,77 +62,78 @@
 </template>
 
 <script>
-  import editor from './Editor';
+import editor from './Editor';
 
-  export default {
-    name: 'cb-create-snippet-modal',
-    components: {
-      editor
+export default {
+  name: 'cb-create-snippet-modal',
+  components: {
+    editor,
+  },
+  data() {
+    return {
+      snippet: {
+        name: '',
+        description: '',
+        language: 'text',
+        content: '',
+        // tags: []
+      },
+      languages: [
+        'text',
+        'elixir',
+        'elm',
+        'golang',
+        'haskell',
+        'html',
+        'java',
+        'javascript',
+        'json',
+        'jsx',
+        'jade',
+        'makefile',
+        'markdown',
+        'ocaml',
+        'perl',
+        'pgsql',
+        'php',
+        'python',
+        'ruby',
+        'scss',
+        'sh',
+        'swift',
+        'typescript',
+        'xml',
+      ],
+    };
+  },
+  mounted() {
+    this.$refs.snippetName.focus();
+  },
+  methods: {
+    createSnippet() {
+      this.$store.dispatch('addSnippet', this.snippet).then(() => {
+        this.$parent.close();
+      });
     },
-    data() {
-      return {
-        snippet: {
-          name: '',
-          description: '',
-          language: 'text',
-          content: '',
-          // tags: []
-        },
-        languages: [
-          'text',
-          'elixir',
-          'elm',
-          'golang',
-          'haskell',
-          'html',
-          'java',
-          'javascript',
-          'json',
-          'jsx',
-          'jade',
-          'makefile',
-          'markdown',
-          'ocaml',
-          'perl',
-          'pgsql',
-          'php',
-          'python',
-          'ruby',
-          'scss',
-          'sh',
-          'swift',
-          'typescript',
-          'xml'
-        ]
-      }
+  },
+  computed: {
+    isDisabled() {
+      return (
+        !/\S/.test(this.snippet.name) ||
+        !/\S/.test(this.snippet.language) ||
+        !/\S/.test(this.snippet.content)
+      );
     },
-    mounted() {
-      this.$refs.snippetName.focus()
-    },
-    methods: {
-      createSnippet() {
-        this.$store.dispatch('addSnippet', this.snippet)
-          .then(() => {
-            this.$parent.close();
-          });
-      }
-    },
-    computed: {
-      isDisabled() {
-        return !/\S/.test(this.snippet.name) ||
-          !/\S/.test(this.snippet.language) ||
-          !/\S/.test(this.snippet.content);
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style lang="scss">
-  .modal-card {
-    width: 700px;
-  }
+.modal-card {
+  width: 700px;
+}
 
-  .help {
-    display: none !important;
-  }
+.help {
+  display: none !important;
+}
 </style>

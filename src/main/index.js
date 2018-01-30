@@ -23,10 +23,10 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     useContentSize: true,
     height: 700,
-  titleBarStyle: 'hiddenInset',
+    titleBarStyle: 'hiddenInset',
     width: 1160,
     minHeight: 500,
-    minWidth: 900
+    minWidth: 900,
   });
 
   mainWindow.loadURL(winURL);
@@ -35,23 +35,40 @@ function createWindow() {
     mainWindow = null;
   });
 
-  const template = [{
-    label: "Application",
-    submenu: [
-      { label: "About Application", selector: "orderFrontStandardAboutPanel:" },
-      { type: "separator" },
-      { label: "Quit", accelerator: "Command+Q", click: () => { app.quit(); }}
-    ]}, {
-    label: "Edit",
-    submenu: [
-      { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
-      { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
-      { type: "separator" },
-      { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
-      { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
-      { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
-      { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
-    ]}
+  const template = [
+    {
+      label: 'Application',
+      submenu: [
+        {
+          label: 'About Application',
+          selector: 'orderFrontStandardAboutPanel:',
+        },
+        { type: 'separator' },
+        {
+          label: 'Quit',
+          accelerator: 'Command+Q',
+          click: () => {
+            app.quit();
+          },
+        },
+      ],
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
+        { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
+        { type: 'separator' },
+        { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
+        { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
+        { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
+        {
+          label: 'Select All',
+          accelerator: 'CmdOrCtrl+A',
+          selector: 'selectAll:',
+        },
+      ],
+    },
   ];
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));

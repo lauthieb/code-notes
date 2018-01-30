@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 import Buefy from 'buefy';
-import VueClipboard from 'vue-clipboard2'
+import VueClipboard from 'vue-clipboard2';
 
 import 'font-awesome/css/font-awesome.min.css';
 import 'source-sans-pro/source-sans-pro.css';
@@ -39,7 +39,7 @@ require('brace/mode/xml');
 require('brace/theme/monokai');
 
 Vue.use(Buefy, {
-  defaultIconPack: 'fa'
+  defaultIconPack: 'fa',
 });
 
 Vue.use(VueClipboard);
@@ -58,7 +58,7 @@ Vue.prototype.$db = db;
 
 /* eslint-disable no-new */
 new Vue({
-  components: {App},
+  components: { App },
   router,
   store,
   template: '<App/>',

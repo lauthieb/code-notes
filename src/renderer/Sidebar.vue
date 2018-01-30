@@ -15,37 +15,37 @@
 </template>
 
 <script>
-  import Vuex from 'vuex';
+import Vuex from 'vuex';
 
-  export default {
-    name: 'cb-sidebar',
-    data() {
-      return {}
+export default {
+  name: 'cb-sidebar',
+  data() {
+    return {};
+  },
+  methods: {
+    selectLanguage(language) {
+      this.$store.dispatch('selectLanguage', language);
     },
-    methods: {
-      selectLanguage(language) {
-        this.$store.dispatch('selectLanguage', language);
-      }
-    },
-    computed: {
-      ...Vuex.mapGetters(['languages', 'snippets', 'languageSelected']),
-    }
-  };
+  },
+  computed: {
+    ...Vuex.mapGetters(['languages', 'snippets', 'languageSelected']),
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-  aside {
-    position: fixed;
-    top: 48px;
-    width: 22%;
-    margin-top: 24px;
+aside {
+  position: fixed;
+  top: 48px;
+  width: 22%;
+  margin-top: 24px;
 
-    li {
-      margin: 5px 0;
+  li {
+    margin: 5px 0;
 
-      a {
-        padding-bottom: 11px!important;
-      }
+    a {
+      padding-bottom: 11px !important;
     }
   }
+}
 </style>

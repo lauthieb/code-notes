@@ -15,24 +15,24 @@
 </template>
 
 <script>
-  import Navbar from './Navbar';
-  import Sidebar from './Sidebar';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
-  export default {
-    name: 'cb-app',
-    components: {
-      'cb-navbar': Navbar,
-      'cb-sidebar': Sidebar
-    }
-  };
+export default {
+  name: 'cb-app',
+  components: {
+    'cb-navbar': Navbar,
+    'cb-sidebar': Sidebar,
+  },
+};
 </script>
 
 <style lang="scss">
-  body {
-    font-family: 'Source Sans Pro', sans-serif;
-  }
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
-  #content {
-    padding: 0 24px;
-  }
+#content {
+  padding: 0 24px;
+}
 </style>

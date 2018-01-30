@@ -2,7 +2,7 @@ import db from '../../datastore';
 
 const state = {
   snippets: [],
-  languageSelected: 'all'
+  languageSelected: 'all',
 };
 
 const mutations = {
@@ -15,13 +15,13 @@ const mutations = {
   DELETE_SNIPPET(state, snippet) {
     state.snippets = state.snippets.filter(s => s._id !== snippet._id);
 
-    if (!state.snippets.some(s=> s.language === snippet.language)) {
+    if (!state.snippets.some(s => s.language === snippet.language)) {
       state.languageSelected = 'all';
     }
   },
   SELECT_LANGUAGE(state, language) {
     state.languageSelected = language;
-  }
+  },
 };
 
 const actions = {
@@ -40,14 +40,14 @@ const actions = {
     });
   },
   updateSnippet(store, snippet) {
-    return db.update({_id: snippet._id}, snippet, {}, (err) => {
+    return db.update({ _id: snippet._id }, snippet, {}, err => {
       if (!err) {
         store.dispatch('loadSnippets');
       }
-    })
+    });
   },
   deleteSnippet(store, snippet) {
-    return db.remove({_id: snippet._id}, {}, (err) => {
+    return db.remove({ _id: snippet._id }, {}, err => {
       if (!err) {
         store.commit('DELETE_SNIPPET', snippet);
       }
@@ -55,13 +55,14 @@ const actions = {
   },
   selectLanguage(store, language) {
     store.commit('SELECT_LANGUAGE', language);
-  }
+  },
 };
 
 const getters = {
-  snippets: (state) => state.snippets,
-  snippetById: (state) => (id) => state.snippets.find(snippet => snippet._id === id),
-  languages: (state) => {
+  snippets: state => state.snippets,
+  snippetById: state => id =>
+    state.snippets.find(snippet => snippet._id === id),
+  languages: state => {
     const map = new Map();
 
     if (state.snippets.length > 0) {
@@ -75,7 +76,7 @@ const getters = {
     }
     return map;
   },
-  languageSelected: (state) => state.languageSelected
+  languageSelected: state => state.languageSelected,
 };
 
 export default {
