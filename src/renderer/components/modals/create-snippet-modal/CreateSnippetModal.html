@@ -27,8 +27,8 @@
         <b-select placeholder="Select a language" v-model="snippet.language" d>
           <option
             v-for="language in languages"
-            :value="language">
-            {{ language | capitalize }}
+            :value="language.name">
+            {{ language.name | capitalize }}
           </option>
         </b-select>
       </b-field>

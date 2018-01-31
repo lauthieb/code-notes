@@ -1,0 +1,94 @@
+[
+  {
+    "name": "text",
+    "extension": "txt"
+  },
+  {
+    "name": "elixir",
+    "extension": "exs"
+  },
+  {
+    "name": "elm",
+    "extension": "elm"
+  },
+  {
+    "name": "golang",
+    "extension": "go"
+  },
+  {
+    "name": "haskell",
+    "extension": "hs"
+  },
+  {
+    "name": "html",
+    "extension": "html"
+  },
+  {
+    "name": "jade",
+    "extension": "jade"
+  },
+  {
+    "name": "java",
+    "extension": "java"
+  },
+  {
+    "name": "javascript",
+    "extension": "js"
+  },
+  {
+    "name": "json",
+    "extension": "json"
+  },
+  {
+    "name": "jsx",
+    "extension": "jsx"
+  },
+  {
+    "name": "markdown",
+    "extension": "md"
+  },
+  {
+    "name": "ocaml",
+    "extension": "ml"
+  },
+  {
+    "name": "perl",
+    "extension": "pl"
+  },
+  {
+    "name": "pgsql",
+    "extension": "sql"
+  },
+  {
+    "name": "php",
+    "extension": "php"
+  },
+  {
+    "name": "python",
+    "extension": "py"
+  },
+  {
+    "name": "ruby",
+    "extension": "rb"
+  },
+  {
+    "name": "scss",
+    "extension": "scss"
+  },
+  {
+    "name": "sh",
+    "extension": "sh"
+  },
+  {
+    "name": "swift",
+    "extension": "swift"
+  },
+  {
+    "name": "typescript",
+    "extension": "ts"
+  },
+  {
+    "name": "xml",
+    "extension": "xml"
+  }
+]

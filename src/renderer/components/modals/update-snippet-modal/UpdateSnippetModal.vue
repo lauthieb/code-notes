@@ -4,6 +4,7 @@
 
 <script>
 import editor from '../../editor/Editor';
+import languages from '../../../assets/data/languages.json';
 
 export default {
   name: 'cb-update-snippet-modal',
@@ -23,32 +24,7 @@ export default {
         content: '',
         // tags: []
       },
-      languages: [
-        'text',
-        'elixir',
-        'elm',
-        'golang',
-        'haskell',
-        'html',
-        'java',
-        'javascript',
-        'json',
-        'jsx',
-        'jade',
-        'makefile',
-        'markdown',
-        'ocaml',
-        'perl',
-        'pgsql',
-        'php',
-        'python',
-        'ruby',
-        'scss',
-        'sh',
-        'swift',
-        'typescript',
-        'xml',
-      ],
+      languages
     };
   },
   mounted() {
