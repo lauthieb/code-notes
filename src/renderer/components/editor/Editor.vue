@@ -1,5 +1,4 @@
-<template>
-  <div :style="{width: width ? px(width) : '100%'}"></div>
+<template src="./Editor.html">
 </template>
 
 <script>
@@ -78,6 +77,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style src="./Editor.scss" lang="scss">
 
 </style>
