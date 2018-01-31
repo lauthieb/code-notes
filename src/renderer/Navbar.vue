@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <img class="logo" src="~@/assets/code-notes-logo-white-full.png" alt="Code Notes logo">
+    <img class="logo" src="~@/assets/img/code-notes-logo-white-full.png" alt="Code Notes logo">
     <div class="is-pulled-right">
       <a id="about-code-notes" @click="aboutBlocCodesModal = true" title="About Code Notes...">
         <b-icon icon="info-circle"></b-icon>
@@ -15,7 +15,7 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <img src="~@/assets/code-notes-logo-black-full.png" alt="Image">
+              <img src="~@/assets/img/code-notes-logo-black-full.png" alt="Image">
             </div>
           </div>
           <div class="content">
