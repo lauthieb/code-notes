@@ -1,0 +1,53 @@
+.box {
+  margin: 16px 0;
+
+  .media-content {
+    overflow-x: hidden;
+  }
+
+  h5 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  #card-header {
+    margin-bottom: 0;
+
+    #name-category {
+      padding-bottom: 0;
+    }
+
+    #action-buttons {
+      padding-bottom: 0;
+
+      #delete-snippet {
+        color: $danger;
+
+        &:hover {
+          color: lighten($black, 20%);
+        }
+      }
+
+      #copy-snippet {
+        color: $dark;
+
+        &:hover {
+          color: lighten($black, 20%);
+        }
+      }
+    }
+  }
+
+  .modal {
+    z-index: 1100;
+    text-align: center;
+  }
+}
+
+.Code-Mirror-line {
+  padding: 0;
+}

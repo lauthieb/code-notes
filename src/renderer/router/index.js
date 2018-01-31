@@ -8,7 +8,7 @@ export default new Router({
     {
       path: '/',
       name: 'cb-snippets-list',
-      component: require('@/components/SnippetsList').default,
+      component: require('@/components/snippets-list/SnippetsList').default,
     },
     {
       path: '*',
