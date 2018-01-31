@@ -14,7 +14,8 @@ A simple code snippet manager for developers built with Electron & Vue.js 🚀
 
 <div align="center">
 
-[![Build Status](https://travis-ci.org/lauthieb/code-notes.svg?branch=master)](https://travis-ci.org/lauthieb/code-notes)  
+[![Build Status](https://travis-ci.org/lauthieb/code-notes.svg?branch=master)](https://travis-ci.org/lauthieb/code-notes)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/makes-people-smile.svg)](http://forthebadge.com)
 </div>
 
@@ -63,6 +64,8 @@ This version 1 is totally local, but I have a lot of ideas to make this app bett
 * Add the notion of tags on each snippet
 * Redesign the snippet card (with language logo for example)
 * Add some shortcuts to improve the productivity
+
+Feel free to add an issue if you find some bugs or you have any ideas of evolutions 😃
 
 ---
 
