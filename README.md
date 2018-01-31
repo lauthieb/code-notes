@@ -21,7 +21,7 @@ A simple code snippet manager for developers built with Electron & Vue.js 🚀
 
 ## Overview
 
-The aim of this project is to be more efficient by providing a pretty cool : a "bloc-notes" for developers 😃
+The aim of this project is to make us more efficient by offering a pretty cool tool : a king of notepad for our code 😃📝
 
 ## Demo
 
@@ -65,7 +65,7 @@ This version 1 is totally local, but I have a lot of ideas to make this app bett
 * Redesign the snippet card (with language logo for example)
 * Add some shortcuts to improve the productivity
 
-Feel free to add an issue if you find some bugs or you have any ideas of evolutions 😃
+Feel free to [add an issue](https://github.com/lauthieb/code-notes/issues/new) if you find some bugs or you have any ideas of evolutions 😃
 
 ---
 
