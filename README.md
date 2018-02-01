@@ -60,7 +60,7 @@ npm run lint
 
 This version 1 is totally local, but I have a lot of ideas to make this app better !
 
-* Connect with Github gists
+* Github gists integration : 🚂 WIP on [feat/gists-integration](https://github.com/lauthieb/code-notes/tree/feat/gists-integration)
 * Add the notion of tags on each snippet
 * Redesign the snippet card (with language logo for example)
 * Add some shortcuts to improve the productivity
