@@ -28,9 +28,9 @@ export default {
           .split(' ')
           .every(
             el =>
-              item.name.indexOf(el) > -1 ||
-              item.description.indexOf(el) > -1 ||
-              item.language.indexOf(el) > -1
+              item.name.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
+              item.description.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
+              item.language.toLowerCase().indexOf(el.toLowerCase()) > -1
           )
       );
 
