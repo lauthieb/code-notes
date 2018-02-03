@@ -38,7 +38,7 @@
 import { remote } from 'electron';
 
 export default {
-  name: 'cb-navbar',
+  name: 'cn-navbar',
   data() {
     return {
       appVersion: remote.app.getVersion(),

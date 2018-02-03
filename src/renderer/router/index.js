@@ -7,8 +7,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'cb-snippets-list',
-      component: require('@/components/snippets-list/SnippetsList').default,
+      name: 'cn-notes-list',
+      component: require('@/components/notes-list/NotesList').default,
     },
     {
       path: '*',

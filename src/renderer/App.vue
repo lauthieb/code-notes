@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <cb-navbar></cb-navbar>
+    <cn-navbar></cn-navbar>
     <div id="content">
       <div class="columns">
         <div class="column is-3">
-          <cb-sidebar></cb-sidebar>
+          <cn-sidebar></cn-sidebar>
         </div>
         <div class="column is-9">
           <router-view></router-view>
@@ -19,10 +19,10 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
 export default {
-  name: 'cb-app',
+  name: 'cn-app',
   components: {
-    'cb-navbar': Navbar,
-    'cb-sidebar': Sidebar,
+    'cn-navbar': Navbar,
+    'cn-sidebar': Sidebar,
   },
 };
 </script>
