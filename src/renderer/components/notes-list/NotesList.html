@@ -1,0 +1,43 @@
+<div id="notes-list">
+  <div id="search-buttons" class="columns">
+    <div class="column is-11">
+      <b-field>
+        <b-input placeholder="Search by name, description or language..."
+                 v-model="searchField"
+                 type="search"
+                 icon="search">
+        </b-input>
+      </b-field>
+    </div>
+    <div class="column is-1">
+      <button class="button is-dark is-pulled-right" @click="createNoteModalActive = true">
+        <b-icon icon="plus"></b-icon>
+      </button>
+    </div>
+  </div>
+
+  <div v-if="notesFiltered.length > 0" class="columns notes" v-for="note in notesFiltered">
+    <div class="column is-12 note-card">
+      <cn-note-card :note="note"></cn-note-card>
+    </div>
+  </div>
+  <div v-if="notesFiltered.length === 0 && searchField === ''" class="columns notes">
+    <div class="column is-12 no-note">
+      <h1>Hey !</h1>
+      <h2>You don't have any note...</h2>
+      <button class="button is-primary" @click="createNoteModalActive = true">
+        Create a new one :)
+      </button>
+    </div>
+  </div>
+  <div v-if="notesFiltered.length === 0 && searchField !== ''" class="columns notes">
+    <div class="column is-12 no-note">
+      <h1>Oh :(</h1>
+      <h2>Sorry, no notes found for your search</h2>
+    </div>
+  </div>
+
+  <b-modal :active.sync="createNoteModalActive" has-modal-card>
+    <cn-create-note-modal></cn-create-note-modal>
+  </b-modal>
+</div>

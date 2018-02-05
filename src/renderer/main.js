@@ -10,7 +10,7 @@ import App from './App';
 
 import router from './router';
 import store from './store';
-import db from './datastore';
+import db from './datastore-notes';
 
 require('brace/mode/text');
 require('brace/mode/elixir');

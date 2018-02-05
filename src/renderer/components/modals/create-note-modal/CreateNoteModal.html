@@ -1,0 +1,67 @@
+<form action="">
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Create note</p>
+      <h2 class="text-red" v-if="displayDupError">Oh sorry, you can't have duplicated name in your note files...</h2>
+    </header>
+
+    <section class="modal-card-body">
+      <b-field horizontal label="Name">
+        <b-input
+          type="text"
+          ref="noteName"
+          v-model="note.name"
+          placeholder="Your note name"
+          required>
+        </b-input>
+      </b-field>
+
+      <b-field horizontal label="Description">
+        <b-input
+          type="text"
+          v-model="note.description"
+          placeholder="Your note description">
+        </b-input>
+      </b-field>
+
+      <div class="note-file" v-for="file in files">
+        <b-field horizontal label="Filename" grouped>
+          <b-input
+            style="width: 186px"
+            type="text"
+            v-model="file.name"
+            placeholder="Your file name">
+          </b-input>
+          <p class="control is-pulled-right" v-if="files.length > 1">
+            <button class="button is-danger" @click="deleteFile(file)"><b-icon icon="trash"></b-icon></button>
+          </p>
+        </b-field>
+
+        <b-field horizontal label="Language">
+          <b-select placeholder="Select a language" v-model="file.language">
+            <option
+              v-for="language in languages"
+              :value="language.name">
+              {{ language.name | capitalize }}
+            </option>
+          </b-select>
+        </b-field>
+
+        <b-field horizontal label="Content">
+          <editor v-model="file.content"
+                  :lang="file.language"
+                  theme="monokai"
+                  width="100%"
+                  height="260"
+          ></editor>
+        </b-field>
+      </div>
+      <button class="button" type="button" @click="addFile()" v-if="files.length < 5"><b-icon id="plus" icon="plus"></b-icon> Add a file</button>
+    </section>
+
+    <footer class="modal-card-foot">
+      <button class="button" type="button" @click="$parent.close()">Cancel</button>
+      <button class="button is-primary" type="button" :disabled="isDisabled" @click="createNote()">Create</button>
+    </footer>
+  </div>
+</form>

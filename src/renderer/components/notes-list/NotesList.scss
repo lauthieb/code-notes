@@ -1,4 +1,4 @@
-.snippet-card {
+.note-card {
   padding: 0 12px;
 }
 
@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-#snippets-list {
+#notes-list {
   margin-top: 72px;
 
   #search-buttons {
@@ -18,13 +18,13 @@
     background-color: white;
   }
 
-  .snippets {
+  .notes {
     position: relative;
     top: 54px;
   }
 }
 
-.no-snippet {
+.no-note {
   text-align: center;
   h1 {
     margin-top: 100px;
