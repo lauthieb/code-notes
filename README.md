@@ -56,16 +56,11 @@ npm run lint
 
 ```
 
-### Roadmap
+### Roadmap to V1.2.0 💪🏻
 
-This version 1 is totally local, but I have a lot of ideas to make this app better !
+This version 1.1 is totally local and have multi snippets support, but we have a lot of ideas to make this app better !
 
-* Github gists integration : 🚂 WIP on [feat/gists-integration](https://github.com/lauthieb/code-notes/tree/feat/gists-integration)
-* Add the notion of tags on each snippet
-* Redesign the snippet card (with language logo for example)
-* Add some shortcuts to improve the productivity
-
-To follow the progression, go to the [Trello](https://trello.com/b/GQhwRcZK/code-notes) ! 
+To follow the progression, go to the [V1.2.0 roadmap project section](https://github.com/lauthieb/code-notes/projects/3) ! 
 
 Feel free to [add an issue](https://github.com/lauthieb/code-notes/issues/new) if you find some bugs or you have any ideas of evolutions 😃
 
