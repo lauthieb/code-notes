@@ -64,6 +64,10 @@
     "extension": "php"
   },
   {
+    "name": "powershell",
+    "extension": "ps1"
+  },
+  {
     "name": "python",
     "extension": "py"
   },
@@ -78,6 +82,10 @@
   {
     "name": "sh",
     "extension": "sh"
+  },
+  {
+    "name": "sql",
+    "extension": "sql"
   },
   {
     "name": "swift",
