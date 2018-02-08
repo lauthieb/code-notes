@@ -4,10 +4,16 @@
       <div class="content">
         <div id="card-header" class="columns">
           <div id="name-category" class="column is-9">
-            <h3>{{note.name}}</h3>
+            <h4 v-if="gistsSelected">{{ note.description }}
+              <b-icon class="visibility-icon" :icon="note.public ? 'globe': 'lock'"></b-icon>
+            </h4>
+            <h3 v-else>{{ note.name }}</h3>
           </div>
           <div id="action-buttons" class="column is-3">
             <div class="is-pulled-right">
+              <a id="link-note" v-if="gistsSelected" @click="open(note.url)" title="Show on Github">
+                <b-icon icon="github"></b-icon>
+              </a>
               <a id="update-note" @click="updateNoteModalActive = true" title="Edit note">
                 <b-icon icon="pencil"></b-icon>
               </a>
@@ -17,7 +23,7 @@
             </div>
           </div>
         </div>
-        <p>{{note.description}}</p>
+        <p v-if="!gistsSelected">{{note.description}}</p>
 
         <div class="note-file" v-for="(value, key, index) in note.files">
           <h4>{{value.name}}

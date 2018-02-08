@@ -11,7 +11,6 @@ const dbNotes = new Datastore({
 
 // Doing the migration
 if (fs.existsSync(path.join(remote.app.getPath('userData'), '/snippets.db'))) {
-
   const dbSnippets = new Datastore({
     autoload: true,
     filename: path.join(remote.app.getPath('userData'), '/snippets.db'),
@@ -26,7 +25,7 @@ if (fs.existsSync(path.join(remote.app.getPath('userData'), '/snippets.db'))) {
       note.files = {};
       note.files[`${snippet.name}`] = {
         language: snippet.language,
-        content: snippet.content
+        content: snippet.content,
       };
       note.createdAt = new Date();
       note.updatedAt = new Date();

@@ -32,6 +32,14 @@
           color: lighten($black, 20%);
         }
       }
+
+      #link-note {
+        color: $dark;
+
+        &:hover {
+          color: lighten($dark, 20%);
+        }
+      }
     }
   }
 
@@ -61,4 +69,8 @@
       }
     }
   }
+}
+
+.visibility-icon {
+  font-size: 16px;
 }

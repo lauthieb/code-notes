@@ -5,23 +5,36 @@
 import Vuex from 'vuex';
 import NoteCard from './note-card/NoteCard';
 import CreateNoteModal from '../modals/create-note-modal/CreateNoteModal';
+import SettingsModal from '../modals/settings-modal/SettingsModal';
+import HelpTokenModal from '../modals/help-token-modal/HelpTokenModal';
 
 export default {
   name: 'cn-notes-list',
   components: {
     'cn-note-card': NoteCard,
     'cn-create-note-modal': CreateNoteModal,
+    'cn-help-token-modal': HelpTokenModal,
+    'cn-settings-modal': SettingsModal
   },
   data() {
     return {
       searchField: '',
       createNoteModalActive: false,
+      settingsModalActive: false,
+      helpTokenModalActive: false,
     };
   },
   mounted() {},
   methods: {},
   computed: {
-    ...Vuex.mapGetters(['notes', 'noteById', 'languageSelected']),
+    ...Vuex.mapGetters([
+      'notes',
+      'noteById',
+      'languageSelected',
+      'gistsSelected',
+      'isLoading',
+      'settings'
+    ]),
     notesFiltered() {
       const notesFiltered = this.notes.filter(item =>
         this.searchField
@@ -30,9 +43,13 @@ export default {
             el =>
               item.name.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
               item.description.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
-              Object.keys(item.files)
-                .some(key => key.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
-                    item.files[key].language.toLowerCase().indexOf(el.toLowerCase()) > -1)
+              Object.keys(item.files).some(
+                key =>
+                  key.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
+                  item.files[key].language
+                    .toLowerCase()
+                    .indexOf(el.toLowerCase()) > -1
+              )
           )
       );
 
@@ -40,8 +57,11 @@ export default {
         const notesFilteredByLanguage = [];
 
         notesFiltered.forEach(note => {
-          if (Object.keys(note.files)
-              .some(key => note.files[key].language === this.languageSelected)) {
+          if (
+            Object.keys(note.files).some(
+              key => note.files[key].language === this.languageSelected
+            )
+          ) {
             notesFilteredByLanguage.push(note);
           }
         });
@@ -55,10 +75,12 @@ export default {
   beforeRouteEnter(route, redirect, next) {
     next(vm => {
       vm.$store.dispatch('loadNotes');
+      vm.$store.dispatch('loadSettings');
     });
   },
 };
 </script>
 
 <style src="./NotesList.scss" lang="scss">
+
 </style>
