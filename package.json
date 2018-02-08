@@ -1,6 +1,6 @@
 {
   "name": "code-notes",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Laurent THIEBAULT <thiebault.laurent@gmail.com>",
   "description": "A simple code snippet manager for developers built with Electron 🚀",
   "license": "MIT",
