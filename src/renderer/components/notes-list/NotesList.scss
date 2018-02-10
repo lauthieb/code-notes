@@ -12,8 +12,10 @@
 
   #search-buttons {
     position: fixed;
+    padding: 12px 0;
     top: 72px;
-    width: 73.5%;
+    left: 27.5%;
+    width: 71.5%;
     z-index: 800;
     background-color: white;
   }
@@ -33,5 +35,75 @@
   h2 {
     font-size: 20px;
     margin-bottom: 20px;
+  }
+}
+
+.no-token {
+  @extend .no-note;
+  width: 200px;
+}
+
+#search {
+  width: 87%;
+}
+
+#buttons {
+  position: fixed;
+  top: 72px;
+  right: 2.3%;
+}
+
+
+.loading-bro {
+  margin: 50px auto;
+  width: 150px;
+  > h1 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 150px;
+    margin-bottom: 1em;
+    font-weight: 300;
+  }
+}
+
+#help-token-modal {
+  height: 90vh;
+
+  img {
+    width: 100%;
+  }
+}
+
+#load {
+  width: 150px;
+  animation: loading 3s linear infinite;
+  #loading-inner {
+    stroke: {
+      dashoffset: 0;
+      dasharray: 300;
+      width: 10;
+      miterlimit: 10;
+      linecap: round;
+    }
+    animation: loading-circle 2s linear infinite;
+    stroke: $primary;
+    fill: transparent;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-circle {
+  0% {
+    stroke-dashoffset: 0
+  }
+  100% {
+    stroke-dashoffset: -600;
   }
 }

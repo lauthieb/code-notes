@@ -1,12 +1,12 @@
 <form action="">
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Update note</p>
+      <p class="modal-card-title">Update {{gistsSelected ? 'gist' : 'note'}}</p>
       <h2 class="text-red" v-if="displayDupError">Oh sorry, you can't have duplicated name in your note files...</h2>
     </header>
 
     <section class="modal-card-body">
-      <b-field horizontal label="Name">
+      <b-field v-if="!gistsSelected" horizontal label="Name">
         <b-input
           type="text"
           ref="noteName"
@@ -19,13 +19,14 @@
       <b-field horizontal label="Description">
         <b-input
           type="text"
+          ref="noteDescription"
           v-model="noteUpdated.description"
-          placeholder="Your note description">
+          placeholder="Your description">
         </b-input>
       </b-field>
 
       <div class="note-file" v-for="file in files">
-        <b-field horizontal label="Filename" grouped>
+        <b-field horizontal label="Name" grouped>
           <b-input
             style="width: 186px"
             type="text"
@@ -33,7 +34,9 @@
             placeholder="Your file name">
           </b-input>
           <p class="control is-pulled-right" v-if="files.length > 1">
-            <button class="button is-danger" @click="deleteFile(file)"><b-icon icon="trash"></b-icon></button>
+            <button class="button is-danger" @click="deleteFile(file)">
+              <b-icon icon="trash"></b-icon>
+            </button>
           </p>
         </b-field>
 
@@ -57,7 +60,12 @@
         </b-field>
       </div>
 
-      <button class="button" type="button" @click="addFile()" v-if="files.length < 5"><b-icon id="plus" icon="plus"></b-icon> Add a file</button>
+      <div class="text-center">
+        <button class="button" type="button" @click="addFile()" v-if="files.length < 5">
+          <b-icon id="plus" icon="plus"></b-icon>
+          Add a file
+        </button>
+      </div>
 
     </section>
 

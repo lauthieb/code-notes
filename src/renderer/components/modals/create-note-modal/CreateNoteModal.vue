@@ -2,6 +2,7 @@
 </template>
 
 <script>
+  import Vuex from 'vuex';
   import editor from '../../editor/Editor';
   import languages from '../../../assets/data/languages.json';
   import converter from '../../../converter';
@@ -17,36 +18,51 @@
           name: '',
           description: '',
           files: {},
+          public: false,
           updatedAt: null,
-          createdAt: null
+          createdAt: null,
         },
-        files: [{
-          name: '',
-          language: 'text',
-          content: ''
-        }],
+        files: [
+          {
+            name: '',
+            language: 'text',
+            content: '',
+          },
+        ],
         languages,
-        displayDupError: false
+        displayDupError: false,
       };
     },
     mounted() {
-      this.$refs.noteName.focus();
+      if (this.gistsSelected) {
+        this.$refs.noteDescription.focus();
+      } else {
+        this.$refs.noteName.focus();
+      }
     },
     methods: {
       createNote() {
         if (!this.containsDupFiles()) {
-          this.files.forEach(file => {
-            this.note.files[`${file.name}-${converter.languageToExtension(file.language)}`] = file;
-          });
+          let separator;
 
+          if (this.gistsSelected) {
+            separator = '.';
+          } else {
+            separator = '-';
+          }
+
+          this.files.forEach(file => {
+            this.note.files[
+              `${file.name}${separator}${converter.languageToExtension(file.language)}`
+              ] = file;
+          });
           this.note.createdAt = new Date();
           this.note.updatedAt = new Date();
 
           this.$store.dispatch('addNote', this.note).then(() => {
             this.$parent.close();
           });
-        }
-        else {
+        } else {
           this.displayDupError = true;
         }
       },
@@ -54,7 +70,7 @@
         this.files.push({
           name: '',
           language: 'text',
-          content: ''
+          content: '',
         });
       },
       deleteFile(file) {
@@ -65,7 +81,9 @@
         let dupFiles = false;
 
         this.files.forEach(file => {
-          const key = `${file.name}.${converter.languageToExtension(file.language)}`;
+          const key = `${file.name}.${converter.languageToExtension(
+            file.language
+          )}`;
 
           if (map.has(key)) {
             dupFiles = true;
@@ -74,18 +92,36 @@
         });
 
         return dupFiles;
-      }
+      },
     },
     computed: {
+      ...Vuex.mapGetters(['gistsSelected']),
       isDisabled() {
+        if (this.gistsSelected) {
+          return (
+            this.files.some(
+              file =>
+                !/\S/.test(file.name) ||
+                !/\S/.test(file.language) ||
+                !/\S/.test(file.content)
+            )
+          )
+        }
         return (
           !/\S/.test(this.note.name) ||
-          this.files.some(file => !/\S/.test(file.name) || !/\S/.test(file.language) || !/\S/.test(file.content))
+          this.files.some(
+            file =>
+              !/\S/.test(file.name) ||
+              !/\S/.test(file.language) ||
+              !/\S/.test(file.content)
+          )
         );
+
       },
     },
   };
 </script>
 
 <style src="./CreateNoteModal.scss" lang="scss">
+
 </style>

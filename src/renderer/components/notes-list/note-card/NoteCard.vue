@@ -17,18 +17,17 @@ export default {
   props: {
     note: Object,
   },
-  mounted() {
-  },
+  mounted() {},
   data() {
     return {
-      updateNoteModalActive: false
+      updateNoteModalActive: false,
     };
   },
   computed: {
-    ...Vuex.mapGetters(['notes']),
+    ...Vuex.mapGetters(['notes', 'gistsSelected']),
     displayNoteName() {
       return this.note.name.split('-')[0];
-    }
+    },
   },
   methods: {
     updateNote() {
@@ -36,8 +35,8 @@ export default {
     },
     deleteNote() {
       this.$dialog.confirm({
-        title: 'Delete note',
-        message: 'Are you sure you want to delete this note ?',
+        title: this.gistsSelected ? 'Delete gist' : 'Delete note',
+        message: `Are you sure you want to delete this ${this.gistsSelected ? 'gist': 'note'} ?`,
         confirmText: 'Delete',
         type: 'is-danger',
         hasIcon: true,
@@ -49,12 +48,16 @@ export default {
     onCopyClipboardSuccess() {
       this.$toast.open({
         message: 'Copied',
-        position: 'is-bottom'
+        position: 'is-bottom',
       });
+    },
+    open(link) {
+      this.$electron.shell.openExternal(link);
     },
   },
 };
 </script>
 
 <style src="./NoteCard.scss" lang="scss" scoped>
+
 </style>
