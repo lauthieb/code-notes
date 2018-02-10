@@ -127,6 +127,7 @@
           return (
             this.files.some(
               file =>
+                !/^[^.]*$/.test(file.name) ||
                 !/\S/.test(file.name) ||
                 !/\S/.test(file.language) ||
                 !/\S/.test(file.content)
@@ -137,6 +138,7 @@
           !/\S/.test(this.note.name) ||
           this.files.some(
             file =>
+              !/^[^.]*$/.test(file.name) ||
               !/\S/.test(file.name) ||
               !/\S/.test(file.language) ||
               !/\S/.test(file.content)
