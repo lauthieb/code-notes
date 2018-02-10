@@ -6,7 +6,7 @@
 </div>
 
 <p align="center" color="#6a737d">
-A simple code snippet manager for developers built with Electron & Vue.js 🚀
+A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀
 </p>
 <p align="center">
  <a href="https://lauthieb.github.io/code-notes/" target="_blank">https://lauthieb.github.io/code-notes</a>
