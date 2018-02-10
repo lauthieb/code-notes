@@ -73,6 +73,8 @@ const actions = {
             store.commit('SELECT_LOADING', false);
           });
         });
+      } else {
+        store.commit('LOAD_NOTES', []);
       }
     } else {
       store.commit('SELECT_LOADING', true);
