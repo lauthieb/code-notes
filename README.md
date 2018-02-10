@@ -56,11 +56,9 @@ npm run eslint
 
 ```
 
-### Roadmap to V1.2.0 💪🏻
+### Roadmap to V1.3.0 💪🏻
 
-This version 1.1 is totally local and have multi snippets support, but we have a lot of ideas to make this app better !
-
-To follow the progression, go to the [V1.2.0 roadmap project section](https://github.com/lauthieb/code-notes/projects/3) ! 
+To follow the progression, go to the [V1.3.0 roadmap project section](https://github.com/lauthieb/code-notes/projects/4) ! 
 
 Feel free to [add an issue](https://github.com/lauthieb/code-notes/issues/new) if you find some bugs or you have any ideas of evolutions 😃
 
