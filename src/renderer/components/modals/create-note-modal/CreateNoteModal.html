@@ -25,6 +25,13 @@
         </b-input>
       </b-field>
 
+      <b-field v-if="!gistsSelected" horizontal label="Tags">
+        <b-taginput
+          v-model="note.tags"
+          maxtags="5">
+        </b-taginput>
+      </b-field>
+
       <b-field v-if="gistsSelected" horizontal label="Visibility">
         <b-select placeholder="Select a visibility" v-model="note.public">
           <option :value="false">Secret</option>

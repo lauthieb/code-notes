@@ -43,6 +43,7 @@ export default {
             el =>
               item.name.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
               item.description.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
+              (item.tags ? item.tags.some(tag => tag.toLowerCase().indexOf(el.toLowerCase()) > -1) : false) ||
               Object.keys(item.files).some(
                 key =>
                   key.toLowerCase().indexOf(el.toLowerCase()) > -1 ||

@@ -24,6 +24,7 @@
           files: {},
           updatedAt: null,
           createdAt: null,
+          tags: []
         },
         files: [],
         gistFiles: [],
@@ -36,7 +37,9 @@
         this.$refs.noteDescription.focus();
       } else {
         this.$refs.noteName.focus();
+        this.note.tags = this.note.tags ? this.note.tags : [];
       }
+
       this.noteUpdated = {...this.note};
       this.noteUpdated.files = {};
       Object.keys(this.note.files).forEach((key, index) => {

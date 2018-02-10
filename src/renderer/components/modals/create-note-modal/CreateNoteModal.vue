@@ -21,6 +21,7 @@
           public: false,
           updatedAt: null,
           createdAt: null,
+          tags: []
         },
         files: [
           {
