@@ -1,4 +1,4 @@
-import db from '../../datastore-settings';
+import db from '@/datastore-settings';
 
 const state = {
   settings: {}

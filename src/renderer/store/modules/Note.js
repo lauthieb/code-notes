@@ -1,5 +1,5 @@
-import db from '../../datastore-notes';
-import converter from '../../converter';
+import db from '@/datastore-notes';
+import converter from '@/converter';
 
 const octokit = require('@octokit/rest')({
   requestMedia: 'application/vnd.github.v3+json',

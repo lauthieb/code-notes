@@ -1,18 +1,15 @@
 <template src="./UpdateNoteModal.html">
-
 </template>
 
 <script>
-  import Vuex from 'vuex';
-  import editor from '../../editor/Editor';
-  import languages from '../../../assets/data/languages.json';
-  import converter from '../../../converter';
+  import { mapGetters, mapActions } from 'vuex';
+  import editor from '@/components/editor/Editor';
+  import languages from '@/assets/data/languages.json';
+  import converter from '@/converter';
 
   export default {
     name: 'cn-update-note-modal',
-    components: {
-      editor,
-    },
+    components: { editor },
     props: {
       note: Object,
     },
@@ -48,6 +45,7 @@
       });
     },
     methods: {
+      ...mapActions(['updateNote']),
       updateNote() {
         if (!this.containsDupFiles()) {
           if (this.gistsSelected) {
@@ -79,7 +77,7 @@
             this.noteUpdated.updatedAt = new Date();
           }
 
-          this.$store.dispatch('updateNote', this.noteUpdated).then(() => {
+          this.updateNote(this.noteUpdated).then(() => {
             this.$parent.close();
           });
         } else {
@@ -103,6 +101,7 @@
             }
           });
         }
+
         this.files = this.files.filter(f => f !== file);
       },
       containsDupFiles() {
@@ -117,6 +116,7 @@
           if (map.has(key)) {
             dupFiles = true;
           }
+
           map.set(key, 1);
         });
 
@@ -124,7 +124,7 @@
       },
     },
     computed: {
-      ...Vuex.mapGetters(['gistsSelected']),
+      ...mapGetters(['gistsSelected']),
       isDisabled() {
         if (this.gistsSelected) {
           return (
@@ -137,6 +137,7 @@
             )
           )
         }
+
         return (
           !/\S/.test(this.note.name) ||
           this.files.some(
@@ -153,5 +154,4 @@
 </script>
 
 <style src="./UpdateNoteModal.scss" lang="scss">
-
 </style>

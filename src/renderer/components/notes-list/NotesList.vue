@@ -2,7 +2,7 @@
 </template>
 
 <script>
-import Vuex from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import NoteCard from './note-card/NoteCard';
 import CreateNoteModal from '../modals/create-note-modal/CreateNoteModal';
 import SettingsModal from '../modals/settings-modal/SettingsModal';
@@ -24,10 +24,11 @@ export default {
       helpTokenModalActive: false,
     };
   },
-  mounted() {},
-  methods: {},
+  methods: {
+    ...mapActions(['loadNotes', 'loadSettings'])
+  },
   computed: {
-    ...Vuex.mapGetters([
+    ...mapGetters([
       'notes',
       'noteById',
       'languageSelected',
@@ -75,13 +76,12 @@ export default {
   },
   beforeRouteEnter(route, redirect, next) {
     next(vm => {
-      vm.$store.dispatch('loadNotes');
-      vm.$store.dispatch('loadSettings');
+      vm.loadNotes();
+      vm.loadSettings();
     });
   },
 };
 </script>
 
 <style src="./NotesList.scss" lang="scss">
-
 </style>

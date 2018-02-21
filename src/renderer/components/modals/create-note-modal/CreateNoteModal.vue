@@ -2,16 +2,14 @@
 </template>
 
 <script>
-  import Vuex from 'vuex';
-  import editor from '../../editor/Editor';
-  import languages from '../../../assets/data/languages.json';
-  import converter from '../../../converter';
+  import { mapGetters, mapActions } from 'vuex';
+  import editor from '@/components/editor/Editor';
+  import languages from '@/assets/data/languages.json';
+  import converter from '@/converter';
 
   export default {
     name: 'cn-create-note-modal',
-    components: {
-      editor,
-    },
+    components: { editor },
     data() {
       return {
         note: {
@@ -42,14 +40,13 @@
       }
     },
     methods: {
+      ...mapActions(['addNote']),
       createNote() {
         if (!this.containsDupFiles()) {
-          let separator;
+          let separator = '-';
 
           if (this.gistsSelected) {
             separator = '.';
-          } else {
-            separator = '-';
           }
 
           this.files.forEach(file => {
@@ -60,7 +57,7 @@
           this.note.createdAt = new Date();
           this.note.updatedAt = new Date();
 
-          this.$store.dispatch('addNote', this.note).then(() => {
+          this.addNote(this.note).then(() => {
             this.$parent.close();
           });
         } else {
@@ -89,6 +86,7 @@
           if (map.has(key)) {
             dupFiles = true;
           }
+
           map.set(key, 1);
         });
 
@@ -96,7 +94,7 @@
       },
     },
     computed: {
-      ...Vuex.mapGetters(['gistsSelected']),
+      ...mapGetters(['gistsSelected']),
       isDisabled() {
         if (this.gistsSelected) {
           return (
@@ -109,6 +107,7 @@
             )
           )
         }
+
         return (
           !/\S/.test(this.note.name) ||
           this.files.some(
@@ -126,5 +125,4 @@
 </script>
 
 <style src="./CreateNoteModal.scss" lang="scss">
-
 </style>

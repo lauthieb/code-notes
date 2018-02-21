@@ -5,12 +5,12 @@
     </p>
     <ul class="menu-list">
       <li>
-        <a :class="{'is-active': !gistsSelected}" @click="selectGists(false)">Local
+        <a :class="{'is-active': !gistsSelected}" @click="selectGistsSidebar(false)">Local
           <b-icon icon="laptop" class="is-pulled-right"></b-icon>
         </a>
       </li>
       <li>
-        <a :class="{'is-active': gistsSelected}" @click="selectGists(true)">Gists
+        <a :class="{'is-active': gistsSelected}" @click="selectGistsSidebar(true)">Gists
           <b-icon icon="github" class="is-pulled-right"></b-icon>
         </a>
       </li>
@@ -20,12 +20,12 @@
     </p>
     <ul class="menu-list" id="menu-list-languages" v-if="!isLoading">
       <li>
-        <a :class="{'is-active': languageSelected === 'all'}" @click="selectLanguage('all')">All
+        <a :class="{'is-active': languageSelected === 'all'}" @click="selectLanguageSidebar('all')">All
           <b-tag class="is-pulled-right" type="is-dark">{{totalFiles}}</b-tag>
         </a>
       </li>
       <li v-for="(list, value) in Array.from(languages)">
-        <a :class="{'is-active': languageSelected === list[0]}" @click="selectLanguage(list[0])">{{list[0] | capitalize}}
+        <a :class="{'is-active': languageSelected === list[0]}" @click="selectLanguageSidebar(list[0])">{{list[0] | capitalize}}
           <b-tag class="is-pulled-right" type="is-dark">{{list[1]}}</b-tag>
         </a>
       </li>
@@ -34,23 +34,21 @@
 </template>
 
 <script>
-import Vuex from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'cn-sidebar',
-  data() {
-    return {};
-  },
   methods: {
-    selectLanguage(language) {
-      this.$store.dispatch('selectLanguage', language);
+    ...mapActions(['selectLanguage', 'selectGists']),
+    selectLanguageSidebar(language) {
+      this.selectLanguage(language);
     },
-    selectGists(gistsSelected) {
-      this.$store.dispatch('selectGists', gistsSelected);
+    selectGistsSidebar(gistsSelected) {
+      this.selectGists(gistsSelected);
     },
   },
   computed: {
-    ...Vuex.mapGetters([
+    ...mapGetters([
       'languages',
       'notes',
       'languageSelected',
