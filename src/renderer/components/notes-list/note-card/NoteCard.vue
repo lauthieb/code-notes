@@ -3,6 +3,7 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
+  import ColorHash from 'color-hash';
   import editor from '@/components/editor/Editor';
   import UpdateNoteModal from '@/components/modals/update-note-modal/UpdateNoteModal';
   import BTooltip from '../../../../../node_modules/buefy/src/components/tooltip/Tooltip.vue';
@@ -31,6 +32,10 @@
     },
     methods: {
       ...mapActions(['updateNote', 'deleteNote']),
+      stringToColour (str) {
+        const colorHash = new ColorHash({lightness: 0.5, saturation: 0.6});
+        return colorHash.hex(str);
+      },
       updateNote() {
         this.updateNote(this.note);
       },
