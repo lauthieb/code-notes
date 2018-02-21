@@ -34,30 +34,30 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
 
-export default {
-  name: 'cn-sidebar',
-  methods: {
-    ...mapActions(['selectLanguage', 'selectGists']),
-    selectLanguageSidebar(language) {
-      this.selectLanguage(language);
+  export default {
+    name: 'cn-sidebar',
+    methods: {
+      ...mapActions(['selectLanguage', 'selectGists']),
+      selectLanguageSidebar(language) {
+        this.selectLanguage(language);
+      },
+      selectGistsSidebar(gistsSelected) {
+        this.selectGists(gistsSelected);
+      },
     },
-    selectGistsSidebar(gistsSelected) {
-      this.selectGists(gistsSelected);
+    computed: {
+      ...mapGetters([
+        'languages',
+        'notes',
+        'languageSelected',
+        'totalFiles',
+        'gistsSelected',
+        'isLoading',
+      ]),
     },
-  },
-  computed: {
-    ...mapGetters([
-      'languages',
-      'notes',
-      'languageSelected',
-      'totalFiles',
-      'gistsSelected',
-      'isLoading'
-    ]),
-  },
-};
+  };
 </script>
 
 <style lang="scss" scoped>

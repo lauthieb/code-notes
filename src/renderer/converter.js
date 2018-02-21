@@ -20,7 +20,7 @@ const converter = {
       files.push({
         name: key.split('.')[0],
         language: this.extensionToLanguage(key.split('.')[1]),
-        content: gist.files[key].content
+        content: gist.files[key].content,
       });
     });
 
@@ -30,7 +30,7 @@ const converter = {
       public: gist.public,
       name: 'Gist',
       description: gist.description,
-      files
+      files,
     };
   },
   noteToGist(note) {
@@ -38,17 +38,17 @@ const converter = {
 
     note.files.forEach(file => {
       files[`${file.name}.${this.languageToExtension(file.language)}`] = {
-        content: file.content
-      }
+        content: file.content,
+      };
     });
 
     return {
       id: note.id,
       public: note.public,
       description: note.description,
-      files
+      files,
     };
-  }
+  },
 };
 
 export default converter;

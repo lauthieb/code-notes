@@ -15,16 +15,16 @@
 </template>
 
 <script>
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
+  import Navbar from './Navbar';
+  import Sidebar from './Sidebar';
 
-export default {
-  name: 'cn-app',
-  components: {
-    'cn-navbar': Navbar,
-    'cn-sidebar': Sidebar,
-  },
-};
+  export default {
+    name: 'cn-app',
+    components: {
+      'cn-navbar': Navbar,
+      'cn-sidebar': Sidebar,
+    },
+  };
 </script>
 
 <style lang="scss">

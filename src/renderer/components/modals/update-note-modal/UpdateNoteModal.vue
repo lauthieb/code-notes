@@ -21,7 +21,7 @@
           files: {},
           updatedAt: null,
           createdAt: null,
-          tags: []
+          tags: [],
         },
         files: [],
         gistFiles: [],
@@ -37,16 +37,20 @@
         this.note.tags = this.note.tags ? this.note.tags : [];
       }
 
-      this.noteUpdated = {...this.note};
+      this.noteUpdated = { ...this.note };
       this.noteUpdated.files = {};
       Object.keys(this.note.files).forEach((key, index) => {
-        this.files.push({...this.note.files[key], id: index});
-        this.gistFiles.push({...this.note.files[key], id: index, deleted: false});
+        this.files.push({ ...this.note.files[key], id: index });
+        this.gistFiles.push({
+          ...this.note.files[key],
+          id: index,
+          deleted: false,
+        });
       });
     },
     methods: {
       ...mapActions(['updateNote']),
-      updateNote() {
+      updateNoteModal() {
         if (!this.containsDupFiles()) {
           if (this.gistsSelected) {
             this.files.forEach(file => {
@@ -56,17 +60,24 @@
             });
 
             this.gistFiles.forEach((file, index) => {
-              const key = `${this.gistFiles[index].name}.${converter.languageToExtension(this.gistFiles[index].language)}`;
+              const key = `${
+                this.gistFiles[index].name
+              }.${converter.languageToExtension(this.gistFiles[index].language)}`;
 
               if (file.deleted) {
-                this.noteUpdated.files[key] = null
+                this.noteUpdated.files[key] = null;
               } else {
                 this.noteUpdated.files[key] = this.files[index];
 
                 const newFile = this.files.filter(f => f.id === file.id)[0];
 
-                if (newFile.name !== file.name || newFile.language !== file.language ) {
-                  this.noteUpdated.files[key].filename = `${newFile.name}.${converter.languageToExtension(newFile.language)}`;
+                if (
+                  newFile.name !== file.name ||
+                  newFile.language !== file.language
+                ) {
+                  this.noteUpdated.files[key].filename = `${
+                    newFile.name
+                  }.${converter.languageToExtension(newFile.language)}`;
                 }
               }
             });
@@ -90,7 +101,7 @@
           language: 'text',
           content: '',
           deleted: false,
-          added: true
+          added: true,
         });
       },
       deleteFile(file) {
@@ -127,15 +138,13 @@
       ...mapGetters(['gistsSelected']),
       isDisabled() {
         if (this.gistsSelected) {
-          return (
-            this.files.some(
-              file =>
-                !/^[^.]*$/.test(file.name) ||
-                !/\S/.test(file.name) ||
-                !/\S/.test(file.language) ||
-                !/\S/.test(file.content)
-            )
-          )
+          return this.files.some(
+            file =>
+              !/^[^.]*$/.test(file.name) ||
+              !/\S/.test(file.name) ||
+              !/\S/.test(file.language) ||
+              !/\S/.test(file.content)
+          );
         }
 
         return (

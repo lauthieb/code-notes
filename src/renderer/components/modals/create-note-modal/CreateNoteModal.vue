@@ -19,7 +19,7 @@
           public: false,
           updatedAt: null,
           createdAt: null,
-          tags: []
+          tags: [],
         },
         files: [
           {
@@ -51,8 +51,10 @@
 
           this.files.forEach(file => {
             this.note.files[
-              `${file.name}${separator}${converter.languageToExtension(file.language)}`
-              ] = file;
+              `${file.name}${separator}${converter.languageToExtension(
+                file.language
+              )}`
+            ] = file;
           });
           this.note.createdAt = new Date();
           this.note.updatedAt = new Date();
@@ -97,15 +99,13 @@
       ...mapGetters(['gistsSelected']),
       isDisabled() {
         if (this.gistsSelected) {
-          return (
-            this.files.some(
-              file =>
-                !/^[^.]*$/.test(file.name) ||
-                !/\S/.test(file.name) ||
-                !/\S/.test(file.language) ||
-                !/\S/.test(file.content)
-            )
-          )
+          return this.files.some(
+            file =>
+              !/^[^.]*$/.test(file.name) ||
+              !/\S/.test(file.name) ||
+              !/\S/.test(file.language) ||
+              !/\S/.test(file.content)
+          );
         }
 
         return (
@@ -118,7 +118,6 @@
               !/\S/.test(file.content)
           )
         );
-
       },
     },
   };

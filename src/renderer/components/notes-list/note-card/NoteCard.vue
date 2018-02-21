@@ -32,17 +32,19 @@
     },
     methods: {
       ...mapActions(['updateNote', 'deleteNote']),
-      stringToColour (str) {
-        const colorHash = new ColorHash({lightness: 0.5, saturation: 0.6});
+      stringToColour(str) {
+        const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.6 });
         return colorHash.hex(str);
       },
-      updateNote() {
+      updateNoteModal() {
         this.updateNote(this.note);
       },
-      deleteNote() {
+      deleteNoteModal() {
         this.$dialog.confirm({
           title: this.gistsSelected ? 'Delete gist' : 'Delete note',
-          message: `Are you sure you want to delete this ${this.gistsSelected ? 'gist': 'note'} ?`,
+          message: `Are you sure you want to delete this ${
+            this.gistsSelected ? 'gist' : 'note'
+          } ?`,
           confirmText: 'Delete',
           type: 'is-danger',
           hasIcon: true,
