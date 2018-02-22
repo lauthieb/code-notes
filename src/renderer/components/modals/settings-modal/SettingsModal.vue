@@ -2,29 +2,29 @@
 </template>
 
 <script>
-  import Vuex from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
 
   export default {
     name: 'cn-settings-modal',
-    components: {},
     data() {
       return {
         newSettings: {},
-        helpTokenModalActive: false
+        helpTokenModalActive: false,
       };
     },
     mounted() {
       this.$refs.githubPersonalAccessToken.focus();
-      this.newSettings = {...this.settings}
+      this.newSettings = { ...this.settings };
     },
     methods: {
+      ...mapActions(['setSettings']),
       save() {
-        this.$store.dispatch('setSettings', this.newSettings);
+        this.setSettings(this.newSettings);
         this.$parent.close();
-      }
+      },
     },
     computed: {
-      ...Vuex.mapGetters(['settings']),
+      ...mapGetters(['settings']),
     },
   };
 </script>

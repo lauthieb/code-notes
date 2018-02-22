@@ -1,7 +1,7 @@
-import db from '../../datastore-settings';
+import db from '@/datastore-settings';
 
 const state = {
-  settings: {}
+  settings: {},
 };
 
 const mutations = {
@@ -12,29 +12,35 @@ const mutations = {
 
 const actions = {
   loadSettings(store) {
-    return db.find({}).limit(1).exec((err, settings) => {
-      if (!err && settings.length === 0) {
-        db.insert({}, (err) => {
-          if (!err) {
-            db.find({}).limit(1).exec((err, settings) => {
-              store.commit('SET_SETTINGS', settings['0']);
-              store.dispatch('loadNotes');
-            });
-          }
-        });
-      } else {
-        store.commit('SET_SETTINGS', settings['0']);
-        store.dispatch('loadNotes');
-      }
-    });
+    return db
+      .find({})
+      .limit(1)
+      .exec((err, settings) => {
+        if (!err && settings.length === 0) {
+          db.insert({}, err => {
+            if (!err) {
+              db
+                .find({})
+                .limit(1)
+                .exec((err, settings) => {
+                  store.commit('SET_SETTINGS', settings['0']);
+                  store.dispatch('loadNotes');
+                });
+            }
+          });
+        } else {
+          store.commit('SET_SETTINGS', settings['0']);
+          store.dispatch('loadNotes');
+        }
+      });
   },
   setSettings(store, settings) {
-    return db.update({_id: settings._id}, settings, {}, err => {
+    return db.update({ _id: settings._id }, settings, {}, err => {
       if (!err) {
         store.dispatch('loadSettings');
       }
     });
-  }
+  },
 };
 
 const getters = {

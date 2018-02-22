@@ -1,11 +1,11 @@
-import db from '../../datastore-notes';
-import converter from '../../converter';
+import db from '@/datastore-notes';
+import converter from '@/converter';
 
 const octokit = require('@octokit/rest')({
   requestMedia: 'application/vnd.github.v3+json',
   headers: {
-    'user-agent': 'octokit/rest.js v1.2.3'
-  }
+    'user-agent': 'octokit/rest.js v1.2.3',
+  },
 });
 
 const state = {
@@ -52,14 +52,14 @@ const actions = {
 
         octokit.authenticate({
           type: 'token',
-          token: store.rootState.Settings.settings.githubPersonalAccessToken
+          token: store.rootState.Settings.settings.githubPersonalAccessToken,
         });
 
-        octokit.gists.getAll().then((res) => {
+        octokit.gists.getAll().then(res => {
           const promises = [];
 
           res.data.forEach(gist => {
-            promises.push(octokit.gists.get({id: gist.id}))
+            promises.push(octokit.gists.get({ id: gist.id }));
           });
 
           Promise.all(promises).then(values => {
@@ -103,13 +103,15 @@ const actions = {
   },
   updateNote(store, note) {
     if (store.state.gistsSelected) {
-      octokit.gists.edit({
-        id: note.id,
-        files: note.files,
-        description: note.description
-      }).then(() => store.dispatch('loadNotes'));
+      octokit.gists
+        .edit({
+          id: note.id,
+          files: note.files,
+          description: note.description,
+        })
+        .then(() => store.dispatch('loadNotes'));
     } else {
-      db.update({_id: note._id}, note, {}, err => {
+      db.update({ _id: note._id }, note, {}, err => {
         if (!err) {
           store.dispatch('loadNotes');
         }
@@ -119,12 +121,12 @@ const actions = {
   deleteNote(store, note) {
     store.commit('SELECT_LOADING', true);
     if (store.state.gistsSelected) {
-      octokit.gists.delete({id: note.id}).then(() => {
+      octokit.gists.delete({ id: note.id }).then(() => {
         store.commit('DELETE_NOTE', note);
         store.commit('SELECT_LOADING', false);
       });
     } else {
-      db.remove({_id: note._id}, {}, err => {
+      db.remove({ _id: note._id }, {}, err => {
         if (!err) {
           store.commit('DELETE_NOTE', note);
           store.commit('SELECT_LOADING', false);

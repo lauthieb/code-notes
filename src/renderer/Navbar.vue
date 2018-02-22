@@ -42,7 +42,7 @@
 
 <script>
   // eslint-disable-next-line
-  import {remote} from 'electron';
+  import { remote } from 'electron';
   import HelpTokenModal from './components/modals/help-token-modal/HelpTokenModal';
 
   export default {
@@ -66,43 +66,43 @@
 </script>
 
 <style lang="scss" scoped>
-  nav {
-    -webkit-app-region: drag;
-    background-color: $primary;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+nav {
+  -webkit-app-region: drag;
+  background-color: $primary;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 
-    .logo {
-      padding: 10px 10px 4px 10px;
-      width: 110px;
-      position: relative;
-      left: 4%;
+  .logo {
+    padding: 10px 10px 4px 10px;
+    width: 110px;
+    position: relative;
+    left: 4%;
+  }
+
+  #about-code-notes,
+  #github,
+  #help {
+    color: $light;
+    position: relative;
+    top: 20px;
+    right: 20px;
+  }
+
+  .modal {
+    .media-content {
+      text-align: center;
     }
 
-    #about-code-notes,
-    #github,
-    #help {
-      color: $light;
-      position: relative;
-      top: 20px;
-      right: 20px;
+    img {
+      width: 250px;
     }
 
-    .modal {
-      .media-content {
-        text-align: center;
-      }
-
-      img {
-        width: 250px;
-      }
-
-      .badge {
-        width: 160px;
-      }
+    .badge {
+      width: 160px;
     }
   }
+}
 </style>

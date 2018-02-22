@@ -1,18 +1,15 @@
 <template src="./UpdateNoteModal.html">
-
 </template>
 
 <script>
-  import Vuex from 'vuex';
-  import editor from '../../editor/Editor';
-  import languages from '../../../assets/data/languages.json';
-  import converter from '../../../converter';
+  import { mapGetters, mapActions } from 'vuex';
+  import editor from '@/components/editor/Editor';
+  import languages from '@/assets/data/languages.json';
+  import converter from '@/converter';
 
   export default {
     name: 'cn-update-note-modal',
-    components: {
-      editor,
-    },
+    components: { editor },
     props: {
       note: Object,
     },
@@ -24,7 +21,7 @@
           files: {},
           updatedAt: null,
           createdAt: null,
-          tags: []
+          tags: [],
         },
         files: [],
         gistFiles: [],
@@ -40,15 +37,20 @@
         this.note.tags = this.note.tags ? this.note.tags : [];
       }
 
-      this.noteUpdated = {...this.note};
+      this.noteUpdated = { ...this.note };
       this.noteUpdated.files = {};
       Object.keys(this.note.files).forEach((key, index) => {
-        this.files.push({...this.note.files[key], id: index});
-        this.gistFiles.push({...this.note.files[key], id: index, deleted: false});
+        this.files.push({ ...this.note.files[key], id: index });
+        this.gistFiles.push({
+          ...this.note.files[key],
+          id: index,
+          deleted: false,
+        });
       });
     },
     methods: {
-      updateNote() {
+      ...mapActions(['updateNote']),
+      updateNoteModal() {
         if (!this.containsDupFiles()) {
           if (this.gistsSelected) {
             this.files.forEach(file => {
@@ -58,17 +60,24 @@
             });
 
             this.gistFiles.forEach((file, index) => {
-              const key = `${this.gistFiles[index].name}.${converter.languageToExtension(this.gistFiles[index].language)}`;
+              const key = `${
+                this.gistFiles[index].name
+              }.${converter.languageToExtension(this.gistFiles[index].language)}`;
 
               if (file.deleted) {
-                this.noteUpdated.files[key] = null
+                this.noteUpdated.files[key] = null;
               } else {
                 this.noteUpdated.files[key] = this.files[index];
 
                 const newFile = this.files.filter(f => f.id === file.id)[0];
 
-                if (newFile.name !== file.name || newFile.language !== file.language ) {
-                  this.noteUpdated.files[key].filename = `${newFile.name}.${converter.languageToExtension(newFile.language)}`;
+                if (
+                  newFile.name !== file.name ||
+                  newFile.language !== file.language
+                ) {
+                  this.noteUpdated.files[key].filename = `${
+                    newFile.name
+                  }.${converter.languageToExtension(newFile.language)}`;
                 }
               }
             });
@@ -79,7 +88,7 @@
             this.noteUpdated.updatedAt = new Date();
           }
 
-          this.$store.dispatch('updateNote', this.noteUpdated).then(() => {
+          this.updateNote(this.noteUpdated).then(() => {
             this.$parent.close();
           });
         } else {
@@ -92,7 +101,7 @@
           language: 'text',
           content: '',
           deleted: false,
-          added: true
+          added: true,
         });
       },
       deleteFile(file) {
@@ -103,6 +112,7 @@
             }
           });
         }
+
         this.files = this.files.filter(f => f !== file);
       },
       containsDupFiles() {
@@ -117,6 +127,7 @@
           if (map.has(key)) {
             dupFiles = true;
           }
+
           map.set(key, 1);
         });
 
@@ -124,19 +135,18 @@
       },
     },
     computed: {
-      ...Vuex.mapGetters(['gistsSelected']),
+      ...mapGetters(['gistsSelected']),
       isDisabled() {
         if (this.gistsSelected) {
-          return (
-            this.files.some(
-              file =>
-                !/^[^.]*$/.test(file.name) ||
-                !/\S/.test(file.name) ||
-                !/\S/.test(file.language) ||
-                !/\S/.test(file.content)
-            )
-          )
+          return this.files.some(
+            file =>
+              !/^[^.]*$/.test(file.name) ||
+              !/\S/.test(file.name) ||
+              !/\S/.test(file.language) ||
+              !/\S/.test(file.content)
+          );
         }
+
         return (
           !/\S/.test(this.note.name) ||
           this.files.some(
@@ -153,5 +163,4 @@
 </script>
 
 <style src="./UpdateNoteModal.scss" lang="scss">
-
 </style>
