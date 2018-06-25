@@ -21,7 +21,7 @@ A simple code snippet & gist manager for developers built with Electron & Vue.js
 
 ## Overview
 
-The aim of this project is to make us more efficient by offering a pretty cool tool : a king of notepad for our code 😃📝
+The aim of this project is to make us more efficient by offering a pretty cool tool : a kind of notepad for our code 😃📝
 
 ## Demo
 
