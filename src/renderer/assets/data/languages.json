@@ -98,5 +98,9 @@
   {
     "name": "xml",
     "extension": "xml"
+  },
+  {
+    "name": "liquid",
+    "extension": "liquid.js"
   }
 ]
