@@ -4,6 +4,10 @@
     "extension": "txt"
   },
   {
+    "name": "csharp",
+    "extension": "csharp"
+  },
+  {
     "name": "elixir",
     "extension": "exs"
   },
