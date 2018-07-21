@@ -38,6 +38,7 @@ require('brace/mode/sql');
 require('brace/mode/swift');
 require('brace/mode/typescript');
 require('brace/mode/xml');
+require('brace/mode/csharp');
 require('brace/mode/liquid');
 require('brace/theme/monokai');
 
