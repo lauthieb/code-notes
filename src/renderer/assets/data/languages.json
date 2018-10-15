@@ -4,6 +4,10 @@
     "extension": "txt"
   },
   {
+    "name": "clojure",
+    "extension": "clj"
+  },
+  {
     "name": "csharp",
     "extension": "csharp"
   },
