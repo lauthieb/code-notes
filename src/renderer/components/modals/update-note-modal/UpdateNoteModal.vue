@@ -137,25 +137,8 @@
     computed: {
       ...mapGetters(['gistsSelected']),
       isDisabled() {
-        if (this.gistsSelected) {
-          return this.files.some(
-            file =>
-              !/^[^.]*$/.test(file.name) ||
-              !/\S/.test(file.name) ||
-              !/\S/.test(file.language) ||
-              !/\S/.test(file.content)
-          );
-        }
-
-        return (
-          !/\S/.test(this.note.name) ||
-          this.files.some(
-            file =>
-              !/^[^.]*$/.test(file.name) ||
-              !/\S/.test(file.name) ||
-              !/\S/.test(file.language) ||
-              !/\S/.test(file.content)
-          )
+        return this.files.some(
+          file => !/\S/.test(file.content)
         );
       },
     },

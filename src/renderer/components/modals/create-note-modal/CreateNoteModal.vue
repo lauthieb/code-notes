@@ -7,6 +7,15 @@
   import languages from '@/assets/data/languages.json';
   import converter from '@/converter';
 
+  const noteNameCharacters = "abcdef0123456789";
+
+  const generateNoteName = () => {
+    let text = "";
+    for (let i = 0; i < 32; i += 1)
+      text += noteNameCharacters.charAt(Math.floor(Math.random() * 16));
+    return text;
+  };
+
   export default {
     name: 'cn-create-note-modal',
     components: { editor },
@@ -44,20 +53,28 @@
       createNote() {
         if (!this.containsDupFiles()) {
           let separator = '-';
+          let prefix = 'note';
 
           if (this.gistsSelected) {
             separator = '.';
+            prefix = 'gist';
           }
 
-          this.files.forEach(file => {
+          let name;
+          this.files.forEach((file, i) => {
+            name = file.name || `${prefix}file${(i + 1)}`;
             this.note.files[
-              `${file.name}${separator}${converter.languageToExtension(
+              `${name}${separator}${converter.languageToExtension(
                 file.language
               )}`
             ] = file;
           });
           this.note.createdAt = new Date();
           this.note.updatedAt = new Date();
+
+          if (!this.note.name || this.note.name.trim() === "") {
+            this.note.name = `${prefix}:${generateNoteName()}`;
+          }
 
           this.addNote(this.note).then(() => {
             this.$parent.close();
@@ -98,25 +115,8 @@
     computed: {
       ...mapGetters(['gistsSelected']),
       isDisabled() {
-        if (this.gistsSelected) {
-          return this.files.some(
-            file =>
-              !/^[^.]*$/.test(file.name) ||
-              !/\S/.test(file.name) ||
-              !/\S/.test(file.language) ||
-              !/\S/.test(file.content)
-          );
-        }
-
-        return (
-          !/\S/.test(this.note.name) ||
-          this.files.some(
-            file =>
-              !/^[^.]*$/.test(file.name) ||
-              !/\S/.test(file.name) ||
-              !/\S/.test(file.language) ||
-              !/\S/.test(file.content)
-          )
+        return this.files.some(
+          file => !/\S/.test(file.content)
         );
       },
     },
