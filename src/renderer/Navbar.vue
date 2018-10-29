@@ -41,28 +41,28 @@
 </template>
 
 <script>
-  // eslint-disable-next-line
-  import { remote } from 'electron';
-  import HelpTokenModal from './components/modals/help-token-modal/HelpTokenModal';
+// eslint-disable-next-line
+import { remote } from 'electron';
+import HelpTokenModal from './components/modals/help-token-modal/HelpTokenModal';
 
-  export default {
-    name: 'cn-navbar',
-    components: {
-      'cn-help-token-modal': HelpTokenModal,
+export default {
+  name: 'cn-navbar',
+  components: {
+    'cn-help-token-modal': HelpTokenModal,
+  },
+  data() {
+    return {
+      appVersion: remote.app.getVersion(),
+      aboutCodeNotesModalActive: false,
+      helpTokenModalActive: false,
+    };
+  },
+  methods: {
+    open(link) {
+      this.$electron.shell.openExternal(link);
     },
-    data() {
-      return {
-        appVersion: remote.app.getVersion(),
-        aboutCodeNotesModalActive: false,
-        helpTokenModalActive: false,
-      };
-    },
-    methods: {
-      open(link) {
-        this.$electron.shell.openExternal(link);
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -19,8 +19,7 @@ const actions = {
         if (!err && settings.length === 0) {
           db.insert({}, err => {
             if (!err) {
-              db
-                .find({})
+              db.find({})
                 .limit(1)
                 .exec((err, settings) => {
                   store.commit('SET_SETTINGS', settings['0']);
