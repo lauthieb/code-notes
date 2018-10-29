@@ -96,6 +96,10 @@
     "extension": "py"
   },
   {
+    "name": "r",
+    "extension": "r"
+  },
+  {
     "name": "ruby",
     "extension": "rb"
   },
