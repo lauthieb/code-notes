@@ -4,6 +4,14 @@
     "extension": "txt"
   },
   {
+    "name": "assembly_x86",
+    "extension": "asm"
+  },
+  {
+    "name": "c_cpp",
+    "extension": "cpp"
+  },
+  {
     "name": "clojure",
     "extension": "clj"
   },
@@ -52,6 +60,14 @@
     "extension": "jsx"
   },
   {
+    "name": "kotlin",
+    "extension": "kt"
+  },
+  {
+    "name": "liquid",
+    "extension": "liquid.js"
+  },
+  {
     "name": "markdown",
     "extension": "md"
   },
@@ -80,6 +96,10 @@
     "extension": "py"
   },
   {
+    "name": "c_cpp",
+    "extension": "cpp"
+  },
+  {
     "name": "ruby",
     "extension": "rb"
   },
@@ -106,9 +126,5 @@
   {
     "name": "xml",
     "extension": "xml"
-  },
-  {
-    "name": "liquid",
-    "extension": "liquid.js"
   }
 ]
