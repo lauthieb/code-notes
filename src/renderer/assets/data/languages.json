@@ -96,10 +96,6 @@
     "extension": "py"
   },
   {
-    "name": "c_cpp",
-    "extension": "cpp"
-  },
-  {
     "name": "ruby",
     "extension": "rb"
   },
