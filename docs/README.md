@@ -1,4 +1,4 @@
-# code-notes.github.io
+# lauthieb.github.io/code-notes
 
 Official website of Food Limit
 
