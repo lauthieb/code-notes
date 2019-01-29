@@ -27,7 +27,7 @@ The aim of this project is to make us more efficient by offering a pretty cool t
 
 <div align="center">
 
-[![Code Notes - V1.2.0](https://img.youtube.com/vi/bItaJQPJQ9E/0.jpg)](https://www.youtube.com/watch?v=bItaJQPJQ9E "Code Notes - V1.2.0")
+[![Code Notes](https://img.youtube.com/vi/lfWRwwmX9Q8/0.jpg)](https://www.youtube.com/watch?v=lfWRwwmX9Q8 "Code Notes")
 
 </div>
 
