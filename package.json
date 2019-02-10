@@ -26,8 +26,7 @@
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "test": "npm run unit && npm run e2e",
     "unit": "karma start test/unit/karma.conf.js",
-    "prettier": "prettier --single-quote --trailing-comma es5 --write \"./src/**/*.js\" && prettier --single-quote --trailing-comma es5 --write \"./src/**/*.vue\" ",
-    "postinstall": "npm run eslint:fix && npm run prettier"
+    "postinstall": "npm run eslint:fix"
   },
   "build": {
     "productName": "Code Notes",
