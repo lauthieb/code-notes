@@ -1,5 +1,4 @@
-<template src="./UpdateNoteModal.html">
-</template>
+<template src="./UpdateNoteModal.html"> </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -143,5 +142,4 @@ export default {
 };
 </script>
 
-<style src="./UpdateNoteModal.scss" lang="scss">
-</style>
+<style src="./UpdateNoteModal.scss" lang="scss"></style>

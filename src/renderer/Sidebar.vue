@@ -5,12 +5,18 @@
     </p>
     <ul class="menu-list">
       <li>
-        <a :class="{'is-active': !gistsSelected}" @click="selectGistsSidebar(false)">Local
+        <a
+          :class="{ 'is-active': !gistsSelected }"
+          @click="selectGistsSidebar(false)"
+          >Local
           <b-icon icon="laptop" class="is-pulled-right"></b-icon>
         </a>
       </li>
       <li>
-        <a :class="{'is-active': gistsSelected}" @click="selectGistsSidebar(true)">Gists
+        <a
+          :class="{ 'is-active': gistsSelected }"
+          @click="selectGistsSidebar(true)"
+          >Gists
           <b-icon icon="github" class="is-pulled-right"></b-icon>
         </a>
       </li>
@@ -20,13 +26,19 @@
     </p>
     <ul class="menu-list" id="menu-list-languages" v-if="!isLoading">
       <li>
-        <a :class="{'is-active': languageSelected === 'all'}" @click="selectLanguageSidebar('all')">All
-          <b-tag class="is-pulled-right" type="is-dark">{{totalFiles}}</b-tag>
+        <a
+          :class="{ 'is-active': languageSelected === 'all' }"
+          @click="selectLanguageSidebar('all')"
+          >All
+          <b-tag class="is-pulled-right" type="is-dark">{{ totalFiles }}</b-tag>
         </a>
       </li>
       <li v-for="(list, value) in Array.from(languages)">
-        <a :class="{'is-active': languageSelected === list[0]}" @click="selectLanguageSidebar(list[0])">{{list[0] | capitalize}}
-          <b-tag class="is-pulled-right" type="is-dark">{{list[1]}}</b-tag>
+        <a
+          :class="{ 'is-active': languageSelected === list[0] }"
+          @click="selectLanguageSidebar(list[0])"
+          >{{ list[0] | capitalize }}
+          <b-tag class="is-pulled-right" type="is-dark">{{ list[1] }}</b-tag>
         </a>
       </li>
     </ul>

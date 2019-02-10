@@ -1,5 +1,4 @@
-<template src="./NoteCard.html">
-</template>
+<template src="./NoteCard.html"> </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -66,5 +65,4 @@ export default {
 };
 </script>
 
-<style src="./NoteCard.scss" lang="scss" scoped>
-</style>
+<style src="./NoteCard.scss" lang="scss" scoped></style>

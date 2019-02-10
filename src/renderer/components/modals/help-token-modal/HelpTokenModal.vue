@@ -1,5 +1,4 @@
-<template src="./HelpTokenModal.html">
-</template>
+<template src="./HelpTokenModal.html"> </template>
 
 <script>
 export default {
@@ -7,5 +6,4 @@ export default {
 };
 </script>
 
-<style src="./HelpTokenModal.scss" lang="scss">
-</style>
+<style src="./HelpTokenModal.scss" lang="scss"></style>

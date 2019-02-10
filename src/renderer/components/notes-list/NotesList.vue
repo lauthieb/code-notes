@@ -1,5 +1,4 @@
-<template src="./NotesList.html">
-</template>
+<template src="./NotesList.html"> </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -87,5 +86,4 @@ export default {
 };
 </script>
 
-<style src="./NotesList.scss" lang="scss">
-</style>
+<style src="./NotesList.scss" lang="scss"></style>

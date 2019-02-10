@@ -1,5 +1,4 @@
-<template src="./CreateNoteModal.html">
-</template>
+<template src="./CreateNoteModal.html"> </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -119,5 +118,4 @@ export default {
 };
 </script>
 
-<style src="./CreateNoteModal.scss" lang="scss">
-</style>
+<style src="./CreateNoteModal.scss" lang="scss"></style>

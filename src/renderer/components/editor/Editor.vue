@@ -1,5 +1,4 @@
-<template src="./Editor.html">
-</template>
+<template src="./Editor.html"> </template>
 
 <script>
 import ace from 'brace';
@@ -78,5 +77,4 @@ export default {
 };
 </script>
 
-<style src="./Editor.scss" lang="scss">
-</style>
+<style src="./Editor.scss" lang="scss"></style>

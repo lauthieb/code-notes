@@ -1,38 +1,65 @@
 <template>
   <nav>
-    <img class="logo" src="~@/assets/img/code-notes-logo-white-full.png" alt="Code Notes logo">
+    <img
+      class="logo"
+      src="~@/assets/img/code-notes-logo-white-full.png"
+      alt="Code Notes logo"
+    />
     <div class="is-pulled-right">
       <a id="help" @click="helpTokenModalActive = true" title="Help">
         <b-icon icon="question-circle"></b-icon>
       </a>
 
-      <a id="about-code-notes" @click="aboutCodeNotesModalActive = true" title="About Code Notes...">
+      <a
+        id="about-code-notes"
+        @click="aboutCodeNotesModalActive = true"
+        title="About Code Notes..."
+      >
         <b-icon icon="info-circle"></b-icon>
       </a>
-      <a id="github" @click="open('https://github.com/lauthieb/code-notes')" title="Show on Github...">
+      <a
+        id="github"
+        @click="open('https://github.com/lauthieb/code-notes')"
+        title="Show on Github..."
+      >
         <b-icon icon="github"></b-icon>
       </a>
     </div>
 
-    <b-modal :active.sync="aboutCodeNotesModalActive" :width="580" scroll="keep">
+    <b-modal
+      :active.sync="aboutCodeNotesModalActive"
+      :width="580"
+      scroll="keep"
+    >
       <div class="card">
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <img src="~@/assets/img/code-notes-logo-black-full.png" alt="Image">
+              <img
+                src="~@/assets/img/code-notes-logo-black-full.png"
+                alt="Image"
+              />
             </div>
           </div>
           <div class="content">
-            <h4>v{{appVersion}}</h4>
+            <h4>v{{ appVersion }}</h4>
 
-            <p>A simple code snippet manager for developers built with Electron & Vue.js 🚀</p>
+            <p>
+              A simple code snippet manager for developers built with Electron &
+              Vue.js 🚀
+            </p>
 
-            <p>Feel free to contribute on <a @click="open('https://github.com/lauthieb/code-notes')">Github</a> 🍻</p>
+            <p>
+              Feel free to contribute on
+              <a @click="open('https://github.com/lauthieb/code-notes')"
+                >Github</a
+              >
+              🍻
+            </p>
           </div>
         </div>
       </div>
     </b-modal>
-
 
     <b-modal :active.sync="helpTokenModalActive" has-modal-card>
       <cn-help-token-modal></cn-help-token-modal>

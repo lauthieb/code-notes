@@ -1,5 +1,4 @@
-<template src="./SettingsModal.html">
-</template>
+<template src="./SettingsModal.html"> </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -29,5 +28,4 @@ export default {
 };
 </script>
 
-<style src="./SettingsModal.scss" lang="scss">
-</style>
+<style src="./SettingsModal.scss" lang="scss"></style>
