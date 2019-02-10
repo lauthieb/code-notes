@@ -16,7 +16,7 @@ const converter = {
   gistToNote(gist) {
     const files = [];
 
-    Object.keys(gist.files).forEach(key => {
+    Object.keys(gist.files).forEach((key) => {
       files.push({
         name: key.split('.')[0],
         language: this.extensionToLanguage(key.split('.')[1]),
@@ -36,7 +36,7 @@ const converter = {
   noteToGist(note) {
     const files = {};
 
-    note.files.forEach(file => {
+    note.files.forEach((file) => {
       files[`${file.name}.${this.languageToExtension(file.language)}`] = {
         content: file.content,
       };

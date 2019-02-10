@@ -17,7 +17,7 @@ if (fs.existsSync(path.join(remote.app.getPath('userData'), '/snippets.db'))) {
   });
 
   dbSnippets.find({}, (err, snippets) => {
-    snippets.forEach(snippet => {
+    snippets.forEach((snippet) => {
       const note = {};
       note.id = snippet._id;
       note.name = snippet.name;

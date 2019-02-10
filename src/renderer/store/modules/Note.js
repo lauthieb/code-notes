@@ -55,17 +55,17 @@ const actions = {
           token: store.rootState.Settings.settings.githubPersonalAccessToken,
         });
 
-        octokit.gists.getAll().then(res => {
+        octokit.gists.getAll().then((res) => {
           const promises = [];
 
-          res.data.forEach(gist => {
+          res.data.forEach((gist) => {
             promises.push(octokit.gists.get({ id: gist.id }));
           });
 
-          Promise.all(promises).then(values => {
+          Promise.all(promises).then((values) => {
             const notes = [];
 
-            values.forEach(gistDetailed => {
+            values.forEach((gistDetailed) => {
               notes.push(converter.gistToNote(gistDetailed.data));
             });
 
@@ -111,7 +111,7 @@ const actions = {
         })
         .then(() => store.dispatch('loadNotes'));
     } else {
-      db.update({ _id: note._id }, note, {}, err => {
+      db.update({ _id: note._id }, note, {}, (err) => {
         if (!err) {
           store.dispatch('loadNotes');
         }
@@ -126,7 +126,7 @@ const actions = {
         store.commit('SELECT_LOADING', false);
       });
     } else {
-      db.remove({ _id: note._id }, {}, err => {
+      db.remove({ _id: note._id }, {}, (err) => {
         if (!err) {
           store.commit('DELETE_NOTE', note);
           store.commit('SELECT_LOADING', false);
@@ -146,16 +146,16 @@ const actions = {
 const getters = {
   notes: state => state.notes,
   noteById: state => id => state.notes.find(note => note._id === id),
-  languages: state => {
+  languages: (state) => {
     const map = new Map();
 
     if (state.notes.length > 0) {
-      state.notes.forEach(note => {
-        Object.keys(note.files).forEach(key => {
+      state.notes.forEach((note) => {
+        Object.keys(note.files).forEach((key) => {
           if (map.has(note.files[key].language)) {
             map.set(
               note.files[key].language,
-              map.get(note.files[key].language) + 1
+              map.get(note.files[key].language) + 1,
             );
           } else {
             map.set(note.files[key].language, 1);
@@ -168,7 +168,7 @@ const getters = {
   totalFiles() {
     let total = 0;
 
-    state.notes.forEach(note => {
+    state.notes.forEach((note) => {
       total += Object.keys(note.files).length;
     });
 

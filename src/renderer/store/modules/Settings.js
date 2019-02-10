@@ -17,7 +17,7 @@ const actions = {
       .limit(1)
       .exec((err, settings) => {
         if (!err && settings.length === 0) {
-          db.insert({}, err => {
+          db.insert({}, (err) => {
             if (!err) {
               db.find({})
                 .limit(1)
@@ -34,7 +34,7 @@ const actions = {
       });
   },
   setSettings(store, settings) {
-    return db.update({ _id: settings._id }, settings, {}, err => {
+    return db.update({ _id: settings._id }, settings, {}, (err) => {
       if (!err) {
         store.dispatch('loadSettings');
       }
