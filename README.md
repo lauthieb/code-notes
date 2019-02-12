@@ -13,6 +13,7 @@ A simple code snippet & gist manager for developers built with Electron & Vue.js
 </p>
 
 <div align="center">
+  
 [![Build Status](https://travis-ci.org/lauthieb/code-notes.svg?branch=master)](https://travis-ci.org/lauthieb/code-notes)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
