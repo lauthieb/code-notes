@@ -26,6 +26,7 @@ before_install:
 #- export DISPLAY=':99.0'
 #- Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 - npm install -g xvfb-maybe
+install: yarn && yarn run build
 before_script:
 #- xvfb-maybe node_modules/.bin/karma start test/unit/karma.conf.js
 #- yarn run pack && xvfb-maybe node_modules/.bin/mocha test/e2e
