@@ -35,10 +35,6 @@ The aim of this project is to make us more efficient by offering a pretty cool t
 
 </div>
 
-## Support Code Notes
-
-<a href="https://www.buymeacoffee.com/lauthieb" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
-
 ## Contributing
 
 For the moment, the project is pretty young. But if we work together to build the "bloc-notes" we dream, we can build pretty things for sure !  
@@ -61,7 +57,6 @@ npm test
 
 # lint all JS/Vue component files in `src/`
 npm run eslint
-
 ```
 
 ### Roadmap to V1.3.0 💪🏻
@@ -69,6 +64,10 @@ npm run eslint
 To follow the progression, go to the [V1.3.0 roadmap project section](https://github.com/lauthieb/code-notes/projects/5) ! 
 
 Feel free to [add an issue](https://github.com/lauthieb/code-notes/issues/new) if you find some bugs or you have any ideas of evolutions 😃
+
+## Support Code Notes
+
+<a href="https://www.buymeacoffee.com/lauthieb" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
 
 ---
 
