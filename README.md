@@ -15,6 +15,7 @@ A simple code snippet & gist manager for developers built with Electron & Vue.js
 <div align="center">
   
 [![Build Status](https://travis-ci.org/lauthieb/code-notes.svg?branch=master)](https://travis-ci.org/lauthieb/code-notes)
+[![Join the chat at https://gitter.im/code-notes/community](https://badges.gitter.im/code-notes/community.svg)](https://gitter.im/code-notes/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/makes-people-smile.svg)](http://forthebadge.com)
@@ -30,7 +31,7 @@ The aim of this project is to make us more efficient by offering a pretty cool t
 
 <div align="center">
 
-[![Code Notes](https://img.youtube.com/vi/lfWRwwmX9Q8/0.jpg)](https://www.youtube.com/watch?v=lfWRwwmX9Q8 "Code Notes") [![Join the chat at https://gitter.im/code-notes/community](https://badges.gitter.im/code-notes/community.svg)](https://gitter.im/code-notes/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Code Notes](https://img.youtube.com/vi/lfWRwwmX9Q8/0.jpg)](https://www.youtube.com/watch?v=lfWRwwmX9Q8 "Code Notes")
 
 </div>
 
