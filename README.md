@@ -30,7 +30,7 @@ The aim of this project is to make us more efficient by offering a pretty cool t
 
 <div align="center">
 
-[![Code Notes](https://img.youtube.com/vi/lfWRwwmX9Q8/0.jpg)](https://www.youtube.com/watch?v=lfWRwwmX9Q8 "Code Notes")
+[![Code Notes](https://img.youtube.com/vi/lfWRwwmX9Q8/0.jpg)](https://www.youtube.com/watch?v=lfWRwwmX9Q8 "Code Notes") [![Join the chat at https://gitter.im/code-notes/community](https://badges.gitter.im/code-notes/community.svg)](https://gitter.im/code-notes/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 </div>
 
