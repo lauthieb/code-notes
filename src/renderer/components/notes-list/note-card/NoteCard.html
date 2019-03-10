@@ -37,6 +37,9 @@
                  title="Copy to clipboard">
                 <b-icon icon="clipboard"></b-icon>
               </a>
+              <a id="export-carbon" @click="exportToCarbon(value.content)" title="Export to Carbon">
+                <b-icon icon="image"></b-icon>
+              </a>
             </span>
           </h4>
           <editor :code="value.content"
