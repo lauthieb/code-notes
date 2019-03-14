@@ -1,6 +1,19 @@
 import languages from './assets/data/languages';
 
 const converter = {
+  filenameToKey(filename, language, type = 'note') {
+    // Build separator by type
+    const separator = (type === 'gist') ? '.' : '-';
+
+    // Sanitize name for disallowed nedb characters
+    // list of disallowed characters taken from https://github.com/louischatriot/nedb/issues/477
+    let name = filename;
+    if (type === 'note' && typeof name === 'string') {
+      name = name.replace(/[.$]/, '_');
+    }
+
+    return `${name}${separator}${this.languageToExtension(language)}`;
+  },
   languageToExtension(language) {
     if (languages.filter(l => l.name === language).length > 0) {
       return languages.filter(l => l.name === language)[0].extension;

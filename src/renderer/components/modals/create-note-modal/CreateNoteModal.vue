@@ -51,26 +51,18 @@ export default {
     ...mapActions(['addNote']),
     createNote() {
       if (!this.containsDupFiles()) {
-        let separator = '-';
-        let prefix = 'note';
+        const noteType = this.getNoteType();
 
-        if (this.gistsSelected) {
-          separator = '.';
-          prefix = 'gist';
-        }
-
-        let name;
         this.files.forEach((file, i) => {
-          name = file.name || `${prefix}file${i + 1}`;
-          this.note.files[
-            `${name}${separator}${converter.languageToExtension(file.language)}`
-          ] = file;
+          const filename = file.name || `${noteType}file${i + 1}`;
+          const key = converter.filenameToKey(filename, file.language, noteType);
+          this.note.files[key] = file;
         });
         this.note.createdAt = new Date();
         this.note.updatedAt = new Date();
 
         if (!this.note.name || this.note.name.trim() === '') {
-          this.note.name = `${prefix}:${generateNoteName()}`;
+          this.note.name = `${noteType}:${generateNoteName()}`;
         }
 
         this.addNote(this.note).then(() => {
@@ -95,9 +87,7 @@ export default {
       let dupFiles = false;
 
       this.files.forEach(file => {
-        const key = `${file.name}.${converter.languageToExtension(
-          file.language
-        )}`;
+        const key = converter.filenameToKey(file.name, file.language, this.getNoteType());
 
         if (map.has(key)) {
           dupFiles = true;
@@ -107,6 +97,9 @@ export default {
       });
 
       return dupFiles;
+    },
+    getNoteType() {
+      return (this.gistsSelected) ? 'gist' : 'note';
     },
   },
   computed: {
