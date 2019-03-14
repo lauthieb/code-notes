@@ -61,6 +61,10 @@ export default {
     open(link) {
       this.$electron.shell.openExternal(link);
     },
+    exportToCarbon(content) {
+      let url = `https://carbon.now.sh/?bg=rgba(0,0,0,0)&t=dracula&l=auto&ds=true&wc=true&wa=true&pv=43px&ph=57px&ln=false&code=`;
+      this.$electron.shell.openExternal(`${url}${encodeURI(content)}`)
+    }
   },
 };
 </script>
