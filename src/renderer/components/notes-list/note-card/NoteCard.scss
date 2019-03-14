@@ -68,6 +68,13 @@
         color: lighten($black, 20%);
       }
     }
+    #export-carbon {
+      color: $dark;
+   
+      &:hover {
+        color: lighten($black, 20%);
+      }
+    }
   }
 }
 
