@@ -59,9 +59,7 @@ export default {
           });
 
           this.gistFiles.forEach((file, index) => {
-            const key = `${
-              this.gistFiles[index].name
-            }.${converter.languageToExtension(this.gistFiles[index].language)}`;
+            const key = converter.filenameToKey(file.name, file.language, this.getNoteType());
 
             if (file.deleted) {
               this.noteUpdated.files[key] = null;
@@ -82,7 +80,8 @@ export default {
           });
         } else {
           this.files.forEach(file => {
-            this.noteUpdated.files[file.name] = file;
+            const key = converter.filenameToKey(file.name, file.language, this.getNoteType());
+            this.noteUpdated.files[key] = file;
           });
           this.noteUpdated.updatedAt = new Date();
         }
@@ -119,10 +118,7 @@ export default {
       let dupFiles = false;
 
       this.files.forEach(file => {
-        const key = `${file.name}.${converter.languageToExtension(
-          file.language
-        )}`;
-
+        const key = converter.filenameToKey(file.name, file.language, this.getNoteType());
         if (map.has(key)) {
           dupFiles = true;
         }
@@ -131,6 +127,9 @@ export default {
       });
 
       return dupFiles;
+    },
+    getNoteType() {
+      return (this.gistsSelected) ? 'gist' : 'note';
     },
   },
   computed: {
