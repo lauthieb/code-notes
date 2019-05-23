@@ -1,5 +1,8 @@
 import db from '@/datastore-notes';
 import converter from '@/converter';
+import path from 'path';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { remote } from 'electron';
 
 const octokit = require('@octokit/rest')({
   requestMedia: 'application/vnd.github.v3+json',
@@ -81,6 +84,7 @@ const actions = {
       db.find({}, (err, notes) => {
         if (!err) {
           store.commit('LOAD_NOTES', notes);
+          actions.writeNotesToFS(notes);
           store.commit('SELECT_LOADING', false);
         }
       });
@@ -99,6 +103,7 @@ const actions = {
           store.commit('SELECT_LOADING', false);
         }
       });
+      actions.writeFileToFS(note, false);
     }
   },
   updateNote(store, note) {
@@ -116,6 +121,7 @@ const actions = {
           store.dispatch('loadNotes');
         }
       });
+      actions.writeFileToFS(note, true);
     }
   },
   deleteNote(store, note) {
@@ -132,6 +138,54 @@ const actions = {
           store.commit('SELECT_LOADING', false);
         }
       });
+      actions.deleNoteFromFS(note);
+    }
+  },
+  writeNotesToFS(notes) {
+    notes.forEach((note) => {
+      actions.writeFileToFS(note, true);
+    });
+  },
+  writeFileToFS(note, updateIfExists) {
+    const fs = require('fs');
+    const notesDir = path.join(remote.app.getPath('userData'), 'notes');
+    if (!fs.existsSync(notesDir)) {
+      fs.mkdirSync(notesDir);
+    }
+    const curNoteDir = path.join(notesDir, note.name);
+    if (!fs.existsSync(curNoteDir)) {
+      fs.mkdirSync(curNoteDir);
+    }
+    Object.entries(note.files).forEach((file) => {
+      const fileName = `${file[1].name}.${file[1].language}`;
+      if (updateIfExists || !fs.exists(fileName)) {
+        fs.writeFileSync(path.join(curNoteDir, fileName), file[1].content, 'utf-8');
+      }
+    });
+    fs.writeFileSync(path.join(curNoteDir, 'metadata.json'), JSON.stringify({
+      description: note.description,
+      public: note.public,
+      updatedAt: note.updatedAt,
+      createdAt: note.createdAt,
+      tags: note.tags,
+    }), 'utf-8');
+  },
+  deleNoteFromFS(note) {
+    const curNoteDir = path.join(remote.app.getPath('userData'), 'notes', note.name);
+    actions.deleteFolderRecursive(curNoteDir);
+  },
+  deleteFolderRecursive(path) {
+    const fs = require('fs');
+    if (fs.existsSync(path)) {
+      fs.readdirSync(path).forEach((file) => {
+        const curPath = `${path}/${file}`;
+        if (fs.lstatSync(curPath).isDirectory()) { // recurse
+          actions.deleteFolderRecursive(curPath);
+        } else { // delete file
+          fs.unlinkSync(curPath);
+        }
+      });
+      fs.rmdirSync(path);
     }
   },
   selectLanguage(store, language) {
