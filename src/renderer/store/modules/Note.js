@@ -152,7 +152,7 @@ const actions = {
     if (!fs.existsSync(notesDir)) {
       fs.mkdirSync(notesDir);
     }
-    const curNoteDir = path.join(notesDir, note.name);
+    const curNoteDir = path.join(notesDir, `${note.name}-${note.createdAt.getTime()}`);
     if (!fs.existsSync(curNoteDir)) {
       fs.mkdirSync(curNoteDir);
     }
@@ -171,7 +171,7 @@ const actions = {
     }), 'utf-8');
   },
   deleNoteFromFS(note) {
-    const curNoteDir = path.join(remote.app.getPath('userData'), 'notes', note.name);
+    const curNoteDir = path.join(remote.app.getPath('userData'), 'notes', `${note.name}-${note.createdAt.getTime()}`);
     actions.deleteFolderRecursive(curNoteDir);
   },
   deleteFolderRecursive(path) {
