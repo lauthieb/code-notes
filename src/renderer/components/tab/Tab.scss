@@ -1,0 +1,62 @@
+.c-tabs {
+  width: 100%;
+  background-color: $light;
+  height: 2.3rem;
+  position: relative;
+
+  &__buttons > .c-tabs__button {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.1rem;
+
+    &:hover {
+      background-color: #ccc;
+    }
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+    }
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    height: 100%;
+    margin-left: 1rem;
+    width: 94%;
+    text-align: left;
+  }
+
+  &__inner {
+    display: inline-flex;
+    height: 100%;
+    transition: all .5s;
+    align-items: center;
+  }
+
+  &__item {
+    background-color: darken(#519fc2, 15%);
+    color: #fff;
+    margin-left: .5rem;
+    border-radius: 1rem;
+    padding: .2rem .4rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    height: 2rem;
+
+    &.is-selected {
+      color: red;
+    }
+  }
+}

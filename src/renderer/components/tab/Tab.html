@@ -1,0 +1,27 @@
+<div class="c-tabs">
+
+  <div class="c-tabs__wrapper" ref="tabWrapper">
+    <div class="c-tabs__inner" ref="tabInner">
+      <div
+        class="c-tabs__item"
+        v-for="item in dataArr"
+        v-if="item.name"
+        @click="selectFile(item, $event)"
+      >
+      <slot name="name" :item="item"></slot>
+    </div>
+    </div>
+  </div>
+
+  <div class="c-tabs__buttons">
+    <button v-if="tabSlideIndex !== 0" @click="changeSlide('left')" type="button"
+      class="c-tabs__button c-tabs__button--left">
+      &lt;
+    </button>
+    <button v-if="tabSlideIndex !== tabSlidesLen" @click="changeSlide('right')" type="button"
+      class="c-tabs__button c-tabs__button--right">
+      &gt;
+    </button>
+  </div>
+
+</div>
