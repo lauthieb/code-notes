@@ -5,29 +5,47 @@
       <h2 class="text-red" v-if="displayDupError">Oh sorry, you can't have duplicated name in your note files...</h2>
     </header>
 
+    <Tab v-if="files.length > 1" :dataArr="files" v-slot:name="{ item }">
+      {{ item.name }}
+    </Tab>
+
+      <div v-if="selectedFile !== null" :class="{ 'c-selected-file': true }">
+        <b-field horizontal label="Name" grouped>
+            <b-input style="width: 186px" type="text" v-model="selectedFile.name" placeholder="Your file name">
+            </b-input>
+            <p class="control is-pulled-right" v-if="selectedFile.length > 1">
+              <button class="button is-danger" @click="deleteFile(selectedFile)">
+                <b-icon icon="trash"></b-icon>
+              </button>
+            </p>
+          </b-field>
+
+          <b-field horizontal label="Language">
+            <b-select placeholder="Select a language" v-model="selectedFile.language">
+              <option v-for="language in languages" :value="language.name">
+                {{ language.name | capitalize }}
+              </option>
+            </b-select>
+          </b-field>
+
+          <b-field horizontal label="Content">
+            <editor v-model="selectedFile.content" :lang="selectedFile.language" theme="monokai" width="100%" height="260"></editor>
+          </b-field>
+      </div>
+
     <section class="modal-card-body">
       <b-field v-if="!gistsSelected" horizontal label="Name">
-        <b-input
-          type="text"
-          ref="noteName"
-          v-model="note.name"
-          placeholder="Your note name">
+        <b-input type="text" ref="noteName" v-model="note.name" placeholder="Your note name">
         </b-input>
       </b-field>
 
       <b-field horizontal label="Description">
-        <b-input
-          type="text"
-          ref="noteDescription"
-          v-model="note.description"
-          placeholder="Your description">
+        <b-input type="text" ref="noteDescription" v-model="note.description" placeholder="Your description">
         </b-input>
       </b-field>
 
       <b-field v-if="!gistsSelected" horizontal label="Tags">
-        <b-taginput
-          v-model="note.tags"
-          maxtags="5">
+        <b-taginput v-model="note.tags" maxtags="5">
         </b-taginput>
       </b-field>
 
@@ -40,11 +58,7 @@
 
       <div class="note-file" v-for="file in files">
         <b-field horizontal label="Name" grouped>
-          <b-input
-            style="width: 186px"
-            type="text"
-            v-model="file.name"
-            placeholder="Your file name">
+          <b-input style="width: 186px" type="text" v-model="file.name" placeholder="Your file name">
           </b-input>
           <p class="control is-pulled-right" v-if="files.length > 1">
             <button class="button is-danger" @click="deleteFile(file)">
@@ -55,21 +69,14 @@
 
         <b-field horizontal label="Language">
           <b-select placeholder="Select a language" v-model="file.language">
-            <option
-              v-for="language in languages"
-              :value="language.name">
+            <option v-for="language in languages" :value="language.name">
               {{ language.name | capitalize }}
             </option>
           </b-select>
         </b-field>
 
         <b-field horizontal label="Content">
-          <editor v-model="file.content"
-                  :lang="file.language"
-                  theme="monokai"
-                  width="100%"
-                  height="260"
-          ></editor>
+          <editor v-model="file.content" :lang="file.language" theme="monokai" width="100%" height="260"></editor>
         </b-field>
       </div>
 

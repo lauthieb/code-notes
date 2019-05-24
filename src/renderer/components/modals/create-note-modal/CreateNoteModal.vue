@@ -4,6 +4,8 @@ import editor from '@/components/editor/Editor';
 import languages from '@/assets/data/languages.json';
 import converter from '@/converter';
 
+import Tab from '../../tab/Tab';
+
 const noteNameCharacters = 'abcdef0123456789';
 
 const generateNoteName = () => {
@@ -17,7 +19,7 @@ const generateNoteName = () => {
 export default {
   template: require('./CreateNoteModal.html'),
   name: 'cn-create-note-modal',
-  components: { editor },
+  components: { editor, Tab },
   data() {
     return {
       note: {
@@ -38,6 +40,7 @@ export default {
       ],
       languages,
       displayDupError: false,
+      selectedFile: null,
     };
   },
   mounted() {
