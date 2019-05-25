@@ -5,7 +5,7 @@
       <h2 class="text-red" v-if="displayDupError">Oh sorry, you can't have duplicated name in your note files...</h2>
     </header>
 
-    <Tab v-if="files.length > 1" :dataArr="files" v-slot:name="{ item }">
+    <Tab v-if="files.length" :dataArr="files" v-slot:name="{ item }">
       {{ item.name }}
     </Tab>
 

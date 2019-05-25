@@ -3,8 +3,9 @@
   <div class="c-tabs__wrapper" ref="tabWrapper">
     <div class="c-tabs__inner" ref="tabInner">
       <div
-        class="c-tabs__item"
+        :class="{ 'c-tabs__item': true }"
         v-for="item in dataArr"
+        :key="item.id"
         v-if="item.name"
         @click="selectFile(item, $event)"
       >

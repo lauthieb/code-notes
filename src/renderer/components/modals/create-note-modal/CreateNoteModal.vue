@@ -6,6 +6,8 @@ import converter from '@/converter';
 
 import Tab from '../../tab/Tab';
 
+import { createId } from '../../../../utils';
+
 const noteNameCharacters = 'abcdef0123456789';
 
 const generateNoteName = () => {
@@ -31,13 +33,14 @@ export default {
         createdAt: null,
         tags: [],
       },
-      files: [
-        {
-          name: '',
-          language: 'text',
-          content: '',
-        },
-      ],
+      files: [],
+
+      baseFile: {
+        name: '',
+        language: 'text',
+        content: '',
+      },
+
       languages,
       displayDupError: false,
       selectedFile: null,
@@ -76,11 +79,9 @@ export default {
       }
     },
     addFile() {
-      this.files.push({
-        name: '',
-        language: 'text',
-        content: '',
-      });
+      this.files.push({ id: createId(), ...this.baseFile });
+
+      Object.keys(this.baseFile).forEach(k => this.baseFile[k] = '');
     },
     deleteFile(file) {
       this.files = this.files.filter(f => f !== file);
@@ -108,7 +109,7 @@ export default {
   computed: {
     ...mapGetters(['gistsSelected']),
     isDisabled() {
-      return this.files.some(file => !/\S/.test(file.content));
+      return !this.files.length || this.files.some(file => !/\S/.test(file.content));
     },
   },
 };
