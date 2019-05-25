@@ -1,7 +1,7 @@
 .c-tabs {
   width: 100%;
   background-color: $light;
-  height: 2.3rem;
+  height: 2.4rem;
   position: relative;
 
   &__buttons > .c-tabs__button {
@@ -33,8 +33,8 @@
   &__wrapper {
     overflow: hidden;
     height: 100%;
-    margin-left: 1rem;
-    width: 94%;
+    margin-left: .6rem;
+    width: 95%;
     text-align: left;
   }
 
@@ -56,7 +56,8 @@
     height: 2rem;
 
     &.is-selected {
-      color: red;
+      color: darken(#519fc2, 15%);;
+      background-color: darken(#fff, 10%);
     }
   }
 }
