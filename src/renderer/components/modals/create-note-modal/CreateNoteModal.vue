@@ -81,7 +81,9 @@ export default {
     addFile() {
       this.files.push({ id: createId(), ...this.baseFile });
 
-      Object.keys(this.baseFile).forEach(k => this.baseFile[k] = '');
+      Object.keys(this.baseFile).forEach(
+          k => this.baseFile[k] = k !== 'language' ? '': this.languages[0].name)
+        ;
     },
     deleteFile(file) {
       this.files = this.files.filter(f => f !== file);
