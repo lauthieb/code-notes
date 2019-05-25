@@ -86,7 +86,9 @@ export default {
         ;
     },
     deleteFile(file) {
-      this.files = this.files.filter(f => f !== file);
+      this.files = this.files.filter(f => f.id !== file.id);
+      this.$refs.tab.recomputeSlidesLen();
+      this.selectedFile = null;
     },
     containsDupFiles() {
       const map = new Map();

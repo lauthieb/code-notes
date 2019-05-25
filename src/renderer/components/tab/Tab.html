@@ -3,7 +3,7 @@
   <div class="c-tabs__wrapper" ref="tabWrapper">
     <div class="c-tabs__inner" ref="tabInner">
       <div
-        :class="{ 'c-tabs__item': true }"
+        :class="{ 'c-tabs__item': true, 'is-selected': selectedFile && selectedFile.id === item.id }"
         v-for="item in dataArr"
         :key="item.id"
         v-if="item.name"
@@ -19,7 +19,7 @@
       class="c-tabs__button c-tabs__button--left">
       &lt;
     </button>
-    <button v-if="tabSlideIndex !== tabSlidesLen" @click="changeSlide('right')" type="button"
+    <button v-if="tabSlideIndex < tabSlidesLen" @click="changeSlide('right')" type="button"
       class="c-tabs__button c-tabs__button--right">
       &gt;
     </button>

@@ -6,7 +6,8 @@ export default {
     tabWrapperWidth: null,
     tabInnerWith: null,
     tabSlidesLen: null,
-    tabSlideIndex: 0
+    tabSlideIndex: 0,
+    selectedFile: null,
   }),
 
   props: {
@@ -21,10 +22,15 @@ export default {
       deep: true,
 
       // Adjust the witdh every time a file is added/deleted
-      handler () {
-        this.tabInnerWith = this.$refs.tabInner.offsetWidth;
+      handler (newVal, oldVal) {
+        this.recomputeSlidesLen();
+      }
+    },
 
-        this.tabSlidesLen = Math.ceil(this.tabInnerWith / this.tabWrapperWidth) - 1;
+    tabSlidesLen (len) {
+      if (len <= this.tabSlideIndex) {
+        this.tabSlideIndex = len === 0 ? 0 : len - 1;
+        this.$refs.tabInner.style.transform = 'translateX(0)';
       }
     }
   },
@@ -45,20 +51,28 @@ export default {
     },
 
     selectFile (item, ev) {
-      /* Logic to select a file... */
+      // Toggle
+      if (this.selectedFile && this.selectedFile.id === item.id) {
+        this.selectedFile = null;
+      } else {
+        this.selectedFile = item;
+      }
+
+      this.$emit('onFileSelected', this.selectedFile);
+    },
+
+    recomputeSlidesLen () {
+      this.$nextTick(() => {
+        this.tabWrapperWidth = this.$refs.tabWrapper.offsetWidth;
+        this.tabInnerWith = this.$refs.tabInner.offsetWidth;
+        this.tabSlidesLen = Math.ceil(this.tabInnerWith / this.tabWrapperWidth) - 1;
+      })
     }
   },
 
   mounted () {
 
-    this.tabWrapperWidth = this.$refs.tabWrapper.offsetWidth;
-    this.tabInnerWith = this.$refs.tabInner.offsetWidth;
-
-    this.tabSlidesLen = Math.ceil(this.tabInnerWith / this.tabWrapperWidth) - 1;
-
-    console.log(this.tabWrapperWidth)
-    console.log(this.tabInnerWith)
-    console.log(this.tabSlidesLen)
+    this.recomputeSlidesLen();
   }
 }
 </script>
