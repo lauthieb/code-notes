@@ -3,11 +3,14 @@ import { mapGetters, mapActions } from 'vuex';
 import editor from '@/components/editor/Editor';
 import languages from '@/assets/data/languages.json';
 import converter from '@/converter';
+import Tab from '../../tab/Tab';
+
+import { createId } from '../../../utils';
 
 export default {
   template: require('./UpdateNoteModal.html'),
   name: 'cn-update-note-modal',
-  components: { editor },
+  components: { editor, Tab },
   props: {
     note: Object,
   },
@@ -25,6 +28,12 @@ export default {
       gistFiles: [],
       languages,
       displayDupError: false,
+      selectedFile: null,
+      baseFile: {
+        name: '',
+        language: 'text',
+        content: '',
+      },
     };
   },
   mounted() {
@@ -38,10 +47,10 @@ export default {
     this.noteUpdated = { ...this.note };
     this.noteUpdated.files = {};
     Object.keys(this.note.files).forEach((key, index) => {
-      this.files.push({ ...this.note.files[key], id: index });
+      this.files.push({ ...this.note.files[key], id: createId() });
       this.gistFiles.push({
         ...this.note.files[key],
-        id: index,
+        id: createId(),
         deleted: false,
       });
     });
@@ -94,12 +103,15 @@ export default {
     },
     addFile() {
       this.files.push({
-        name: '',
-        language: 'text',
-        content: '',
+        id: createId(),
+        ...this.baseFile,
         deleted: false,
         added: true,
       });
+
+      Object.keys(this.baseFile).forEach(
+        k => this.baseFile[k] = k !== 'language' ? '': this.languages[0].name
+      );
     },
     deleteFile(file) {
       if (this.gistsSelected) {
@@ -111,6 +123,8 @@ export default {
       }
 
       this.files = this.files.filter(f => f !== file);
+      this.$refs.tab.recomputeSlidesLen();
+      this.selectedFile = null;
     },
     containsDupFiles() {
       const map = new Map();
@@ -134,7 +148,7 @@ export default {
   computed: {
     ...mapGetters(['gistsSelected']),
     isDisabled() {
-      return this.files.some(file => !/\S/.test(file.content));
+      return !this.files.length || this.files.some(file => !/\S/.test(file.content));
     },
   },
 };
