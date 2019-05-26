@@ -6,7 +6,7 @@ import converter from '@/converter';
 
 import Tab from '../../tab/Tab';
 
-import { createId } from '../../../../utils';
+import { createId } from '../../../utils';
 
 const noteNameCharacters = 'abcdef0123456789';
 
@@ -34,13 +34,11 @@ export default {
         tags: [],
       },
       files: [],
-
       baseFile: {
         name: '',
         language: 'text',
         content: '',
       },
-
       languages,
       displayDupError: false,
       selectedFile: null,
@@ -82,8 +80,8 @@ export default {
       this.files.push({ id: createId(), ...this.baseFile });
 
       Object.keys(this.baseFile).forEach(
-          k => this.baseFile[k] = k !== 'language' ? '': this.languages[0].name)
-        ;
+        k => this.baseFile[k] = k !== 'language' ? '': this.languages[0].name
+      );
     },
     deleteFile(file) {
       this.files = this.files.filter(f => f.id !== file.id);
