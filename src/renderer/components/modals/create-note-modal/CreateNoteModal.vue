@@ -57,6 +57,8 @@ export default {
       if (!this.containsDupFiles()) {
         const noteType = this.getNoteType();
 
+        !this.files.length && this.addFile();
+
         this.files.forEach((file, i) => {
           const filename = file.name || `${noteType}file${i + 1}`;
           const key = converter.filenameToKey(filename, file.language, noteType);
@@ -111,8 +113,13 @@ export default {
   computed: {
     ...mapGetters(['gistsSelected']),
     isDisabled() {
-      return !this.files.length || this.files.some(file => !/\S/.test(file.content));
+      return (this.isBaseFileValid && this.files.length)
+        || (!this.isBaseFileValid && !this.files.length)
+        || this.files.some(file => !/\S/.test(file.content));
     },
+    isBaseFileValid () {
+      return Object.values(this.baseFile).every(v => `${v}`.trim() !== '');
+    }
   },
 };
 </script>
