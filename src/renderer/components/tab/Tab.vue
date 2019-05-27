@@ -4,7 +4,7 @@
 export default {
   data: () => ({
     tabWrapperWidth: null,
-    tabInnerWith: null,
+    tabInnerWidth: null,
     tabSlidesLen: null,
     tabSlideIndex: 0,
     selectedFile: null,
@@ -63,9 +63,16 @@ export default {
 
     recomputeSlidesLen () {
       this.$nextTick(() => {
+        if (this.$refs.tabWrapper === undefined) {
+          // All the files have been deleted
+          this.tabSlidesLen = 0;
+
+          return;
+        }
+
         this.tabWrapperWidth = this.$refs.tabWrapper.offsetWidth;
-        this.tabInnerWith = this.$refs.tabInner.offsetWidth;
-        this.tabSlidesLen = Math.ceil(this.tabInnerWith / this.tabWrapperWidth) - 1;
+        this.tabInnerWidth = this.$refs.tabInner.offsetWidth;
+        this.tabSlidesLen = Math.ceil(this.tabInnerWidth / this.tabWrapperWidth) - 1;
       })
     }
   },
