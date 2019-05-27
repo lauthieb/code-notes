@@ -5,42 +5,6 @@
       <h2 class="text-red" v-if="displayDupError">Oh sorry, you can't have duplicated name in your note files...</h2>
     </header>
 
-    <Tab
-      ref="tab"
-      v-if="files.length"
-      :dataArr="files"
-      v-slot:name="{ item }"
-      @onFileSelected="selectedFile = $event"
-    >
-      {{ item.name }}
-    </Tab>
-
-    <!-- Selected file -->
-    <div v-if="selectedFile !== null" :class="{ 'c-selected-file': true }">
-      <b-field horizontal label="Name" grouped>
-        <b-input style="width: 186px" type="text" v-model="selectedFile.name" placeholder="Your file name">
-        </b-input>
-        <p class="control is-pulled-right">
-          <button class="button is-danger" @click="deleteFile(selectedFile)">
-            <b-icon icon="trash"></b-icon>
-          </button>
-        </p>
-      </b-field>
-
-      <b-field horizontal label="Language">
-        <b-select placeholder="Select a language" v-model="selectedFile.language">
-          <option v-for="language in languages" :value="language.name">
-            {{ language.name | capitalize }}
-          </option>
-        </b-select>
-      </b-field>
-
-      <b-field horizontal label="Content">
-        <editor v-model="selectedFile.content" :lang="selectedFile.language" theme="monokai" width="100%" height="260">
-        </editor>
-      </b-field>
-    </div>
-
     <section class="modal-card-body">
       <b-field v-if="!gistsSelected" horizontal label="Name">
         <b-input
@@ -93,6 +57,36 @@
         </button>
       </div>
     </section>
+
+    <Tab ref="tab" v-if="files.length" :dataArr="files" v-slot:name="{ item }" @onFileSelected="selectedFile = $event">
+      {{ item.name }}
+    </Tab>
+
+    <!-- Selected file -->
+    <div v-if="selectedFile !== null" :class="{ 'c-selected-file': true }">
+      <b-field horizontal label="Name" grouped>
+        <b-input style="width: 186px" type="text" v-model="selectedFile.name" placeholder="Your file name">
+        </b-input>
+        <p class="control is-pulled-right">
+          <button class="button is-danger" @click="deleteFile(selectedFile)">
+            <b-icon icon="trash"></b-icon>
+          </button>
+        </p>
+      </b-field>
+
+      <b-field horizontal label="Language">
+        <b-select placeholder="Select a language" v-model="selectedFile.language">
+          <option v-for="language in languages" :value="language.name">
+            {{ language.name | capitalize }}
+          </option>
+        </b-select>
+      </b-field>
+
+      <b-field horizontal label="Content">
+        <editor v-model="selectedFile.content" :lang="selectedFile.language" theme="monokai" width="100%" height="260">
+        </editor>
+      </b-field>
+    </div>
 
     <footer class="modal-card-foot">
       <button class="button" type="button" @click="$parent.close()">Cancel</button>
