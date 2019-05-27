@@ -147,21 +147,24 @@ const actions = {
     });
   },
   writeFileToFS(note, updateIfExists) {
-    const fs = require('fs');
+    const fs = require('fs-extra');
     const notesDir = path.join(remote.app.getPath('userData'), 'notes');
-    if (!fs.existsSync(notesDir)) {
-      fs.mkdirSync(notesDir);
-    }
+
+    // Create folder for current note
     const curNoteDir = path.join(notesDir, `${note.name}-${note.createdAt.getTime()}`);
     if (!fs.existsSync(curNoteDir)) {
-      fs.mkdirSync(curNoteDir);
+      fs.ensureDirSync(curNoteDir);
     }
+
+    // Write each file to filesystem
     Object.entries(note.files).forEach((file) => {
       const fileName = `${file[1].name}.${file[1].language}`;
       if (updateIfExists || !fs.exists(fileName)) {
         fs.writeFileSync(path.join(curNoteDir, fileName), file[1].content, 'utf-8');
       }
     });
+
+    // Write metadata to filesystem
     fs.writeFileSync(path.join(curNoteDir, 'metadata.json'), JSON.stringify({
       description: note.description,
       public: note.public,
@@ -171,22 +174,9 @@ const actions = {
     }), 'utf-8');
   },
   deleNoteFromFS(note) {
+    const fs = require('fs-extra');
     const curNoteDir = path.join(remote.app.getPath('userData'), 'notes', `${note.name}-${note.createdAt.getTime()}`);
-    actions.deleteFolderRecursive(curNoteDir);
-  },
-  deleteFolderRecursive(path) {
-    const fs = require('fs');
-    if (fs.existsSync(path)) {
-      fs.readdirSync(path).forEach((file) => {
-        const curPath = `${path}/${file}`;
-        if (fs.lstatSync(curPath).isDirectory()) { // recurse
-          actions.deleteFolderRecursive(curPath);
-        } else { // delete file
-          fs.unlinkSync(curPath);
-        }
-      });
-      fs.rmdirSync(path);
-    }
+    fs.removeSync(curNoteDir);
   },
   selectLanguage(store, language) {
     store.commit('SELECT_LANGUAGE', language);

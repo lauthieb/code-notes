@@ -18,7 +18,7 @@
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
     "dev": "node .electron-vue/dev-runner.js",
-    "e2e": "npm run pack && mocha test/e2e",
+    "e2e": "npm run pack && mocha --timeout 10000 test/e2e",
     "eslint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src test",
     "eslint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src test",
     "pack": "npm run pack:main && npm run pack:renderer",
@@ -63,6 +63,7 @@
     }
   },
   "dependencies": {
+    "fs-extra": "*",
     "@octokit/rest": "^14.0.8",
     "axios": "^0.16.1",
     "brace": "^0.11.0",
@@ -79,7 +80,6 @@
     "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "fs-extra": "*",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
