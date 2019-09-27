@@ -104,6 +104,10 @@
     "extension": "rb"
   },
   {
+    "name": "rust",
+    "extension": "rs"
+  },
+  {
     "name": "scss",
     "extension": "scss"
   },

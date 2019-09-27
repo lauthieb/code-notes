@@ -39,6 +39,7 @@ require('brace/mode/powershell');
 require('brace/mode/python');
 require('brace/mode/r');
 require('brace/mode/ruby');
+require('brace/mode/rust');
 require('brace/mode/scss');
 require('brace/mode/sh');
 require('brace/mode/sql');
