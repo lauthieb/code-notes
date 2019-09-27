@@ -138,7 +138,7 @@
     "vue-template-compiler": "^2.6.8",
     "vue2-ace-editor": "0.0.3",
     "webpack": "^3.5.2",
-    "webpack-dev-server": "^2.7.1",
+    "webpack-dev-server": "^3.1.11",
     "webpack-hot-middleware": "^2.18.2",
     "webpack-merge": "^4.1.0"
   }
