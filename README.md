@@ -69,10 +69,6 @@ Feel free to [add an issue](https://github.com/lauthieb/code-notes/issues/new) i
 
 <a href="https://www.buymeacoffee.com/lauthieb" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
 
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[1c165f7](https://github.com/SimulatedGREG/electron-vue/tree/1c165f7c5e56edaf48be0fbb70838a1af26bb015) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
-
 ## Contributors
 
 ### Code Contributors
@@ -102,3 +98,7 @@ Support this project with your organization. Your logo will show up here with a 
 <a href="https://opencollective.com/code-notes/organization/7/website"><img src="https://opencollective.com/code-notes/organization/7/avatar.svg"></a>
 <a href="https://opencollective.com/code-notes/organization/8/website"><img src="https://opencollective.com/code-notes/organization/8/avatar.svg"></a>
 <a href="https://opencollective.com/code-notes/organization/9/website"><img src="https://opencollective.com/code-notes/organization/9/avatar.svg"></a>
+
+---
+
+This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[1c165f7](https://github.com/SimulatedGREG/electron-vue/tree/1c165f7c5e56edaf48be0fbb70838a1af26bb015) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
