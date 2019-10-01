@@ -26,7 +26,7 @@
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "test": "npm run unit && npm run e2e",
     "unit": "karma start test/unit/karma.conf.js",
-    "postinstall": "npm run eslint:fix"
+    "postinstall": "npm run eslint:fix && opencollective-postinstall"
   },
   "build": {
     "productName": "Code Notes",
@@ -72,6 +72,7 @@
     "font-awesome": "^4.7.0",
     "fs-extra": "^6.0.0",
     "nedb": "^1.8.0",
+    "opencollective-postinstall": "^2.0.2",
     "source-sans-pro": "^2.45.0",
     "vue": "^2.6.8",
     "vue-clipboard2": "0.0.8",
@@ -141,5 +142,9 @@
     "webpack-dev-server": "^3.1.11",
     "webpack-hot-middleware": "^2.18.2",
     "webpack-merge": "^4.1.0"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/code-notes"
   }
 }

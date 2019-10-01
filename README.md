@@ -15,7 +15,7 @@ A simple code snippet & gist manager for developers built with Electron & Vue.js
 <div align="center">
   
 [![Build Status](https://travis-ci.org/lauthieb/code-notes.svg?branch=master)](https://travis-ci.org/lauthieb/code-notes)
-[![Join the chat at https://gitter.im/code-notes/community](https://badges.gitter.im/code-notes/community.svg)](https://gitter.im/code-notes/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Financial Contributors on Open Collective](https://opencollective.com/code-notes/all/badge.svg?label=financial+contributors)](https://opencollective.com/code-notes) [![Join the chat at https://gitter.im/code-notes/community](https://badges.gitter.im/code-notes/community.svg)](https://gitter.im/code-notes/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/makes-people-smile.svg)](http://forthebadge.com)
@@ -72,3 +72,33 @@ Feel free to [add an issue](https://github.com/lauthieb/code-notes/issues/new) i
 ---
 
 This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[1c165f7](https://github.com/SimulatedGREG/electron-vue/tree/1c165f7c5e56edaf48be0fbb70838a1af26bb015) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/lauthieb/code-notes/graphs/contributors"><img src="https://opencollective.com/code-notes/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/code-notes/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/code-notes"><img src="https://opencollective.com/code-notes/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/code-notes/contribute)]
+
+<a href="https://opencollective.com/code-notes/organization/0/website"><img src="https://opencollective.com/code-notes/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/1/website"><img src="https://opencollective.com/code-notes/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/2/website"><img src="https://opencollective.com/code-notes/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/3/website"><img src="https://opencollective.com/code-notes/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/4/website"><img src="https://opencollective.com/code-notes/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/5/website"><img src="https://opencollective.com/code-notes/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/6/website"><img src="https://opencollective.com/code-notes/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/7/website"><img src="https://opencollective.com/code-notes/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/8/website"><img src="https://opencollective.com/code-notes/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/code-notes/organization/9/website"><img src="https://opencollective.com/code-notes/organization/9/avatar.svg"></a>
