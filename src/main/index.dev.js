@@ -8,7 +8,7 @@
 /* eslint-disable */
 
 // Set environment for development
-process.env.NODE_ENV = 'development';
+// process.env.NODE_ENV = 'development'; THIS IS NOW SET WITH npm run dev
 
 // Install `electron-debug` with `devtron`
 require('electron-debug')({ showDevTools: true });
