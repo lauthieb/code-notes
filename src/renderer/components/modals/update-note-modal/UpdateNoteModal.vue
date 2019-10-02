@@ -1,5 +1,3 @@
-<template src="./UpdateNoteModal.html"> </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import editor from '@/components/editor/Editor';
@@ -7,6 +5,7 @@ import languages from '@/assets/data/languages.json';
 import converter from '@/converter';
 
 export default {
+  template: require('./UpdateNoteModal.html'),
   name: 'cn-update-note-modal',
   components: { editor },
   props: {
@@ -52,7 +51,7 @@ export default {
     updateNoteModal() {
       if (!this.containsDupFiles()) {
         if (this.gistsSelected) {
-          this.files.forEach(file => {
+          this.files.forEach((file) => {
             if (file.added) {
               this.gistFiles.push(file);
             }
@@ -79,7 +78,7 @@ export default {
             }
           });
         } else {
-          this.files.forEach(file => {
+          this.files.forEach((file) => {
             const key = converter.filenameToKey(file.name, file.language, this.getNoteType());
             this.noteUpdated.files[key] = file;
           });
@@ -117,7 +116,7 @@ export default {
       const map = new Map();
       let dupFiles = false;
 
-      this.files.forEach(file => {
+      this.files.forEach((file) => {
         const key = converter.filenameToKey(file.name, file.language, this.getNoteType());
         if (map.has(key)) {
           dupFiles = true;

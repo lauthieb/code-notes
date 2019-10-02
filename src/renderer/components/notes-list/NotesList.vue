@@ -1,5 +1,3 @@
-<template src="./NotesList.html"> </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import NoteCard from './note-card/NoteCard';
@@ -8,6 +6,7 @@ import SettingsModal from '../modals/settings-modal/SettingsModal';
 import HelpTokenModal from '../modals/help-token-modal/HelpTokenModal';
 
 export default {
+  template: require('./NotesList.html'),
   name: 'cn-notes-list',
   components: {
     'cn-note-card': NoteCard,
@@ -39,33 +38,24 @@ export default {
       const notesFiltered = this.notes.filter(item =>
         this.searchField
           .split(' ')
-          .every(
-            el =>
-              item.name.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
+          .every(el =>
+            item.name.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
               item.description.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
               (item.tags
-                ? item.tags.some(
-                    tag => tag.toLowerCase().indexOf(el.toLowerCase()) > -1
-                  )
+                ? item.tags.some(tag => tag.toLowerCase().indexOf(el.toLowerCase()) > -1)
                 : false) ||
-              Object.keys(item.files).some(
-                key =>
-                  key.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
+              Object.keys(item.files).some(key =>
+                key.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
                   item.files[key].language
                     .toLowerCase()
-                    .indexOf(el.toLowerCase()) > -1
-              )
-          )
-      );
+                    .indexOf(el.toLowerCase()) > -1)));
 
       if (this.languageSelected !== 'all') {
         const notesFilteredByLanguage = [];
 
-        notesFiltered.forEach(note => {
+        notesFiltered.forEach((note) => {
           if (
-            Object.keys(note.files).some(
-              key => note.files[key].language === this.languageSelected
-            )
+            Object.keys(note.files).some(key => note.files[key].language === this.languageSelected)
           ) {
             notesFilteredByLanguage.push(note);
           }
@@ -78,7 +68,7 @@ export default {
     },
   },
   beforeRouteEnter(route, redirect, next) {
-    next(vm => {
+    next((vm) => {
       vm.loadNotes();
       vm.loadSettings();
     });
