@@ -78,7 +78,8 @@
     "vue-clipboard2": "0.0.8",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.2",
-    "vuex": "^3.1.0"
+    "vuex": "^3.1.0",
+    "vuex-cache": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
