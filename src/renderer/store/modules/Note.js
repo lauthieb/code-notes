@@ -4,7 +4,9 @@ import path from 'path';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { remote } from 'electron';
 
-const octokit = require('@octokit/rest')({
+const Octokit = require('@octokit/rest');
+
+let octokit = Octokit({
   requestMedia: 'application/vnd.github.v3+json',
   headers: {
     'user-agent': 'octokit/rest.js v1.2.3',
@@ -48,6 +50,16 @@ const mutations = {
 
 const actions = {
   loadNotes(store) {
+    if (store.rootState.Settings.settings.githubEnterpriseUrl) {
+      octokit = Octokit({
+        baseUrl: store.rootState.Settings.settings.githubEnterpriseUrl,
+        requestMedia: 'application/vnd.github.v3+json',
+        headers: {
+          'user-agent': 'octokit/rest.js v1.2.3',
+        },
+      });
+    }
+
     if (store.state.gistsSelected) {
       if (store.rootState.Settings.settings.githubPersonalAccessToken) {
         store.commit('SELECT_LOADING', true);
