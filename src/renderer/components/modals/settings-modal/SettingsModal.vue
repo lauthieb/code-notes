@@ -1,9 +1,8 @@
-<template src="./SettingsModal.html"> </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+  template: require('./SettingsModal.html'),
   name: 'cn-settings-modal',
   data() {
     return {

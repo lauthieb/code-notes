@@ -1,7 +1,6 @@
-<template src="./HelpTokenModal.html"> </template>
-
 <script>
 export default {
+  template: require('./HelpTokenModal.html'),
   name: 'cn-help-token-modal',
 };
 </script>

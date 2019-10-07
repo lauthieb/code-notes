@@ -1,5 +1,3 @@
-<template src="./CreateNoteModal.html"> </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import editor from '@/components/editor/Editor';
@@ -10,12 +8,14 @@ const noteNameCharacters = 'abcdef0123456789';
 
 const generateNoteName = () => {
   let text = '';
-  for (let i = 0; i < 32; i += 1)
+  for (let i = 0; i < 32; i += 1) {
     text += noteNameCharacters.charAt(Math.floor(Math.random() * 16));
+  }
   return text;
 };
 
 export default {
+  template: require('./CreateNoteModal.html'),
   name: 'cn-create-note-modal',
   components: { editor },
   data() {
@@ -86,7 +86,7 @@ export default {
       const map = new Map();
       let dupFiles = false;
 
-      this.files.forEach(file => {
+      this.files.forEach((file) => {
         const key = converter.filenameToKey(file.name, file.language, this.getNoteType());
 
         if (map.has(key)) {
