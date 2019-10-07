@@ -70,7 +70,7 @@
     "nedb": "^1.8.0",
     "opencollective-postinstall": "^2.0.2",
     "source-sans-pro": "^2.45.0",
-    "vue": "^2.5.16",
+    "vue": "^2.6.8",
     "axios": "^0.18.0",
     "vue-electron": "^1.0.6",
     "vue-clipboard2": "0.0.8",
