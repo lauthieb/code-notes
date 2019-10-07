@@ -2,7 +2,7 @@
 # https://simulatedgreg.gitbooks.io/electron-vue/content/en/testing.html#on-the-subject-of-ci-testing
 osx_image: xcode8.3
 language: node_js
-node_js: 7.10.1
+node_js: 8.16.1
 matrix:
   include:
   - os: osx

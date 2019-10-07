@@ -1,5 +1,3 @@
-<template src="./NoteCard.html"> </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import ColorHash from 'color-hash';
@@ -8,6 +6,7 @@ import UpdateNoteModal from '@/components/modals/update-note-modal/UpdateNoteMod
 import BTooltip from '../../../../../node_modules/buefy/src/components/tooltip/Tooltip.vue';
 
 export default {
+  template: require('./NoteCard.html'),
   name: 'cn-note-card',
   components: {
     BTooltip,
@@ -62,9 +61,9 @@ export default {
       this.$electron.shell.openExternal(link);
     },
     exportToCarbon(content) {
-      let url = `https://carbon.now.sh/?bg=rgba(0,0,0,0)&t=dracula&l=auto&ds=true&wc=true&wa=true&pv=43px&ph=57px&ln=false&code=`;
-      this.$electron.shell.openExternal(`${url}${encodeURI(content)}`)
-    }
+      const url = 'https://carbon.now.sh/?bg=rgba(0,0,0,0)&t=dracula&l=auto&ds=true&wc=true&wa=true&pv=43px&ph=57px&ln=false&code=';
+      this.$electron.shell.openExternal(`${url}${encodeURI(content)}`);
+    },
   },
 };
 </script>

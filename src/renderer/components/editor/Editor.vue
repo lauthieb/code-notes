@@ -1,5 +1,3 @@
-<template src="./Editor.html"> </template>
-
 <script>
 import ace from 'brace';
 import emmet from 'emmet';
@@ -7,6 +5,7 @@ import emmet from 'emmet';
 window.emmet = emmet;
 
 export default {
+  template: require('./Editor.html'),
   name: 'editor',
   props: {
     code: String,
