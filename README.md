@@ -57,7 +57,10 @@ npm run build
 npm test
 
 # lint all JS/Vue component files in `src/`
-npm run eslint
+npm run lint
+
+# fix all lint issues
+npm run lint:fix
 ```
 
 ### Roadmap to V1.3.0 💪🏻
