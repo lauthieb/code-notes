@@ -5,13 +5,7 @@ import path from 'path';
 import { remote } from 'electron';
 
 const Octokit = require('@octokit/rest');
-
-let octokit = Octokit({
-  requestMedia: 'application/vnd.github.v3+json',
-  headers: {
-    'user-agent': 'octokit/rest.js v1.2.3',
-  },
-});
+let octokit = Octokit();
 
 const state = {
   notes: [],
@@ -50,31 +44,35 @@ const mutations = {
 
 const actions = {
   loadNotes(store) {
-    if (store.rootState.Settings.settings.githubEnterpriseUrl) {
-      octokit = Octokit({
-        baseUrl: store.rootState.Settings.settings.githubEnterpriseUrl,
-        requestMedia: 'application/vnd.github.v3+json',
-        headers: {
-          'user-agent': 'octokit/rest.js v1.2.3',
-        },
-      });
-    }
-
     if (store.state.gistsSelected) {
       if (store.rootState.Settings.settings.githubPersonalAccessToken) {
         store.commit('SELECT_LOADING', true);
         store.commit('LOAD_NOTES', []);
 
-        octokit.authenticate({
-          type: 'token',
-          token: store.rootState.Settings.settings.githubPersonalAccessToken,
-        });
+        if (store.rootState.Settings.settings.githubEnterpriseUrl) {
+          octokit = Octokit({
+            baseUrl: store.rootState.Settings.settings.githubEnterpriseUrl,
+            userAgent: 'code-notes v1.2.3',
+            auth: store.rootState.Settings.settings.githubPersonalAccessToken,
+            mediaType: {
+              format: 'application/vnd.github.v3+json',
+            },
+          });
+        } else {
+          octokit = Octokit({
+            userAgent: 'code-notes v1.2.3',
+            auth: store.rootState.Settings.settings.githubPersonalAccessToken,
+            mediaType: {
+              format: 'application/vnd.github.v3+json',
+            },
+          });
+        }
 
-        octokit.gists.getAll().then((res) => {
+        octokit.gists.list().then((res) => {
           const promises = [];
 
           res.data.forEach((gist) => {
-            promises.push(octokit.gists.get({ id: gist.id }));
+            promises.push(octokit.gists.get({ gist_id: gist.id }));
           });
 
           Promise.all(promises).then((values) => {
@@ -121,8 +119,8 @@ const actions = {
   updateNote(store, note) {
     if (store.state.gistsSelected) {
       octokit.gists
-        .edit({
-          id: note.id,
+        .update({
+          gist_id: note.id,
           files: note.files,
           description: note.description,
         })
@@ -139,7 +137,7 @@ const actions = {
   deleteNote(store, note) {
     store.commit('SELECT_LOADING', true);
     if (store.state.gistsSelected) {
-      octokit.gists.delete({ id: note.id }).then(() => {
+      octokit.gists.delete({ gist_id: note.id }).then(() => {
         store.commit('DELETE_NOTE', note);
         store.commit('SELECT_LOADING', false);
       });
