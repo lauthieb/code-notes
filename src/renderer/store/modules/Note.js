@@ -1,7 +1,6 @@
 import db from '@/datastore-notes';
 import converter from '@/converter';
 import path from 'path';
-
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { remote } from 'electron';
 import packageJson from '../../../../package';
