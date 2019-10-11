@@ -1,11 +1,18 @@
 import db from '@/datastore-notes';
 import converter from '@/converter';
 import path from 'path';
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { remote } from 'electron';
+import packageJson from '../../../../package';
 
 const Octokit = require('@octokit/rest');
-let octokit = Octokit();
+let octokit = new Octokit({
+  userAgent: 'code-notes'.concat(packageJson.version),
+  mediaType: {
+    format: 'application/vnd.github.v3+json',
+  },
+});
 
 const state = {
   notes: [],
@@ -52,21 +59,11 @@ const actions = {
         if (store.rootState.Settings.settings.githubEnterpriseUrl) {
           octokit = Octokit({
             baseUrl: store.rootState.Settings.settings.githubEnterpriseUrl,
-            userAgent: 'code-notes v1.2.3',
-            auth: store.rootState.Settings.settings.githubPersonalAccessToken,
-            mediaType: {
-              format: 'application/vnd.github.v3+json',
-            },
-          });
-        } else {
-          octokit = Octokit({
-            userAgent: 'code-notes v1.2.3',
-            auth: store.rootState.Settings.settings.githubPersonalAccessToken,
-            mediaType: {
-              format: 'application/vnd.github.v3+json',
-            },
           });
         }
+        octokit = Octokit({
+          auth: store.rootState.Settings.settings.githubPersonalAccessToken,
+        });
 
         octokit.gists.list().then((res) => {
           const promises = [];
