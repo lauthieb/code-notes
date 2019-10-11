@@ -6,7 +6,7 @@ import { remote } from 'electron';
 import packageJson from '../../../../package';
 
 const Octokit = require('@octokit/rest');
-let octokit = new Octokit({
+let octokit = Octokit({
   userAgent: 'code-notes'.concat(packageJson.version),
   mediaType: {
     format: 'application/vnd.github.v3+json',
@@ -56,14 +56,15 @@ const actions = {
         store.commit('LOAD_NOTES', []);
 
         if (store.rootState.Settings.settings.githubEnterpriseUrl) {
-          octokit = Octokit({
+          octokit = new Octokit({
             baseUrl: store.rootState.Settings.settings.githubEnterpriseUrl,
+            auth: store.rootState.Settings.settings.githubPersonalAccessToken,
+          });
+        } else {
+          octokit = new Octokit({
+            auth: store.rootState.Settings.settings.githubPersonalAccessToken,
           });
         }
-        octokit = Octokit({
-          auth: store.rootState.Settings.settings.githubPersonalAccessToken,
-        });
-
         octokit.gists.list().then((res) => {
           const promises = [];
 
