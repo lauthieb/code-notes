@@ -1,16 +1,18 @@
 import db from '@/datastore-notes';
 import converter from '@/converter';
+import Octokit from '@octokit/rest';
 import path from 'path';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { remote } from 'electron';
 import packageJson from '../../../../package';
 
-const Octokit = require('@octokit/rest');
-let octokit = Octokit({
+const getOctokit = ({ githubPersonalAccessToken, githubEnterpriseUrl }) => new Octokit({
+  auth: githubPersonalAccessToken,
   userAgent: 'code-notes'.concat(packageJson.version),
   mediaType: {
     format: 'application/vnd.github.v3+json',
   },
+  ...(githubEnterpriseUrl && { baseUrl: githubEnterpriseUrl }),
 });
 
 const state = {
@@ -55,16 +57,8 @@ const actions = {
         store.commit('SELECT_LOADING', true);
         store.commit('LOAD_NOTES', []);
 
-        if (store.rootState.Settings.settings.githubEnterpriseUrl) {
-          octokit = new Octokit({
-            baseUrl: store.rootState.Settings.settings.githubEnterpriseUrl,
-            auth: store.rootState.Settings.settings.githubPersonalAccessToken,
-          });
-        } else {
-          octokit = new Octokit({
-            auth: store.rootState.Settings.settings.githubPersonalAccessToken,
-          });
-        }
+        const octokit = getOctokit(store.rootState.Settings.settings);
+
         octokit.gists.list().then((res) => {
           const promises = [];
 
@@ -99,6 +93,9 @@ const actions = {
   },
   addNote(store, note) {
     store.commit('SELECT_LOADING', true);
+
+    const octokit = getOctokit(store.rootState.Settings.settings);
+
     if (store.state.gistsSelected) {
       octokit.gists.create(note).then(() => {
         store.dispatch('loadNotes');
@@ -115,6 +112,8 @@ const actions = {
   },
   updateNote(store, note) {
     if (store.state.gistsSelected) {
+      const octokit = getOctokit(store.rootState.Settings.settings);
+
       octokit.gists
         .update({
           gist_id: note.id,
@@ -133,6 +132,9 @@ const actions = {
   },
   deleteNote(store, note) {
     store.commit('SELECT_LOADING', true);
+
+    const octokit = getOctokit(store.rootState.Settings.settings);
+
     if (store.state.gistsSelected) {
       octokit.gists.delete({ gist_id: note.id }).then(() => {
         store.commit('DELETE_NOTE', note);
