@@ -1,7 +1,7 @@
-<template src="./Tab.html"></template>
-
 <script>
 export default {
+  template: require('./Tab.html'),
+
   data: () => ({
     tabWrapperWidth: null,
     tabInnerWidth: null,
