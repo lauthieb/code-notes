@@ -1,7 +1,7 @@
 import languages from './assets/data/languages';
 
 const converter = {
-  filenameToKey(filename, language, type = 'note') {
+  filenameToKey = (filename, language, type = 'note') => {
     // Build separator by type
     const separator = (type === 'gist') ? '.' : '-';
 
@@ -14,19 +14,19 @@ const converter = {
 
     return `${name}${separator}${this.languageToExtension(language)}`;
   },
-  languageToExtension(language) {
+  languageToExtension = (language) => {
     if (languages.filter(l => l.name === language).length > 0) {
       return languages.filter(l => l.name === language)[0].extension;
     }
     return 'txt';
   },
-  extensionToLanguage(extension) {
+  extensionToLanguage = (extension) => {
     if (languages.filter(l => l.extension === extension).length > 0) {
       return languages.filter(l => l.extension === extension)[0].name;
     }
     return 'text';
   },
-  gistToNote(gist) {
+  gistToNote = (gist) => {
     const files = [];
 
     Object.keys(gist.files).forEach((key) => {
@@ -46,7 +46,7 @@ const converter = {
       files,
     };
   },
-  noteToGist(note) {
+  noteToGist = (note) => {
     const files = {};
 
     note.files.forEach((file) => {
