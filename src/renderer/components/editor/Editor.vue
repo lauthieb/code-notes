@@ -16,12 +16,27 @@ export default {
     height: true,
     width: true,
     readOnly: Boolean,
+    autoGrow: Boolean,
   },
   data() {
     return {
       editor: null,
       contentBackup: '',
+      fullScreen: false,
     };
+  },
+  computed: {
+    editorHeight() {
+      if (this.autoGrow && !this.fullScreen) return undefined;
+      if (this.height && !this.fullScreen) return this.px(this.height);
+      return '100%'
+    },
+    editorStyle() {
+      return {
+        width: this.width && !this.fullScreen ? this.px(this.width) : '100%',
+        height: this.editorHeight,
+      }
+    },
   },
   methods: {
     px(n) {
@@ -30,6 +45,10 @@ export default {
       }
       return n;
     },
+    toggleFullscreen() {
+      this.fullScreen = !this.fullScreen;
+      this.editor.resize();
+    }
   },
   watch: {
     value(val) {
@@ -49,7 +68,7 @@ export default {
 
     require('brace/ext/emmet');
 
-    const editor = (vm.editor = ace.edit(this.$el));
+    const editor = (vm.editor = ace.edit(this.$refs.editor));
 
     this.$emit('init', editor);
 
@@ -61,12 +80,14 @@ export default {
     editor.setShowPrintMargin(false);
 
     if (!this.readOnly) {
-      editor.setOption('minLines', 15);
       editor.setValue(this.value, 1);
     } else {
       editor.setValue(this.code, 1);
     }
     editor.setReadOnly(this.readOnly);
+    if(this.autoGrow) {
+      editor.setOption('maxLines', Infinity);
+    }
 
     editor.on('change', () => {
       const content = editor.getValue();

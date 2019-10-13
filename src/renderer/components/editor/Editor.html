@@ -1,1 +1,14 @@
-<div id="editor" :style="{width: width ? px(width) : '100%'}"></div>
+<div class="editor" :class="{'editor--fullscreen': fullScreen}">
+  <div id="editor" ref="editor" :style="editorStyle"></div>
+  <a
+    href="#"
+    class="editor__fullscreen-toggle"
+    @click="toggleFullscreen"
+    v-if="!readOnly"
+    title="Toggle fullscreen mode"
+  >
+    <b-icon
+      :icon="fullScreen ? 'compress': 'expand'"
+    ></b-icon>
+  </a>
+</div>
