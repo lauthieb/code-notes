@@ -1,5 +1,5 @@
 .box {
-  margin: 0;
+  margin: 0.6em 0;
   padding-bottom: 0.5rem!important;
 
   .media-content {
@@ -70,7 +70,7 @@
     }
     #export-carbon {
       color: $dark;
-   
+
       &:hover {
         color: lighten($black, 20%);
       }
