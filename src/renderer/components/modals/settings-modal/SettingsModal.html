@@ -5,6 +5,14 @@
     </header>
 
     <section class="modal-card-body">
+      <b-field label="Github Enterprise Users Only">
+        <b-input
+          type="text"
+          ref="githubEnterpriseUrl"
+          v-model="newSettings.githubEnterpriseUrl"
+          placeholder="https://github.host/api/v3">
+        </b-input>
+      </b-field>
       <b-field label="Personal access token">
         <b-input
           type="text"
