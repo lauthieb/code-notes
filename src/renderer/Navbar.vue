@@ -6,6 +6,11 @@
       alt="Code Notes logo"
     />
     <div class="is-pulled-right">
+      <b-dropdown aria-role="menu" v-model="locale" position="is-bottom-left">
+            <b-icon id="language" slot="trigger" icon="globe"></b-icon>
+            <b-dropdown-item  v-for="lang in $i18n.availableLocales" :key="lang" :value="lang" aria-role="menuitem">{{ lang.toUpperCase() }}</b-dropdown-item>
+      </b-dropdown>
+
       <a id="help" @click="helpTokenModalActive = true" title="Help">
         <b-icon icon="question-circle"></b-icon>
       </a>
@@ -82,7 +87,16 @@ export default {
       appVersion: remote.app.getVersion(),
       aboutCodeNotesModalActive: false,
       helpTokenModalActive: false,
+      locale: ''
     };
+  },
+  created() {
+    this.locale = remote.app.getLocale()
+  },
+  watch: {
+    locale () {
+      this.$i18n.locale = this.locale
+    }
   },
   methods: {
     open(link) {
@@ -109,6 +123,13 @@ nav {
     left: 4%;
   }
 
+  #language {
+    color: $light;
+    position: relative;
+    top: 20px;
+    right: 20px;
+  }
+  
   #about-code-notes,
   #github,
   #help {

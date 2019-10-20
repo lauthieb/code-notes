@@ -22,18 +22,18 @@
       </li>
     </ul>
     <p class="menu-label" v-if="!isLoading">
-      Languages
+      {{ $t('sidebar.lang.text') }}
     </p>
     <ul class="menu-list" id="menu-list-languages" v-if="!isLoading">
       <li>
         <a
           :class="{ 'is-active': languageSelected === 'all' }"
           @click="selectLanguageSidebar('all')"
-          >All
+          >{{ $t('sidebar.all.text') }}
           <b-tag class="is-pulled-right" type="is-dark">{{ totalFiles }}</b-tag>
         </a>
       </li>
-      <li v-for="(list, value) in Array.from(languages)">
+      <li v-for="(list) in Array.from(languages)" :key="list">
         <a
           :class="{ 'is-active': languageSelected === list[0] }"
           @click="selectLanguageSidebar(list[0])"

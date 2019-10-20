@@ -1,26 +1,26 @@
 <form action="">
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Create {{gistsSelected ? 'gist' : 'note'}}</p>
-      <h2 class="text-red" v-if="displayDupError">Oh sorry, you can't have duplicated name in your note files...</h2>
+      <p class="modal-card-title">{{ $t('form.new', { item : gistsSelected ? 'gist' : 'note' }) }}</p>
+      <h2 class="text-red" v-if="displayDupError">{{ $t('form.duplicate', { item : gistsSelected ? 'gist' : 'note' }) }}/h2>
     </header>
 
     <section class="modal-card-body">
-      <b-field v-if="!gistsSelected" horizontal label="Name">
+      <b-field v-if="!gistsSelected" horizontal :label="$t('form.name.label')">
         <b-input
           type="text"
           ref="noteName"
           v-model="note.name"
-          placeholder="Your note name">
+          :placeholder="$t('form.name.field')">
         </b-input>
       </b-field>
 
-      <b-field horizontal label="Description">
+      <b-field horizontal :label="$t('form.description.label')">
         <b-input
           type="text"
           ref="noteDescription"
           v-model="note.description"
-          placeholder="Your description">
+          :placeholder="$t('form.description.field')">
         </b-input>
       </b-field>
 
@@ -31,7 +31,7 @@
         </b-taginput>
       </b-field>
 
-      <b-field v-if="gistsSelected" horizontal label="Visibility">
+      <b-field v-if="gistsSelected" horizontal :label="$t('form.visibility.label')">
         <b-select placeholder="Select a visibility" v-model="note.public">
           <option :value="false">Secret</option>
           <option :value="true">Public</option>
@@ -39,12 +39,12 @@
       </b-field>
 
       <div class="note-file" v-for="file in files">
-        <b-field horizontal label="Name" grouped>
+        <b-field horizontal :label="$t('form.namefile.label')" grouped>
           <b-input
             style="width: 186px"
             type="text"
             v-model="file.name"
-            placeholder="Your file name">
+            :placeholder="$t('form.namefile.field')">
           </b-input>
           <p class="control is-pulled-right" v-if="files.length > 1">
             <button class="button is-danger" @click="deleteFile(file)">
@@ -53,7 +53,7 @@
           </p>
         </b-field>
 
-        <b-field horizontal label="Language">
+        <b-field horizontal :label="$t('form.language.label')">
           <b-select placeholder="Select a language" v-model="file.language">
             <option
               v-for="language in languages"
@@ -63,7 +63,7 @@
           </b-select>
         </b-field>
 
-        <b-field horizontal label="Content">
+        <b-field horizontal :label="$t('form.content.label')"">
           <editor v-model="file.content"
                   :lang="file.language"
                   theme="monokai"
@@ -76,14 +76,14 @@
       <div class="text-center">
         <button class="button" type="button" @click="addFile()" v-if="files.length < 5">
           <b-icon id="plus" icon="plus"></b-icon>
-          Add a file
+          {{ $t('form.addfile.label') }}
         </button>
       </div>
     </section>
 
     <footer class="modal-card-foot">
-      <button class="button" type="button" @click="$parent.close()">Cancel</button>
-      <button class="button is-primary" type="button" :disabled="isDisabled" @click="createNote()">Create</button>
+      <button class="button" type="button" @click="$parent.close()">{{ $t('form.cancel.label') }}</button>
+      <button class="button is-primary" type="button" :disabled="isDisabled" @click="createNote()"> {{ $t('form.create.label') }}</button>
     </footer>
   </div>
 </form>

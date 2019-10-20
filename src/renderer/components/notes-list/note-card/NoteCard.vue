@@ -38,12 +38,12 @@ export default {
       this.updateNote(this.note);
     },
     deleteNoteModal() {
+      console.log(this.$dialog)
       this.$dialog.confirm({
-        title: this.gistsSelected ? 'Delete gist' : 'Delete note',
-        message: `Are you sure you want to delete this ${
-          this.gistsSelected ? 'gist' : 'note'
-        } ?`,
-        confirmText: 'Delete',
+        title: this.$t('card.title', { item : (this.gistsSelected ? 'gist' : 'note') }),
+        message: this.$t('card.message', { item : (this.gistsSelected ? 'gist' : 'note') }),
+        confirmText: this.$t('card.delete', { item : (this.gistsSelected ? 'gist' : 'note') }),
+        cancelText: this.$t('card.cancel', { item : (this.gistsSelected ? 'gist' : 'note') }),
         type: 'is-danger',
         hasIcon: true,
         onConfirm: () => {

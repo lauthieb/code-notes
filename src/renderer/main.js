@@ -8,6 +8,7 @@ import 'source-sans-pro/source-sans-pro.css';
 
 import App from './App';
 
+import i18n from './plugins/i18n/index';
 import router from './router';
 import store from './store';
 import db from './datastore-notes';
@@ -71,5 +72,6 @@ new Vue({
   components: { App },
   router,
   store,
+  i18n,
   template: '<App/>',
 }).$mount('#app');

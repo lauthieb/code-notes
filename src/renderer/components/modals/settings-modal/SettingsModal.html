@@ -1,7 +1,7 @@
 <form action="">
   <div id="settings-modal" class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Settings</p>
+      <p class="modal-card-title">{{ $t('settings.title.label') }}</p>
     </header>
 
     <section class="modal-card-body">
@@ -18,14 +18,14 @@
           type="text"
           ref="githubPersonalAccessToken"
           v-model="newSettings.githubPersonalAccessToken"
-          placeholder="Your Github personal access token">
+          :placeholder="$t('settings.token.label')">
         </b-input>
       </b-field>
     </section>
 
     <footer class="modal-card-foot">
-      <button class="button" type="button" @click="$parent.close()">Cancel</button>
-      <button class="button is-primary" type="button" @click="save()">Save</button>
+      <button class="button" type="button" @click="$parent.close()">{{ $t('settings.cancel.label') }}</button>
+      <button class="button is-primary" type="button" @click="save()">{{ $t('settings.save.label') }}</button>
     </footer>
   </div>
 </form>

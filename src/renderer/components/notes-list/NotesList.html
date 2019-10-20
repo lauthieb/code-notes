@@ -2,7 +2,7 @@
   <div id="search-buttons" class="columns">
     <div id="search">
       <b-field>
-        <b-input placeholder="Search by name, description or language..."
+        <b-input :placeholder="$t('list.search')"
                  v-model="searchField"
                  type="search"
                  icon="search">
@@ -33,24 +33,23 @@
   </div>
   <div v-if="notesFiltered.length === 0 && searchField === '' && !isLoading" class="columns notes">
     <div class="column is-12 no-note" v-if="!gistsSelected || (gistsSelected && settings.githubPersonalAccessToken)">
-      <h1>Hey !</h1>
-      <h2>You don't have any {{gistsSelected ? 'gist' : 'note'}}...</h2>
+      <h1>{{ $t('list.hey') }}</h1>
+      <h2>{{ $t('list.empty', { item : (gistsSelected ? 'gist' : 'note') }) }} </h2>
       <button class="button is-primary" @click="createNoteModalActive = true">
-        Create a new one :)
+          {{ $t('list.create') }}
       </button>
     </div>
     <div v-if="!settings.githubPersonalAccessToken && gistsSelected">
       <div class="column is-8 is-offset-2 no-token">
-        <h1>Hey !</h1>
-        <h2>If you want to manage your gists, <a @click="helpTokenModalActive = true">get a personal access token</a> on
-          Github and paste it into the <a @click="settingsModalActive = true">settings</a>.</h2>
+        <h1>{{ $t('list.hey') }}</h1>
+        <h2>{{ $t('list.manage.term1') }} <a @click="helpTokenModalActive = true">{{ $t('list.manage.term2') }}</a> {{ $t('list.manage.term3') }}<a @click="settingsModalActive = true">{{ $t('list.manage.term4') }}</a>.</h2>
       </div>
     </div>
   </div>
   <div v-if="notesFiltered.length === 0 && searchField !== '' && !isLoading" class="columns notes">
     <div class="column is-12 no-note">
       <h1>Oh :(</h1>
-      <h2>Sorry, no {{gistsSelected ? 'gist' : 'note'}} found for your search</h2>
+      <h2> {{ $t('list.sorry', { item : (gistsSelected ? 'gist' : 'note') }) }} </h2>
     </div>
   </div>
 
