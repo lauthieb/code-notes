@@ -26,6 +26,7 @@ export default {
         name: '',
         description: '',
         files: {},
+        source: '',
         public: false,
         updatedAt: null,
         createdAt: null,
@@ -67,6 +68,7 @@ export default {
           this.note.name = `${noteType}:${generateNoteName()}`;
         }
 
+console.log(this.note)
         this.addNote(this.note).then(() => {
           this.$parent.close();
         });

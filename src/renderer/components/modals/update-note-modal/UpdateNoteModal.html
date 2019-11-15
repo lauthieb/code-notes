@@ -26,6 +26,15 @@
         </b-input>
       </b-field>
 
+      <b-field horizontal label="Source">
+        <b-input
+          type="url"
+          ref="noteSource"
+          v-model="note.source"
+          placeholder="Source">
+        </b-input>
+      </b-field>
+
       <b-field v-if="!gistsSelected" horizontal label="Tags">
         <b-taginput
           v-model="note.tags"
