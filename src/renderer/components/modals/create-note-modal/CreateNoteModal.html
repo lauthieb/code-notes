@@ -54,7 +54,7 @@
         </b-field>
 
         <b-field horizontal label="Language">
-          <v-select style="width: 186px" label="Language" :options="sortedLanguagesByUse" placeholder="Select a language"
+          <v-select style="width: 186px" label="name" :options="sortedLanguagesByUse" placeholder="Select a language"
              v-model="file.language" :reduce="selectedLanguage => selectedLanguage.name">
              <template v-slot:option="option">
                {{ option.name | capitalize }}
