@@ -1,6 +1,6 @@
 {
   "name": "code-notes",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "author": "Laurent THIEBAULT <thiebault.laurent@gmail.com>",
   "description": "A simple code snippet manager for developers built with Electron 🚀",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
-    "dev": "node .electron-vue/dev-runner.js",
+    "dev": "cross-env NODE_ENV=development node .electron-vue/dev-runner.js",
     "e2e": "npm run pack && mocha --timeout 10000 test/e2e",
     "eslint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src test",
     "eslint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src test",
@@ -63,7 +63,7 @@
     }
   },
   "dependencies": {
-    "@octokit/rest": "^14.0.8",
+    "@octokit/rest": "^16.33.0",
     "axios": "^0.18.1",
     "brace": "^0.11.0",
     "buefy": "^0.7.2",
@@ -94,7 +94,7 @@
     "chai": "^4.0.0",
     "chalk": "^2.4.2",
     "copy-webpack-plugin": "^4.6.0",
-    "cross-env": "^5.0.5",
+    "cross-env": "^5.2.1",
     "css-loader": "^0.28.4",
     "del": "^3.0.0",
     "devtron": "^1.4.0",
