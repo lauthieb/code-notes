@@ -54,15 +54,15 @@
     </div>
   </div>
 
-  <b-modal :active.sync="createNoteModalActive" has-modal-card>
+  <b-modal :active.sync="createNoteModalActive" has-modal-card scroll="keep">
     <cn-create-note-modal></cn-create-note-modal>
   </b-modal>
 
-  <b-modal :active.sync="settingsModalActive" has-modal-card>
+  <b-modal :active.sync="settingsModalActive" has-modal-card scroll="keep">
     <cn-settings-modal></cn-settings-modal>
   </b-modal>
 
-  <b-modal :active.sync="helpTokenModalActive" has-modal-card>
+  <b-modal :active.sync="helpTokenModalActive" has-modal-card scroll="keep">
     <cn-help-token-modal></cn-help-token-modal>
   </b-modal>
 </div>

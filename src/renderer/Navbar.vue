@@ -61,7 +61,7 @@
       </div>
     </b-modal>
 
-    <b-modal :active.sync="helpTokenModalActive" has-modal-card>
+    <b-modal :active.sync="helpTokenModalActive" has-modal-card scroll="keep">
       <cn-help-token-modal></cn-help-token-modal>
     </b-modal>
   </nav>
