@@ -14,7 +14,7 @@
               <a id="link-note" v-if="gistsSelected" @click="open(note.url)" title="Show on Github">
                 <b-icon icon="github"></b-icon>
               </a>
-              <a id="note-source" v-if="note.source" @click="open(note.source)" title="Source">
+              <a id="note-source" v-if="note.sourceUrl" @click="open(note.sourceUrl)" title="Source">
                 <b-icon icon="link"></b-icon>
               </a>
               <a id="update-note" @click="updateNoteModalActive = true" title="Edit note">

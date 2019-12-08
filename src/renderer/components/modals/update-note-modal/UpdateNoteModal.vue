@@ -17,7 +17,7 @@ export default {
       noteUpdated: {
         name: '',
         description: '',
-        source: '',
+        sourceUrl: '',
         files: {},
         updatedAt: null,
         createdAt: null,
