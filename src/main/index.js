@@ -43,6 +43,13 @@ function createWindow() {
           label: 'About Application',
           selector: 'orderFrontStandardAboutPanel:',
         },
+        {
+          label: 'Open DevTools',
+          accelerator: 'CmdOrCtrl+D',
+          click: function () {
+            mainWindow.openDevTools()
+          }
+        },
         { type: 'separator' },
         {
           label: 'Quit',
