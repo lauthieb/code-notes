@@ -97,7 +97,7 @@ const actions = {
     store.commit('SELECT_LOADING', true);
 
     const octokit = getOctokit(store.rootState.Settings.settings);
-
+    
     if (store.state.gistsSelected) {
       octokit.gists.create(note).then(() => {
         store.dispatch('loadNotes');
@@ -111,6 +111,10 @@ const actions = {
       });
       actions.writeFileToFS(note, false);
     }
+  },
+  convertToGist(store, note) {
+    const octokit = getOctokit(store.rootState.Settings.settings);
+    return octokit.gists.create(converter.noteToGist(note));
   },
   updateNote(store, note) {
     if (store.state.gistsSelected) {
