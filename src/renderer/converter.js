@@ -48,17 +48,16 @@ const converter = {
   },
   noteToGist(note) {
     const files = {};
-
-    note.files.forEach((file) => {
-      files[`${file.name}.${this.languageToExtension(file.language)}`] = {
-        content: file.content,
+    Object.keys(note.files).forEach((key) => {
+      files[`${note.files[key].name}.${this.languageToExtension(note.files[key].language)}`] = {
+        content: note.files[key].content,
       };
     });
 
     return {
       id: note.id,
       public: note.public,
-      description: note.description,
+      description: `${note.name} - ${note.description}`,
       files,
     };
   },
