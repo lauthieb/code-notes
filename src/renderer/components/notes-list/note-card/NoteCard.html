@@ -14,6 +14,11 @@
               <a id="link-note" v-if="gistsSelected" @click="open(note.url)" title="Show on Github">
                 <b-icon icon="github"></b-icon>
               </a>
+              <a id="convert-note" v-if="!gistsSelected && githubToken" @click="convertNoteToGist"
+                title="Convert to gist">
+                <b-icon icon="share" size="is-small"></b-icon>
+                <b-icon icon="github"></b-icon>
+              </a>
               <a id="update-note" @click="updateNoteModalActive = true" title="Edit note">
                 <b-icon icon="pencil"></b-icon>
               </a>
@@ -25,16 +30,14 @@
         </div>
         <p v-if="!gistsSelected">{{note.description}}</p>
 
-        <b-tag type="is-dark" v-for="tag in note.tags" :data="tag" :style="'background-color: ' + stringToColour(tag) + ';'"
-               :key="tag.text">{{tag}}</b-tag>
+        <b-tag type="is-dark" v-for="tag in note.tags" :data="tag"
+          :style="'background-color: ' + stringToColour(tag) + ';'" :key="tag.text">{{tag}}</b-tag>
 
         <div class="note-file" v-for="(value, key, index) in note.files">
           <h4>{{value.name}}
             <span class="note-file-small">({{value.language}})
-              <a id="copy-file"
-                 v-clipboard:copy="value.content"
-                 v-clipboard:success="onCopyClipboardSuccess"
-                 title="Copy to clipboard">
+              <a id="copy-file" v-clipboard:copy="value.content" v-clipboard:success="onCopyClipboardSuccess"
+                title="Copy to clipboard">
                 <b-icon icon="clipboard"></b-icon>
               </a>
               <a id="export-carbon" @click="exportToCarbon(value.content)" title="Export to Carbon">
@@ -42,13 +45,8 @@
               </a>
             </span>
           </h4>
-          <editor :code="value.content"
-                  :lang="value.language"
-                  theme="monokai"
-                  width="100%"
-                  height="260"
-                  :readOnly="true"
-          ></editor>
+          <editor :code="value.content" :lang="value.language" theme="monokai" width="100%" height="260"
+            :readOnly="true"></editor>
         </div>
       </div>
     </div>
