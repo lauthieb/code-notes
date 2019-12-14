@@ -24,13 +24,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['notes', 'gistsSelected']),
+    ...mapGetters(['notes', 'gistsSelected', 'githubToken']),
     displayNoteName() {
       return this.note.name.split('-')[0];
     },
   },
   methods: {
-    ...mapActions(['updateNote', 'deleteNote']),
+    ...mapActions(['updateNote', 'deleteNote', 'convertToGist', 'selectGists']),
     stringToColour(str) {
       const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.6 });
       return colorHash.hex(str);
@@ -51,6 +51,37 @@ export default {
           this.deleteNote(this.note);
         },
       });
+    },
+    convertNoteToGist() {
+      this.convertToGist(this.note)
+        .then(() => {
+          this.$dialog.confirm({
+            title: 'Sucessful',
+            message:
+              'Note was converted to gist.<br>Do you want to delete local note ?',
+            confirmText: 'Delete',
+            cancelText: 'Keep',
+            type: 'is-success',
+            icon: 'check-circle',
+            hasIcon: true,
+            onConfirm: () => {
+              this.deleteNote(this.note);
+              this.selectGists(true);
+            },
+            onCancel: () => {
+              this.selectGists(true);
+            }
+          });
+        })
+        .catch(err => {
+          this.$dialog.alert({
+            title: 'Error',
+            message: 'Note was not converted to gist.<br>Please retry later',
+            type: 'is-danger',
+            hasIcon: true,
+            icon: 'times-circle',
+          });
+        });
     },
     onCopyClipboardSuccess() {
       this.$toast.open({
