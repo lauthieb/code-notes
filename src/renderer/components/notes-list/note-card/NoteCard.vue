@@ -56,7 +56,7 @@ export default {
       this.convertToGist(this.note)
         .then(() => {
           this.$dialog.confirm({
-            title: 'Sucessful',
+            title: 'Successful',
             message:
               'Note was converted to gist.<br>Do you want to delete local note ?',
             confirmText: 'Delete',
@@ -76,7 +76,7 @@ export default {
         .catch(err => {
           this.$dialog.alert({
             title: 'Error',
-            message: 'Note was not converted to gist.<br>Please retry later',
+            message: 'Note was not converted to gist.<br>Please retry later.',
             type: 'is-danger',
             hasIcon: true,
             icon: 'times-circle',
