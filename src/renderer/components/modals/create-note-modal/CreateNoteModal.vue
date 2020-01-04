@@ -111,7 +111,27 @@ export default {
   computed: {
     ...mapGetters(['gistsSelected', 'notes']),
     isDisabled() {
-      return this.files.some(file => !/\S/.test(file.content));
+      let isCreateButtonDisabled = false;
+
+      if(this.getNoteType() === "gist"){
+        if(this.files.some(file => !/\S/.test(file.content))   ||
+         this.files.some(file => !/\S/.test(file.name))      ||
+         this.files.some(file => !/\S/.test(this.note.description))){
+           isCreateButtonDisabled = true;
+         } else {
+           isCreateButtonDisabled = false;
+         }
+      } if(this.getNoteType() === "note"){
+          if(this.files.some(file => !/\S/.test(file.content))   ||
+          this.files.some(file => !/\S/.test(file.name))      ||
+          this.files.some(file => !/\S/.test(this.note.name)) ||
+          this.files.some(file => !/\S/.test(this.note.description))){
+            isCreateButtonDisabled = true;
+          } else {
+            isCreateButtonDisabled = false;
+          }
+      }
+      return isCreateButtonDisabled;
     },
     sortedLanguagesByUse() {
       this.languages.forEach((language) => { language.frequency = 0; });
