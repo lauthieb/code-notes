@@ -115,20 +115,20 @@ export default {
 
       if(this.getNoteType() === "gist"){
         if(this.files.some(file => !/\S/.test(file.content))   ||
-         this.files.some(file => !/\S/.test(file.name))      ||
-         this.files.some(file => !/\S/.test(this.note.description))){
-           isCreateButtonDisabled = true;
+           this.files.some(file => !/\S/.test(file.name))      ||
+           this.files.some(file => !/\S/.test(this.note.description))){
+               isCreateButtonDisabled = true;
          } else {
-           isCreateButtonDisabled = false;
+               isCreateButtonDisabled = false;
          }
       } if(this.getNoteType() === "note"){
           if(this.files.some(file => !/\S/.test(file.content))   ||
-          this.files.some(file => !/\S/.test(file.name))      ||
-          this.files.some(file => !/\S/.test(this.note.name)) ||
-          this.files.some(file => !/\S/.test(this.note.description))){
-            isCreateButtonDisabled = true;
+             this.files.some(file => !/\S/.test(file.name))      ||
+             this.files.some(file => !/\S/.test(this.note.name)) ||
+             this.files.some(file => !/\S/.test(this.note.description))){
+                 isCreateButtonDisabled = true;
           } else {
-            isCreateButtonDisabled = false;
+                 isCreateButtonDisabled = false;
           }
       }
       return isCreateButtonDisabled;
