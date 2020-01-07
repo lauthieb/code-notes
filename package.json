@@ -56,7 +56,11 @@
       "icon": "build/icons/icon.icns"
     },
     "win": {
+      "target": "nsis",
       "icon": "build/icons/icon.ico"
+    },
+    "nsis": {
+      "deleteAppDataOnUninstall": true
     },
     "linux": {
       "icon": "build/icons"
