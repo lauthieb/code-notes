@@ -45,6 +45,13 @@ function createWindow() {
         },
         { type: 'separator' },
         {
+          label: 'Dev Tools',
+          accelerator: 'CmdOrCtrl+Shift+I',
+          click: () => {
+            mainWindow.openDevTools();
+          },
+        },
+        {
           label: 'Quit',
           accelerator: 'Command+Q',
           click: () => {
