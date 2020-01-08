@@ -48,7 +48,7 @@ function createWindow() {
           label: 'Toggle dev tools',
           accelerator: 'CmdOrCtrl+Shift+I',
           click: () => {
-            mainWindow.openDevTools();
+            mainWindow.toggleDevTools();
           },
         },
         {
