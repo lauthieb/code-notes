@@ -21,7 +21,8 @@
           type="text"
           ref="noteDescription"
           v-model="noteUpdated.description"
-          placeholder="Your description">
+          placeholder="Your description"
+          required>
         </b-input>
       </b-field>
 
@@ -38,7 +39,8 @@
             style="width: 186px"
             type="text"
             v-model="file.name"
-            placeholder="Your file name">
+            placeholder="Your file name"
+            required>
           </b-input>
           <p class="control is-pulled-right" v-if="files.length > 1">
             <button class="button is-danger" @click="deleteFile(file)">
@@ -48,7 +50,7 @@
         </b-field>
 
         <b-field horizontal label="Language">
-          <b-select placeholder="Select a language" v-model="file.language">
+          <b-select placeholder="Select a language" v-model="file.language" :clearable="false">
             <option
               v-for="language in languages"
               :value="language.name">

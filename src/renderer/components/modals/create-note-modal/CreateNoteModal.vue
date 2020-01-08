@@ -111,7 +111,18 @@ export default {
   computed: {
     ...mapGetters(['gistsSelected', 'notes']),
     isDisabled() {
-      return this.files.some(file => !/\S/.test(file.content));
+      const isGistDisabled = () => (
+        !/\S/.test(this.note.description) ||
+        this.files.some(file => !/\S/.test(file.name)) ||
+        this.files.some(file => !/\S/.test(file.language)) ||
+        this.files.some(file => !/\S/.test(file.content))
+      );
+
+      const isNoteDisabled = () => (
+        isGistDisabled() || !/\S/.test(this.note.name)
+      );
+
+      return this.gistsSelected ? isGistDisabled() : isNoteDisabled();
     },
     sortedLanguagesByUse() {
       this.languages.forEach((language) => { language.frequency = 0; });
