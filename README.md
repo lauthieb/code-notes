@@ -36,6 +36,10 @@ The aim of this project is to make us more efficient by offering a pretty cool t
 
 </div>
 
+## Download
+
+Go the the [download section](https://lauthieb.github.io/code-notes/#download) of our website to download Code Notes on your OS.
+
 ## Contributing
 
 For the moment, the project is pretty young. But if we work together to build the "bloc-notes" we dream, we can build pretty things for sure !  
@@ -72,8 +76,6 @@ Feel free to [add an issue](https://github.com/lauthieb/code-notes/issues/new) i
 ## Support Code Notes
 
 <a href="https://www.buymeacoffee.com/lauthieb" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
-
-## Contributors
 
 ### Code Contributors
 

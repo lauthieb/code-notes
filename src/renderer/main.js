@@ -45,6 +45,7 @@ require('brace/mode/sh');
 require('brace/mode/sql');
 require('brace/mode/swift');
 require('brace/mode/typescript');
+require('brace/mode/vbscript');
 require('brace/mode/xml');
 require('brace/theme/monokai');
 

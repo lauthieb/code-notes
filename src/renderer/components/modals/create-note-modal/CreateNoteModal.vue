@@ -3,6 +3,8 @@ import { mapGetters, mapActions } from 'vuex';
 import editor from '@/components/editor/Editor';
 import languages from '@/assets/data/languages.json';
 import converter from '@/converter';
+import vSelect from 'vue-select';
+import ColorHash from 'color-hash';
 
 const noteNameCharacters = 'abcdef0123456789';
 
@@ -17,7 +19,7 @@ const generateNoteName = () => {
 export default {
   template: require('./CreateNoteModal.html'),
   name: 'cn-create-note-modal',
-  components: { editor },
+  components: { editor, vSelect },
   data() {
     return {
       note: {
@@ -101,14 +103,46 @@ export default {
     getNoteType() {
       return (this.gistsSelected) ? 'gist' : 'note';
     },
+    stringToColour(str) {
+      const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.6 });
+      return colorHash.hex(str);
+    },
   },
   computed: {
-    ...mapGetters(['gistsSelected']),
+    ...mapGetters(['gistsSelected', 'notes']),
     isDisabled() {
-      return this.files.some(file => !/\S/.test(file.content));
+      const isGistDisabled = () => (
+        !/\S/.test(this.note.description) ||
+        this.files.some(file => !/\S/.test(file.name)) ||
+        this.files.some(file => !/\S/.test(file.language)) ||
+        this.files.some(file => !/\S/.test(file.content))
+      );
+
+      const isNoteDisabled = () => (
+        isGistDisabled() || !/\S/.test(this.note.name)
+      );
+
+      return this.gistsSelected ? isGistDisabled() : isNoteDisabled();
+    },
+    sortedLanguagesByUse() {
+      this.languages.forEach((language) => { language.frequency = 0; });
+      this.notes.forEach((note) => {
+        Object.keys(note.files).forEach((file) => {
+          const languageUsed = this.languages.find(language =>
+            note.files[file].language === language.name);
+          languageUsed.frequency ? (languageUsed.frequency += 1)
+            : (languageUsed.frequency = 1);
+        });
+      });
+      const sortedArray = this.languages
+        .slice()
+        .sort((a, b) =>
+          (a.frequency > b.frequency ? -1 : a.frequency < b.frequency ? 1 : 0));
+      return sortedArray;
     },
   },
 };
 </script>
 
 <style src="./CreateNoteModal.scss" lang="scss"></style>
+<style src="vue-select/dist/vue-select.css"></style>

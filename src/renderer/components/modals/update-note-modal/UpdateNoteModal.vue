@@ -134,7 +134,18 @@ export default {
   computed: {
     ...mapGetters(['gistsSelected']),
     isDisabled() {
-      return this.files.some(file => !/\S/.test(file.content));
+      const isGistDisabled = () => (
+        !/\S/.test(this.noteUpdated.description) ||
+        this.files.some(file => !/\S/.test(file.name)) ||
+        this.files.some(file => !/\S/.test(file.language)) ||
+        this.files.some(file => !/\S/.test(file.content))
+      );
+
+      const isNoteDisabled = () => (
+        isGistDisabled() || !/\S/.test(this.noteUpdated.name)
+      );
+
+      return this.gistsSelected ? isGistDisabled() : isNoteDisabled();
     },
   },
 };
