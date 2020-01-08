@@ -111,27 +111,18 @@ export default {
   computed: {
     ...mapGetters(['gistsSelected', 'notes']),
     isDisabled() {
-      let isCreateButtonDisabled = false;
+      const isGistDisabled = () => (
+        !/\S/.test(this.note.description) ||
+        this.files.some(file => !/\S/.test(file.name)) ||
+        this.files.some(file => !/\S/.test(file.language)) ||
+        this.files.some(file => !/\S/.test(file.content))
+      );
 
-      if(this.getNoteType() === "gist"){
-        if(this.files.some(file => !/\S/.test(file.content))   ||
-           this.files.some(file => !/\S/.test(file.name))      ||
-           this.files.some(file => !/\S/.test(this.note.description))){
-               isCreateButtonDisabled = true;
-         } else {
-               isCreateButtonDisabled = false;
-         }
-      } if(this.getNoteType() === "note"){
-          if(this.files.some(file => !/\S/.test(file.content))   ||
-             this.files.some(file => !/\S/.test(file.name))      ||
-             this.files.some(file => !/\S/.test(this.note.name)) ||
-             this.files.some(file => !/\S/.test(this.note.description))){
-                 isCreateButtonDisabled = true;
-          } else {
-                 isCreateButtonDisabled = false;
-          }
-      }
-      return isCreateButtonDisabled;
+      const isNoteDisabled = () => (
+        isGistDisabled() || !/\S/.test(this.note.name)
+      );
+
+      return this.gistsSelected ? isGistDisabled() : isNoteDisabled();
     },
     sortedLanguagesByUse() {
       this.languages.forEach((language) => { language.frequency = 0; });

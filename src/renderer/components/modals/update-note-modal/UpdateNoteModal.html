@@ -50,7 +50,7 @@
         </b-field>
 
         <b-field horizontal label="Language">
-          <b-select placeholder="Select a language" v-model="file.language">
+          <b-select placeholder="Select a language" v-model="file.language" :clearable="false">
             <option
               v-for="language in languages"
               :value="language.name">
