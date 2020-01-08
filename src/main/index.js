@@ -45,7 +45,7 @@ function createWindow() {
         },
         { type: 'separator' },
         {
-          label: 'Dev Tools',
+          label: 'Toggle dev tools',
           accelerator: 'CmdOrCtrl+Shift+I',
           click: () => {
             mainWindow.openDevTools();
