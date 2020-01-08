@@ -7,12 +7,22 @@
 
     <section class="modal-card-body">
       <b-field v-if="!gistsSelected" horizontal label="Name">
-        <b-input type="text" ref="noteName" v-model="note.name" placeholder="Your note name">
+        <b-input
+          type="text"
+          ref="noteName"
+          v-model="note.name"
+          placeholder="Your note name"
+          required>
         </b-input>
       </b-field>
 
       <b-field horizontal label="Description">
-        <b-input type="text" ref="noteDescription" v-model="note.description" placeholder="Your description">
+        <b-input
+          type="text"
+          ref="noteDescription"
+          v-model="note.description"
+          placeholder="Your description"
+          required>
         </b-input>
       </b-field>
 
@@ -28,19 +38,32 @@
         </b-select>
       </b-field>
 
-      <!-- Base file -->
-      <b-field horizontal label="Name" grouped>
-        <b-input style="width: 186px" type="text" v-model="baseFile.name" placeholder="Your file name">
-        </b-input>
-      </b-field>
+      <div class="note-file" v-for="file in files">
+        <b-field horizontal label="Name" grouped>
+          <b-input
+            style="width: 186px"
+            type="text"
+            v-model="file.name"
+            placeholder="Your file name"
+            required>
+          </b-input>
+          <p class="control is-pulled-right" v-if="files.length > 1">
+            <button class="button is-danger" @click="deleteFile(file)">
+              <b-icon icon="trash"></b-icon>
+            </button>
+          </p>
+        </b-field>
 
-      <b-field horizontal label="Language">
-        <b-select placeholder="Select a language" v-model="baseFile.language">
-          <option v-for="language in languages" :value="language.name">
-            {{ language.name | capitalize }}
-          </option>
-        </b-select>
-      </b-field>
+        <b-field horizontal label="Language">
+          <v-select style="width: 186px" label="name" :options="sortedLanguagesByUse" placeholder="Select a language"
+             v-model="file.language" :reduce="selectedLanguage => selectedLanguage.name" :clearable="false">
+             <template v-slot:option="option">
+               {{ option.name | capitalize }}
+             </template>
+          </v-select>
+          <b-button pill v-for="languageTag in sortedLanguagesByUse.slice(0,3)"  :style="'background-color: ' + stringToColour(languageTag.name) + '; color: #fff;'"
+               :key="languageTag.name" @click="file.language = languageTag.name">{{languageTag.name}}</b-button>
+        </b-field>
 
       <b-field horizontal label="Content">
         <editor v-model="baseFile.content" :lang="baseFile.language" theme="monokai" width="100%" height="260"></editor>
