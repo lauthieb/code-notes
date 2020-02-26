@@ -35,6 +35,9 @@ export default {
       const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.6 });
       return colorHash.hex(str);
     },
+    showUpdateNoteModal(name){
+      this.$modal.show(name);
+    },
     updateNoteModal() {
       this.updateNote(this.note);
     },

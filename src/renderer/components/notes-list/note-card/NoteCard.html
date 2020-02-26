@@ -14,7 +14,7 @@
               <a id="link-note" v-if="gistsSelected" @click="open(note.url)" title="Show on Github">
                 <b-icon icon="github"></b-icon>
               </a>
-              <a id="update-note" @click="updateNoteModalActive = true" title="Edit note">
+              <a id="update-note" @click="showUpdateNoteModal(note.name)" title="Edit note">
                 <b-icon icon="pencil"></b-icon>
               </a>
               <a id="delete-note" @click="deleteNoteModal()" title="Delete note">
@@ -54,7 +54,14 @@
     </div>
   </article>
 
-  <b-modal :active.sync="updateNoteModalActive" has-modal-card>
+  <modal :name="note.name"
+         :resizable="true"
+         :reset="true"
+         :adaptive="true"
+         height="70%"
+         width="700"
+         :min-width="700"
+         :min-height="550">
     <cn-update-note-modal :note="note"></cn-update-note-modal>
-  </b-modal>
+  </modal>
 </div>
