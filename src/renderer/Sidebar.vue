@@ -33,7 +33,7 @@
           <b-tag class="is-pulled-right" type="is-dark">{{ totalFiles }}</b-tag>
         </a>
       </li>
-      <li v-for="(list, value) in Array.from(languages)">
+      <li v-for="(list, value) in Array.from(languages)" :key="value">
         <a
           :class="{ 'is-active': languageSelected === list[0] }"
           @click="selectLanguageSidebar(list[0])"
@@ -78,12 +78,29 @@ aside {
   top: 48px;
   width: 22%;
   margin-top: 24px;
+  
 
   li {
     margin: 5px 0;
 
     a {
       padding-bottom: 11px !important;
+      html.dark & {
+        color: $white!important;
+        background-color: $black;
+      }
+    }
+
+    html.dark & a:hover {
+      background-color: $purple!important;
+    }
+
+    html.dark & .tag {
+      background-color: $orange!important;
+    }
+
+    html.dark & .is-active {
+      background-color: $purple!important;
     }
   }
 

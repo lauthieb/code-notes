@@ -96,6 +96,9 @@ export default {
 nav {
   -webkit-app-region: drag;
   background-color: $primary;
+  html.dark & {
+    background-color: $purple;
+  }
   text-align: center;
   position: fixed;
   top: 0;

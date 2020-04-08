@@ -5,12 +5,20 @@
 $primary: #519fc2;
 $primary-invert: findColorInvert($primary);
 
+$purple: #32075a;
+$purple-invert2: findColorInvert($purple);
+
+$orange: #dd6300;
+$orange-invert: findColorInvert($orange);
+
 $colors: (
   "white": ($white, $black),
   "black": ($black, $white),
   "light": ($light, $light-invert),
   "dark": ($dark, $dark-invert),
   "primary": ($primary, $primary-invert),
+  "purple": ($purple, $purple-invert),
+  "orange": ($orange, $orange-invert),
   "info": ($info, $info-invert),
   "success": ($success, $success-invert),
   "warning": ($warning, $warning-invert),

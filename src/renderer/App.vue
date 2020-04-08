@@ -3,7 +3,7 @@
     <cn-navbar></cn-navbar>
     <div id="content">
       <div class="columns">
-        <div class="column is-3">
+        <div class="column is-3 side-colum">
           <cn-sidebar></cn-sidebar>
         </div>
         <div class="column is-9">
@@ -28,8 +28,18 @@ export default {
 </script>
 
 <style lang="scss">
+html.dark {
+  background-color: $black!important;
+}
 body {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.side-colum {
+  min-height: 56vh;
+  html.dark & {
+    background-color: $dark;
+  }
 }
 
 #content {

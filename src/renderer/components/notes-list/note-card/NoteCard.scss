@@ -1,9 +1,17 @@
 .box {
   margin: 0.6em 0;
   padding-bottom: 0.5rem!important;
+  html.dark & {
+    background-color: darken($color: #333, $amount: 0);
+    color: darken($color: #FFF, $amount: 0);
+  }
 
   .media-content {
     overflow-x: hidden;
+  }
+
+  html.dark & h3 {
+    color: darken($color: #FFF, $amount: 0);
   }
 
   h5 {
@@ -55,21 +63,35 @@
 
 .note-file {
   background-color: $light;
+  html.dark & {
+    background-color: $black;
+  }
   padding: 12px;
   margin-bottom: 10px;
+
+  h4 {
+    html.dark & {
+      color: $white;
+    }
+  }
 
   .note-file-small {
     font-size: 12px;
 
     #copy-file {
       color: $dark;
-
+      html.dark & {
+        color: $white;
+      }
       &:hover {
         color: lighten($black, 20%);
       }
     }
     #export-carbon {
       color: $dark;
+      html.dark & {
+        color: $white;
+      }
    
       &:hover {
         color: lighten($black, 20%);

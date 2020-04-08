@@ -24,12 +24,22 @@ const actions = {
                 .exec((err, settings) => {
                   store.commit('SET_SETTINGS', settings['0']);
                   store.dispatch('loadNotes');
+                  const html = document.getElementsByTagName('html')[0];
+                  switch (settings['0'].theme) {
+                    default: html.setAttribute('class', ''); break;
+                    case 'dark': html.setAttribute('class', 'dark'); break;
+                  }
                 });
             }
           });
         } else {
           store.commit('SET_SETTINGS', settings['0']);
           store.dispatch('loadNotes');
+          const html = document.getElementsByTagName('html')[0];
+          switch (settings['0'].theme) {
+            default: html.setAttribute('class', ''); break;
+            case 'dark': html.setAttribute('class', 'dark'); break;
+          }
         }
       });
   },

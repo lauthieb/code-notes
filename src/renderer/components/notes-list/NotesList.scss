@@ -17,7 +17,9 @@
     left: 27.5%;
     width: 71.5%;
     z-index: 800;
-    background-color: white;
+    html.dark & {
+      background-color: $black;
+    }
   }
 
   .notes {
