@@ -68,8 +68,8 @@ export default {
       this.selectGists(gistsSelected);
     },
     selectMysqlSidebar(selectMysql) {
-      this.selectGists(null);
       this.selectMysql(selectMysql);
+      this.selectGists(null);
     },
   },
   computed: {
