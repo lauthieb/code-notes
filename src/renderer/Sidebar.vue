@@ -6,7 +6,7 @@
     <ul class="menu-list">
       <li>
         <a
-          :class="{ 'is-active': !gistsSelected }"
+          :class="{ 'is-active': !gistsSelected && gistsSelected !== null }"
           @click="selectGistsSidebar(false)"
           >Local
           <b-icon icon="laptop" class="is-pulled-right"></b-icon>
@@ -18,6 +18,14 @@
           @click="selectGistsSidebar(true)"
           >Gists
           <b-icon icon="github" class="is-pulled-right"></b-icon>
+        </a>
+      </li>
+      <li>
+        <a
+          :class="{ 'is-active': mysqlSelected }"
+          @click="selectMysqlSidebar(true)"
+          >Mysql
+          <b-icon icon="database" class="is-pulled-right"></b-icon>
         </a>
       </li>
     </ul>
@@ -51,12 +59,17 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'cn-sidebar',
   methods: {
-    ...mapActions(['selectLanguage', 'selectGists']),
+    ...mapActions(['selectLanguage', 'selectGists', 'selectMysql']),
     selectLanguageSidebar(language) {
       this.selectLanguage(language);
     },
     selectGistsSidebar(gistsSelected) {
+      this.selectMysql(false);
       this.selectGists(gistsSelected);
+    },
+    selectMysqlSidebar(selectMysql) {
+      this.selectGists(null);
+      this.selectMysql(selectMysql);
     },
   },
   computed: {
@@ -67,6 +80,7 @@ export default {
       'totalFiles',
       'gistsSelected',
       'isLoading',
+      'mysqlSelected'
     ]),
   },
 };

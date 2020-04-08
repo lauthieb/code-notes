@@ -21,7 +21,9 @@ module.exports = {
     "no-shadow": 0,
     "import/extensions": 0,
     "import/newline-after-import": 0,
+    "linebreak-style": 0,
     "no-multi-assign": 0,
+    "eslint linebreak-style": [0, "error", "windows"],
     // allow debugger during development
     "no-debugger": process.env.NODE_ENV === "production" ? 1 : 0
   }

@@ -71,6 +71,7 @@
     "emmet": "^1.6.3",
     "font-awesome": "^4.7.0",
     "fs-extra": "^6.0.0",
+    "mysql": "^2.18.1",
     "nedb": "^1.8.0",
     "opencollective-postinstall": "^2.0.2",
     "source-sans-pro": "^2.45.0",

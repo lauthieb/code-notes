@@ -1,4 +1,5 @@
 import db from '@/datastore-notes';
+import mysql from '@/mysql';
 import converter from '@/converter';
 import Octokit from '@octokit/rest';
 import path from 'path';
@@ -21,6 +22,7 @@ const state = {
   notes: [],
   languageSelected: 'all',
   gistsSelected: false,
+  mysqlSelected: false,
   isLoading: false,
 };
 
@@ -47,6 +49,9 @@ const mutations = {
   SELECT_GISTS(state, gistsSelected) {
     state.gistsSelected = gistsSelected;
   },
+  SELECT_MYSQL(state, mysqlSelected) {
+    state.mysqlSelected = mysqlSelected;
+  },
   SELECT_LOADING(state, loading) {
     state.isLoading = loading;
   },
@@ -54,11 +59,10 @@ const mutations = {
 
 const actions = {
   loadNotes(store) {
+    store.commit('SELECT_LOADING', true);
+    store.commit('LOAD_NOTES', []);
     if (store.state.gistsSelected) {
       if (store.rootState.Settings.settings.githubPersonalAccessToken) {
-        store.commit('SELECT_LOADING', true);
-        store.commit('LOAD_NOTES', []);
-
         const octokit = getOctokit(store.rootState.Settings.settings);
 
         octokit.gists.list().then((res) => {
@@ -83,7 +87,38 @@ const actions = {
         store.commit('LOAD_NOTES', []);
       }
     } else {
-      store.commit('SELECT_LOADING', true);
+      if (store.state.mysqlSelected) {
+        const { mysqlHost, mysqlDB, mysqlUser, mysqlPassword } = store.rootState.Settings.database;
+        const q = mysql.createConnection({
+          host: mysqlHost,
+          user: mysqlUser,
+          password: mysqlPassword,
+          database: mysqlDB,
+        });
+        q.query('SELECT id,note FROM `notes`', (err, rows, fields) => {
+          if (err) {
+            window.console.log('An error ocurred performing the query.');
+            window.console.log(mysqlHost, mysqlDB, mysqlUser, mysqlPassword);
+            window.console.log(err, fields);
+            q.end(() => {});
+            store.commit('SELECT_LOADING', false);
+            return;
+          }
+
+          const results = [];
+
+          rows.forEach((v) => {
+            results.push(Object.assign({}, { id: v.id }, JSON.parse(v.note)));
+          });
+
+          window.console.log('database rows', results);
+          store.commit('LOAD_NOTES', results);
+        });
+        q.end(() => {});
+        store.commit('SELECT_LOADING', false);
+        return;
+      }
+
       db.find({}, (err, notes) => {
         if (!err) {
           store.commit('LOAD_NOTES', notes);
@@ -95,7 +130,6 @@ const actions = {
   },
   addNote(store, note) {
     store.commit('SELECT_LOADING', true);
-
     const octokit = getOctokit(store.rootState.Settings.settings);
 
     if (store.state.gistsSelected) {
@@ -103,6 +137,32 @@ const actions = {
         store.dispatch('loadNotes');
       });
     } else {
+      if (store.state.mysqlSelected) {
+        const { mysqlHost, mysqlDB, mysqlUser, mysqlPassword } = store.rootState.Settings.database;
+        const q = mysql.createConnection({
+          host: mysqlHost,
+          user: mysqlUser,
+          password: mysqlPassword,
+          database: mysqlDB,
+        });
+
+        q.query('INSERT INTO notes SET note=?', JSON.stringify(note), (err, rows, fields) => {
+          if (err) {
+            window.console.log(err, fields);
+            q.end();
+            store.commit('SELECT_LOADING', false);
+            return;
+          }
+
+          window.console.log('database rows', rows);
+          store.dispatch('loadNotes');
+        });
+        q.end();
+        store.commit('ADD_NOTE', note);
+        store.commit('SELECT_LOADING', false);
+        return;
+      }
+
       db.insert(note, (err, note) => {
         if (!err) {
           store.commit('ADD_NOTE', note);
@@ -113,6 +173,7 @@ const actions = {
     }
   },
   updateNote(store, note) {
+    store.commit('SELECT_LOADING', true);
     if (store.state.gistsSelected) {
       const octokit = getOctokit(store.rootState.Settings.settings);
 
@@ -124,6 +185,30 @@ const actions = {
         })
         .then(() => store.dispatch('loadNotes'));
     } else {
+      if (store.state.mysqlSelected) {
+        const { mysqlHost, mysqlDB, mysqlUser, mysqlPassword } = store.rootState.Settings.database;
+        const q = mysql.createConnection({
+          host: mysqlHost,
+          user: mysqlUser,
+          password: mysqlPassword,
+          database: mysqlDB,
+        });
+
+        q.query('UPDATE notes SET note = ? WHERE id = ?', [JSON.stringify(note), note.id], (err, rows, fields) => {
+          if (err) {
+            window.console.log(err, fields);
+            q.end();
+            store.commit('SELECT_LOADING', false);
+            return;
+          }
+
+          store.dispatch('loadNotes');
+        });
+        q.end();
+        store.commit('SELECT_LOADING', false);
+        return;
+      }
+
       db.update({ _id: note._id }, note, {}, (err) => {
         if (!err) {
           store.dispatch('loadNotes');
@@ -143,6 +228,31 @@ const actions = {
         store.commit('SELECT_LOADING', false);
       });
     } else {
+      if (store.state.mysqlSelected) {
+        const { mysqlHost, mysqlDB, mysqlUser, mysqlPassword } = store.rootState.Settings.database;
+        const q = mysql.createConnection({
+          host: mysqlHost,
+          user: mysqlUser,
+          password: mysqlPassword,
+          database: mysqlDB,
+        });
+
+        q.query('DELETE FROM notes WHERE id = ?', note.id, (err, rows, fields) => {
+          if (err) {
+            window.console.log(err, fields);
+            q.end();
+            store.commit('SELECT_LOADING', false);
+            return;
+          }
+
+          store.commit('DELETE_NOTE', note);
+          store.dispatch('loadNotes');
+        });
+        q.end();
+        store.commit('SELECT_LOADING', false);
+        return;
+      }
+
       db.remove({ _id: note._id }, {}, (err) => {
         if (!err) {
           store.commit('DELETE_NOTE', note);
@@ -194,7 +304,13 @@ const actions = {
   },
   selectGists(store, gists) {
     store.commit('SELECT_GISTS', gists);
-    store.dispatch('loadNotes');
+    // prevent doubble loader
+    if (!this.mysqlSelected) store.dispatch('loadNotes');
+  },
+  selectMysql(store, mysql) {
+    store.commit('SELECT_MYSQL', mysql);
+    // prevent doubble loader
+    if (mysql) store.dispatch('loadNotes');
   },
 };
 
@@ -232,6 +348,7 @@ const getters = {
   languageSelected: state => state.languageSelected,
   gistsSelected: state => state.gistsSelected,
   isLoading: state => state.isLoading,
+  mysqlSelected: state => state.mysqlSelected,
 };
 
 export default {

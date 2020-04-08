@@ -22,11 +22,46 @@
           placeholder="Your Github personal access token">
         </b-input>
       </b-field>
+
+      <b-field label="Mysql Host">
+        <b-input
+          type="text"
+          ref="mysqlHostName"
+          v-model="newDatabase.mysqlHost"
+          placeholder="Mysql Host or IP">
+        </b-input>
+      </b-field>
+      <b-field label="Mysql DB">
+        <b-input
+          type="text"
+          ref="mysqlDbName"
+          v-model="newDatabase.mysqlDB"
+          placeholder="Mysql Database name">
+        </b-input>
+      </b-field>
+      <b-field label="Mysql User">
+        <b-input
+          type="text"
+          ref="mysqlUserName"
+          v-model="newDatabase.mysqlUser"
+          placeholder="Mysql User Name">
+        </b-input>
+      </b-field>
+      <b-field label="Mysql password">
+        <b-input
+          type="password"
+          password-reveal
+          ref="mysqlPassword"
+          v-model="newDatabase.mysqlPassword"
+          placeholder="Mysql Password">
+        </b-input>
+      </b-field>
     </section>
 
     <footer class="modal-card-foot">
       <button class="button" type="button" @click="$parent.close()">Cancel</button>
       <button class="button is-primary" type="button" @click="save()">Save</button>
+      <button class="button is-primary" type="button" @click="saveMysql()">Save Mysql</button>
       <div class="field">
         <b-radio v-model="newSettings.theme"
             name="theme"
