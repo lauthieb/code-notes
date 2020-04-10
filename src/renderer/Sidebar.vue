@@ -91,16 +91,12 @@ aside {
       }
     }
 
-    html.dark & a:hover {
-      background-color: $purple!important;
-    }
-
     html.dark & .tag {
-      background-color: $orange!important;
+      background-color: $primary!important;
     }
 
     html.dark & .is-active {
-      background-color: $purple!important;
+      background-color: $primary!important;
     }
   }
 
