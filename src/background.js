@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow } from "electron";
+import { app, protocol, Menu, BrowserWindow } from "electron";
 import {
   createProtocol
   /* installVueDevtools */
@@ -19,8 +19,12 @@ protocol.registerSchemesAsPrivileged([
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    useContentSize: true,
+    width: 1160,
+    height: 700,
+    minHeight: 500,
+    minWidth: 900,
+    titleBarStyle: "hiddenInset",
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.git3333hub.io/vue-cli-plugin-electron-builder/guide/configuration.html#node-integration for more info
@@ -41,6 +45,50 @@ function createWindow() {
   win.on("closed", () => {
     win = null;
   });
+  const template = [
+    {
+      label: "Application",
+      submenu: [
+        {
+          label: "About Application",
+          selector: "orderFrontStandardAboutPanel:"
+        },
+        { type: "separator" },
+        {
+          label: "Toggle dev tools",
+          accelerator: "CmdOrCtrl+Shift+I",
+          click: () => {
+            win.webContents.toggleDevTools();
+          }
+        },
+        {
+          label: "Quit",
+          accelerator: "Command+Q",
+          click: () => {
+            app.quit();
+          }
+        }
+      ]
+    },
+    {
+      label: "Edit",
+      submenu: [
+        { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+        { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+        { type: "separator" },
+        { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+        { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+        { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+        {
+          label: "Select All",
+          accelerator: "CmdOrCtrl+A",
+          selector: "selectAll:"
+        }
+      ]
+    }
+  ];
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 }
 
 // Quit when all windows are closed.
