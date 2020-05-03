@@ -1,6 +1,6 @@
 {
   "name": "code-notes",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "author": "Laurent THIEBAULT <thiebault.laurent@gmail.com>",
   "description": "A simple code snippet manager for developers built with Electron 🚀",
   "license": "MIT",
@@ -10,12 +10,15 @@
   },
   "main": "background.js",
   "scripts": {
+    "dev": "npm run serve",
     "serve": "npm run electron:serve",
     "build": "npm run electron:build",
     "build:win": "vue-cli-service electron:build --win",
     "build:mac": "vue-cli-service electron:build --mac",
     "build:linux": "vue-cli-service electron:build --linux",
+    "test": "npm run test:unit",
     "test:unit": "vue-cli-service test:unit",
+    "eslint": "npm run lint",
     "lint": "vue-cli-service lint",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",

@@ -11,7 +11,6 @@ describe("Create Note", () => {
   let app;
   let stopServe;
   let client;
-  let win;
   let dataPath;
 
   beforeEach(async () => {
@@ -20,7 +19,6 @@ describe("Create Note", () => {
     app = x.app;
     stopServe = x.stopServe;
     client = app.client;
-    win = app.browserWindow;
     dataPath = await app.electron.remote.app.getPath("userData");
   });
 
