@@ -22,13 +22,14 @@ addons:
     - xz-utils
     #- xvfb
 before_install:
-#- export DISPLAY=':99.0'
-#- Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-- npm install -g xvfb-maybe
+    #- export DISPLAY=':99.0'
+    #- Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+    - npm install -g xvfb-maybe
+    - npm install -g node-gyp
 install: npm install
 before_script:
-#- xvfb-maybe node_modules/.bin/karma start test/unit/karma.conf.js
-#- npm run pack && xvfb-maybe node_modules/.bin/mocha test/e2e
+    #- xvfb-maybe node_modules/.bin/karma start test/unit/karma.conf.js
+    #- npm run pack && xvfb-maybe node_modules/.bin/mocha test/e2e
 script: npm run build
 branches:
   only:
