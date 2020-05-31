@@ -20,6 +20,10 @@
     "extension": "csharp"
   },
   {
+    "name": "dart",
+    "extension": "dart"
+  },
+  {
     "name": "elixir",
     "extension": "exs"
   },

@@ -27,7 +27,7 @@ module.exports = {
     electronBuilder: {
       nodeIntegration: true,
       mainProcessFile: "src/background.js",
-      externals: ['nedb'],
+      externals: ["nedb"],
       builderOptions: {
         // options placed here will be merged with default configuration and passed to electron-builder
         productName: "Code Notes",

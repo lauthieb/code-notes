@@ -17,6 +17,7 @@ require("brace/mode/assembly_x86");
 require("brace/mode/c_cpp");
 require("brace/mode/clojure");
 require("brace/mode/csharp");
+require("brace/mode/dart");
 require("brace/mode/elixir");
 require("brace/mode/elm");
 require("brace/mode/golang");
@@ -48,6 +49,14 @@ require("brace/mode/typescript");
 require("brace/mode/vbscript");
 require("brace/mode/xml");
 require("brace/theme/monokai");
+
+const electron = require("electron");
+electron.ipcRenderer.on("about", (arg, event) => {
+  let component = router.currentRoute.matched[0].instances.default;
+  if (event === "about-modal-active") {
+    component.aboutModalActive = true;
+  }
+});
 
 Vue.use(Buefy, {
   defaultIconPack: "fa"

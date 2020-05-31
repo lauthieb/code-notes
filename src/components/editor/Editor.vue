@@ -15,14 +15,8 @@ export default {
     value: String,
     lang: String,
     theme: String,
-    height: {
-      type: Boolean,
-      default: true
-    },
-    width: {
-      type: Boolean,
-      default: true
-    },
+    height: String,
+    width: String,
     readOnly: Boolean
   },
   data() {
