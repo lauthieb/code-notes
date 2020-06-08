@@ -16,12 +16,12 @@ export default {
     lang: String,
     theme: String,
     height: {
-      type: Boolean,
-      default: true
+      type: String,
+      default: "100%"
     },
     width: {
-      type: Boolean,
-      default: true
+      type: String,
+      default: "100%"
     },
     readOnly: Boolean
   },
