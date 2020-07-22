@@ -8,8 +8,7 @@
             v-model="searchField"
             type="search"
             icon="search"
-          >
-          </b-input>
+          ></b-input>
         </b-field>
       </div>
       <div id="buttons">
@@ -102,6 +101,10 @@
     <b-modal :active.sync="helpTokenModalActive" has-modal-card>
       <cn-help-token-modal></cn-help-token-modal>
     </b-modal>
+
+    <b-modal :active.sync="aboutModalActive" has-modal-card>
+      <cn-about-modal></cn-about-modal>
+    </b-modal>
   </div>
 </template>
 
@@ -111,6 +114,7 @@ import NoteCard from "./note-card/NoteCard";
 import CreateNoteModal from "../modals/create-note-modal/CreateNoteModal";
 import SettingsModal from "../modals/settings-modal/SettingsModal";
 import HelpTokenModal from "../modals/help-token-modal/HelpTokenModal";
+import AboutModal from "../modals/about-modal/AboutModal";
 
 export default {
   name: "cn-notes-list",
@@ -118,14 +122,16 @@ export default {
     "cn-note-card": NoteCard,
     "cn-create-note-modal": CreateNoteModal,
     "cn-help-token-modal": HelpTokenModal,
-    "cn-settings-modal": SettingsModal
+    "cn-settings-modal": SettingsModal,
+    "cn-about-modal": AboutModal
   },
   data() {
     return {
       searchField: "",
       createNoteModalActive: false,
       settingsModalActive: false,
-      helpTokenModalActive: false
+      helpTokenModalActive: false,
+      aboutModalActive: false
     };
   },
   methods: {

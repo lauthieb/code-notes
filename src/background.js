@@ -50,8 +50,10 @@ function createWindow() {
       label: "Application",
       submenu: [
         {
-          label: "About Application",
-          selector: "orderFrontStandardAboutPanel:"
+          label: "About Code-Notes",
+          click: () => {
+            win.webContents.send("about", "about-modal-active");
+          }
         },
         { type: "separator" },
         {
