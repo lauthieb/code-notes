@@ -131,7 +131,7 @@ export default {
       this.updateNote(this.note);
     },
     deleteNoteModal() {
-      this.$dialog.confirm({
+      this.$buefy.dialog.confirm({
         title: this.gistsSelected ? "Delete gist" : "Delete note",
         message: `Are you sure you want to delete this ${
           this.gistsSelected ? "gist" : "note"
