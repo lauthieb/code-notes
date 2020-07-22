@@ -38,7 +38,7 @@ describe("Create Note", () => {
   });
 
   it("create a note, check DOM content", async () => {
-    expect(await client.getTitle()).toBe("code-notes-new");
+    expect(await client.getTitle()).toBe("code-notes");
 
     await client
       .$("button#add-note")
