@@ -43,7 +43,8 @@ const actions = {
 };
 
 const getters = {
-  settings: state => state.settings
+  settings: state => state.settings,
+  githubToken: state => state.settings.githubPersonalAccessToken
 };
 
 export default {
