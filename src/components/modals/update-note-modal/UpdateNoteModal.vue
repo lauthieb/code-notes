@@ -1,5 +1,5 @@
 <template>
-  <form action="">
+  <form action="" class="update-modal modal-form">
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">
@@ -95,7 +95,7 @@
       </section>
 
       <footer class="modal-card-foot">
-        <button class="button" type="button" @click="$parent.close()">
+        <button class="button" type="button" @click="$modal.hide(note.name)">
           Cancel
         </button>
         <button
@@ -206,7 +206,7 @@ export default {
         }
 
         this.updateNote(this.noteUpdated).then(() => {
-          this.$parent.close();
+          this.$modal.hide(this.note.name);
         });
       } else {
         this.displayDupError = true;
