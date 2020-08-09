@@ -114,6 +114,10 @@ const actions = {
       actions.writeFileToFS(note, false);
     }
   },
+  convertToGist(store, note) {
+    const octokit = getOctokit(store.rootState.Settings.settings);
+    return octokit.gists.create(converter.noteToGist(note));
+  },
   updateNote(store, note) {
     if (store.state.gistsSelected) {
       const octokit = getOctokit(store.rootState.Settings.settings);

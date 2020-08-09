@@ -40,6 +40,14 @@
           color: lighten($dark, 20%);
         }
       }
+      
+      #convert-note {
+        color: $dark;
+        
+        &:hover {
+          color: lighten($dark, 20%);
+        }
+      }
     }
   }
 

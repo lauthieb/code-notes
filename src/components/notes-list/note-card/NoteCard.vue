@@ -7,10 +7,7 @@
             <div id="name-category" class="column is-9">
               <h4 v-if="gistsSelected">
                 {{ note.description }}
-                <b-icon
-                  class="visibility-icon"
-                  :icon="note.public ? 'globe' : 'lock'"
-                ></b-icon>
+                <b-icon class="visibility-icon" :icon="note.public ? 'globe' : 'lock'"></b-icon>
               </h4>
               <h3 v-else>{{ note.name }}</h3>
             </div>
@@ -25,17 +22,18 @@
                   <b-icon icon="github"></b-icon>
                 </a>
                 <a
-                  id="update-note"
-                  @click="showUpdateNoteModal(note.name)"
-                  title="Edit note"
+                  id="convert-note"
+                  v-if="!gistsSelected && githubToken"
+                  @click="convertNoteToGist"
+                  title="Convert to gist"
                 >
+                  <b-icon icon="share" size="is-small"></b-icon>
+                  <b-icon icon="github"></b-icon>
+                </a>
+                <a id="update-note" @click="showUpdateNoteModal(note.name)" title="Edit note">
                   <b-icon icon="pencil"></b-icon>
                 </a>
-                <a
-                  id="delete-note"
-                  @click="deleteNoteModal()"
-                  title="Delete note"
-                >
+                <a id="delete-note" @click="deleteNoteModal()" title="Delete note">
                   <b-icon icon="trash"></b-icon>
                 </a>
               </div>
@@ -49,18 +47,13 @@
             :data="tag"
             :style="'background-color: ' + stringToColour(tag) + ';'"
             :key="tag.text"
-            >{{ tag }}</b-tag
-          >
+          >{{ tag }}</b-tag>
 
-          <div
-            class="note-file"
-            v-for="(value, key, index) in note.files"
-            :key="index"
-          >
+          <div class="note-file" v-for="(value, key, index) in note.files" :key="index">
             <h4>
               {{ value.name }}
-              <span class="note-file-small"
-                >({{ value.language }})
+              <span class="note-file-small">
+                ({{ value.language }})
                 <a
                   id="copy-file"
                   v-clipboard:copy="value.content"
@@ -128,10 +121,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["notes", "gistsSelected"])
+    ...mapGetters(["notes", "gistsSelected", "githubToken"])
   },
   methods: {
-    ...mapActions(["updateNote", "deleteNote"]),
+    ...mapActions(["updateNote", "deleteNote", "convertToGist", "selectGists"]),
     stringToColour(str) {
       const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.6 });
       return colorHash.hex(str);
@@ -155,6 +148,37 @@ export default {
           this.deleteNote(this.note);
         }
       });
+    },
+    convertNoteToGist() {
+      this.convertToGist(this.note)
+        .then(() => {
+          this.$buefy.dialog.confirm({
+            title: "Successful",
+            message:
+              "Note was converted to gist.<br>Do you want to delete local note ?",
+            confirmText: "Delete",
+            cancelText: "Keep",
+            type: "is-success",
+            icon: "check-circle",
+            hasIcon: true,
+            onConfirm: () => {
+              this.deleteNote(this.note);
+              this.selectGists(true);
+            },
+            onCancel: () => {
+              this.selectGists(true);
+            }
+          });
+        })
+        .catch(() => {
+          this.$buefy.dialog.alert({
+            title: "Error",
+            message: "Note was not converted to gist.<br>Please retry later.",
+            type: "is-danger",
+            hasIcon: true,
+            icon: "times-circle"
+          });
+        });
     },
     onCopyClipboardSuccess() {
       this.$toast.open({
