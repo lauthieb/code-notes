@@ -6,7 +6,7 @@
           <img src="~@/assets/img/code-notes-logo-black-full.png" alt="Image" />
         </div>
       </div>
-      <div class="content">
+      <div class="text-center">
         <h4>v{{ appVersion }}</h4>
 
         <p>

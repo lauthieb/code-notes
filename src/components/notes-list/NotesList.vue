@@ -22,7 +22,7 @@
         <button
           id="add-note"
           class="button is-dark"
-          @click="createNoteModalActive = true"
+          @click="showCreateNoteModal()"
         >
           <b-icon icon="plus"></b-icon>
         </button>
@@ -90,9 +90,18 @@
       </div>
     </div>
 
-    <b-modal :active.sync="createNoteModalActive" has-modal-card>
+    <modal
+      :name="'create-note-modal'"
+      :resizable="true"
+      :reset="true"
+      :adaptive="true"
+      height="70%"
+      width="700"
+      :min-width="700"
+      :min-height="550"
+    >
       <cn-create-note-modal></cn-create-note-modal>
-    </b-modal>
+    </modal>
 
     <b-modal :active.sync="settingsModalActive" has-modal-card>
       <cn-settings-modal></cn-settings-modal>
@@ -116,6 +125,8 @@ import SettingsModal from "../modals/settings-modal/SettingsModal";
 import HelpTokenModal from "../modals/help-token-modal/HelpTokenModal";
 import AboutModal from "../modals/about-modal/AboutModal";
 
+const createNoteModalName = "create-note-modal";
+
 export default {
   name: "cn-notes-list",
   components: {
@@ -135,7 +146,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["loadNotes", "loadSettings"])
+    ...mapActions(["loadNotes", "loadSettings"]),
+    showCreateNoteModal() {
+      this.$modal.show(createNoteModalName);
+    }
   },
   computed: {
     ...mapGetters([

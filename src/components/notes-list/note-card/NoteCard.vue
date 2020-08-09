@@ -30,7 +30,7 @@
                   <b-icon icon="share" size="is-small"></b-icon>
                   <b-icon icon="github"></b-icon>
                 </a>
-                <a id="update-note" @click="updateNoteModalActive = true" title="Edit note">
+                <a id="update-note" @click="showUpdateNoteModal(note.name)" title="Edit note">
                   <b-icon icon="pencil"></b-icon>
                 </a>
                 <a id="delete-note" @click="deleteNoteModal()" title="Delete note">
@@ -84,9 +84,18 @@
       </div>
     </article>
 
-    <b-modal :active.sync="updateNoteModalActive" has-modal-card>
+    <modal
+      :name="note.name"
+      :resizable="true"
+      :reset="true"
+      :adaptive="true"
+      height="70%"
+      width="700"
+      :min-width="700"
+      :min-height="550"
+    >
       <cn-update-note-modal :note="note"></cn-update-note-modal>
-    </b-modal>
+    </modal>
   </div>
 </template>
 
@@ -119,6 +128,9 @@ export default {
     stringToColour(str) {
       const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.6 });
       return colorHash.hex(str);
+    },
+    showUpdateNoteModal(name) {
+      this.$modal.show(name);
     },
     updateNoteModal() {
       this.updateNote(this.note);
