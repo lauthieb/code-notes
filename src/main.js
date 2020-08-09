@@ -2,7 +2,7 @@ import Vue from "vue";
 import axios from "axios";
 import Buefy from "buefy";
 import VueClipboard from "vue-clipboard2";
-
+import VModal from "vue-js-modal";
 import "font-awesome/css/font-awesome.min.css";
 import "source-sans-pro/source-sans-pro.css";
 
@@ -63,6 +63,8 @@ Vue.use(Buefy, {
 });
 
 Vue.use(VueClipboard);
+
+Vue.use(VModal);
 
 Vue.filter("capitalize", value => {
   if (!value) return "";

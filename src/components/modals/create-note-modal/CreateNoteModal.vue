@@ -1,5 +1,5 @@
 <template>
-  <form action="">
+  <form action="" class="create-modal modal-form">
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">
@@ -114,7 +114,11 @@
       </section>
 
       <footer class="modal-card-foot">
-        <button class="button" type="button" @click="$parent.close()">
+        <button
+          class="button"
+          type="button"
+          @click="$modal.hide('create-note-modal')"
+        >
           Cancel
         </button>
         <button
@@ -139,6 +143,7 @@ import vSelect from "vue-select";
 import ColorHash from "color-hash";
 
 const noteNameCharacters = "abcdef0123456789";
+const createModalName = "create-note-modal";
 
 const generateNoteName = () => {
   let text = "";
@@ -203,7 +208,7 @@ export default {
         }
 
         this.addNote(this.note).then(() => {
-          this.$parent.close();
+          this.$modal.hide(createModalName);
         });
       } else {
         this.displayDupError = true;
