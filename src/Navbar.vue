@@ -57,8 +57,8 @@ export default {
     };
   },
   methods: {
-    open(link) {
-      this.$electron.shell.openExternal(link);
+    open: function(link) {
+    window.open(link, "_blank");
     }
   }
 };
