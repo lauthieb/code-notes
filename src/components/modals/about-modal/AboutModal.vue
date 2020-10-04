@@ -33,6 +33,11 @@ export default {
     return {
       appVersion: remote.app.getVersion()
     };
+  }, 
+  methods:{
+    open: function(link) {
+    window.open(link, "_blank");
+    }
   }
 };
 </script>
