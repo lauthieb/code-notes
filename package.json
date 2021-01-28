@@ -57,7 +57,7 @@
     "@vue/test-utils": "^1.0.0-beta.31",
     "babel-eslint": "^10.1.0",
     "chromedriver": "^80.0.1",
-    "electron": "^8.2.4",
+    "electron": "^9.4.0",
     "eslint": "^6.7.2",
     "eslint-plugin-html": "^6.0.2",
     "eslint-plugin-prettier": "^3.1.1",
