@@ -19,7 +19,7 @@
             placeholder="Your note name"
             required
           >
-          </b-input>
+          </b-input> <h5 style="color:red;">*Required to fill</h5>
         </b-field>
 
         <b-field horizontal label="Description">
@@ -30,12 +30,12 @@
             placeholder="Your description"
             required
           >
-          </b-input>
+          </b-input> <h5 style="color:red;">*Required to fill</h5>
         </b-field>
 
         <b-field v-if="!gistsSelected" horizontal label="Tags">
-          <b-taginput v-model="note.tags" maxtags="5"> </b-taginput>
-        </b-field>
+          <b-taginput v-model="note.tags" maxtags="5"> </b-taginput> 
+        </b-field> 
 
         <b-field v-if="gistsSelected" horizontal label="Visibility">
           <b-select placeholder="Select a visibility" v-model="note.public">
@@ -45,7 +45,7 @@
         </b-field>
 
         <div class="note-file" v-for="(file, index) in files" :key="index">
-          <b-field horizontal label="Name" grouped>
+          <b-field horizontal label="File Name" grouped> 
             <b-input
               style="width: 186px"
               type="text"
@@ -53,7 +53,7 @@
               placeholder="Your file name"
               required
             >
-            </b-input>
+            </b-input> <h5 style="color:red;">*Required to fill</h5>
             <p class="control is-pulled-right" v-if="files.length > 1">
               <button class="button is-danger" @click="deleteFile(file)">
                 <b-icon icon="trash"></b-icon>

@@ -60,7 +60,7 @@
       >
         <h1>Hey !</h1>
         <h2>You don't have any {{ gistsSelected ? "gist" : "note" }}...</h2>
-        <button class="button is-primary" @click="createNoteModalActive = true">
+        <button class="button is-primary" @click="showCreateNoteModal()">
           Create a new one :)
         </button>
       </div>
