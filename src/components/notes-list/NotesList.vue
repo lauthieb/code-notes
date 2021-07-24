@@ -60,7 +60,7 @@
       >
         <h1>Hey !</h1>
         <h2>You don't have any {{ gistsSelected ? "gist" : "note" }}...</h2>
-        <button class="button is-primary" @click="createNoteModalActive = true">
+        <button class="button is-primary" @click="showCreateNoteModal">
           Create a new one :)
         </button>
       </div>
@@ -99,8 +99,9 @@
       width="700"
       :min-width="700"
       :min-height="550"
+
     >
-      <cn-create-note-modal></cn-create-note-modal>
+      <cn-create-note-modal ></cn-create-note-modal>
     </modal>
 
     <b-modal :active.sync="settingsModalActive" has-modal-card>
