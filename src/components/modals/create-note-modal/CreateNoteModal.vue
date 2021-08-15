@@ -53,7 +53,7 @@
               placeholder="Your file name"
               required
             >
-            </b-input> <h5 style="color:red;">*Required to fill in</h5>
+            </b-input> <h5 style="color:red;">*Required to fill </h5>
             <p class="control is-pulled-right" v-if="files.length > 1">
               <button class="button is-danger" @click="deleteFile(file)">
                 <b-icon icon="trash"></b-icon>
