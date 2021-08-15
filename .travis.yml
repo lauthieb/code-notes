@@ -30,8 +30,8 @@ before_install:
     - npm install -g node-gyp
 install: npm install
 before_script:
-    #- xvfb-maybe node_modules/.bin/karma start test/unit/karma.conf.js
-    #- npm run pack && xvfb-maybe node_modules/.bin/mocha test/e2e
+    - xvfb-maybe node_modules/.bin/karma start test/unit/karma.conf.js
+    - npm run pack && xvfb-maybe node_modules/.bin/mocha test/e2e
 script: npm run build
 branches:
   only:
