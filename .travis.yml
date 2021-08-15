@@ -34,7 +34,7 @@ before_install:
     - npm install -g node-gyp
 install: npm install
 before_script:
-    - npm run test
+    - npm test
 script: npm run build
 branches:
   only:
