@@ -34,7 +34,7 @@
         </b-field>
 
         <b-field v-if="!gistsSelected" horizontal label="Tags">
-          <b-taginput v-model="note.tags" maxtags="5"> </b-taginput>
+          <b-taginput v-model="noteUpdated.tags" maxtags="5"> </b-taginput>
         </b-field>
 
         <div class="note-file" v-for="(file, index) in files" :key="index">
