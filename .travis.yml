@@ -1,5 +1,5 @@
 # Commented sections below can be used to run tests on the CI server
-# https://simulatedgreg.gitbooks.io/electron-vue/content/en/testing.html#on-the-subject-of-ci-testing
+# https://simulatedgreg.gitbooks.io/electron-vue/content/en/testing.html#on-the-subject-of-ci-testing 
 osx_image: xcode8.3
 language: node_js
 node_js:
@@ -16,6 +16,10 @@ cache:
   - "$HOME/.electron"
   - "$HOME/.cache"
 addons:
+ sonarcloud:
+    organization: "Wsyzzzz"
+    token:
+      secure: "b57c172a7a777aa9d131a6c3d65889ec933724e0" 
   apt:
     packages:
     - libgnome-keyring-dev
