@@ -4,7 +4,7 @@
       <p class="modal-card-title">Help - Create a personal access token</p>
     </header>
     <section class="modal-card-body">
-      <img src="~@/assets/img/help-token.png" />
+      <img style="min-width:100%" src="~@/assets/img/help-token.png" />
     </section>
 
     <footer class="modal-card-foot">
