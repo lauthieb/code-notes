@@ -16,7 +16,7 @@ cache:
   - "$HOME/.electron"
   - "$HOME/.cache"
 addons:
- sonarcloud:
+  sonarcloud:
     organization: "Wsyzzzz"
     token:
       secure: "b57c172a7a777aa9d131a6c3d65889ec933724e0"
