@@ -6,7 +6,7 @@
           <div id="card-header" class="columns">
             <div id="name-category" class="column is-9">
               <h4 v-if="gistsSelected">
-                {{ note.description }}
+                Description: {{ note.description }}
                 <b-icon class="visibility-icon" :icon="note.public ? 'globe' : 'lock'"></b-icon>
               </h4>
               <h3 v-else>{{ note.name }}</h3>
@@ -39,7 +39,7 @@
               </div>
             </div>
           </div>
-          <p v-if="!gistsSelected">{{ note.description }}</p>
+          <p v-if="!gistsSelected">Description: {{ note.description }}</p>
 
           <b-tag
             type="is-dark"
@@ -51,9 +51,9 @@
 
           <div class="note-file" v-for="(value, key, index) in note.files" :key="index">
             <h4>
-              {{ value.name }}
+             Name: {{ value.name }}
               <span class="note-file-small">
-                ({{ value.language }})
+                (Language: {{ value.language }})
                 <a
                   id="copy-file"
                   v-clipboard:copy="value.content"
