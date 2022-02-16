@@ -99,9 +99,8 @@
       width="700"
       :min-width="700"
       :min-height="550"
-
     >
-      <cn-create-note-modal ></cn-create-note-modal>
+      <cn-create-note-modal></cn-create-note-modal>
     </modal>
 
     <b-modal :active.sync="settingsModalActive" has-modal-card>
