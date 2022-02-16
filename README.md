@@ -64,12 +64,6 @@ npm test
 npm run eslint
 ```
 
-### Roadmap to V1.3.0 💪🏻
-
-To follow the progression, go to the [V1.3.0 roadmap project section](https://github.com/lauthieb/code-notes/projects/5) ! 
-
-Feel free to [add an issue](https://github.com/lauthieb/code-notes/issues/new) if you find some bugs or you have any ideas of evolutions 😃
-
 ## Support Code Notes
 
 <a href="https://www.buymeacoffee.com/lauthieb" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
