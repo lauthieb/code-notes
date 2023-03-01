@@ -66,7 +66,7 @@
     "node-sass": "^7.0.0",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
-    "spectron": "^10.0.1",
+    "spectron": "^19.0.0",
     "vue-cli-plugin-electron-builder": "2.0.0-beta.6",
     "vue-template-compiler": "^2.6.11"
   },
