@@ -20,8 +20,6 @@ A simple code snippet & gist manager for developers built with Electron & Vue.js
 [![Financial Contributors on Open Collective](https://opencollective.com/code-notes/all/badge.svg?label=financial+contributors)](https://opencollective.com/code-notes) 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/makes-people-smile.svg)](http://forthebadge.com)
-
 <a href="https://www.buymeacoffee.com/lauthieb" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
 </div>
 
